@@ -1591,6 +1591,10 @@ footer {
 }
 .btn-add-cart:hover { background: var(--gold-light); }
 
+/* ========== SECTION BACKGROUND HELPERS ========== */
+.bg-white { background: #fff; }
+.bg-cream  { background: var(--cream); }
+
 /* ========== REDUCED MOTION ========== */
 @media (prefers-reduced-motion: reduce) {
     *, *::before, *::after { transition: none !important; animation: none !important; }
