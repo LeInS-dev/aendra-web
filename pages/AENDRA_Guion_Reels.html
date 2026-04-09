@@ -1,0 +1,796 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AENDRA - Guión de Reels Virales | Interior Mood</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Georgia', serif;
+            background: linear-gradient(135deg, #F5EFE6 0%, #E8DDD0 100%);
+            color: #3D1F0D;
+            line-height: 1.7;
+            padding: 2rem;
+        }
+
+        header {
+            text-align: center;
+            margin-bottom: 3rem;
+            padding: 2rem;
+            background: rgba(61, 31, 13, 0.95);
+            color: #F5EFE6;
+            border-radius: 8px;
+            box-shadow: 0 8px 24px rgba(61, 31, 13, 0.3);
+        }
+
+        header h1 {
+            font-size: 2.8rem;
+            margin-bottom: 0.5rem;
+            letter-spacing: 2px;
+            color: #B89A6A;
+        }
+
+        header p {
+            font-size: 1.1rem;
+            color: #F5EFE6;
+            font-style: italic;
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .intro {
+            background: #F5EFE6;
+            padding: 2rem;
+            border-left: 4px solid #B89A6A;
+            margin-bottom: 2rem;
+            border-radius: 4px;
+        }
+
+        .intro h2 {
+            color: #3D1F0D;
+            margin-bottom: 1rem;
+        }
+
+        .intro p {
+            color: #3D1F0D;
+            margin-bottom: 0.8rem;
+        }
+
+        .reel {
+            background: white;
+            margin-bottom: 2.5rem;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 4px 12px rgba(61, 31, 13, 0.15);
+            animation: slideUp 0.6s ease-out;
+        }
+
+        @keyframes slideUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .reel-header {
+            background: linear-gradient(135deg, #3D1F0D 0%, #5A3A1A 100%);
+            color: #B89A6A;
+            padding: 1.5rem;
+            border-left: 4px solid #B89A6A;
+        }
+
+        .reel-number {
+            display: inline-block;
+            background: #B89A6A;
+            color: #3D1F0D;
+            padding: 0.4rem 0.8rem;
+            border-radius: 4px;
+            font-weight: bold;
+            margin-bottom: 0.8rem;
+            font-size: 0.9rem;
+        }
+
+        .reel-title {
+            font-size: 1.8rem;
+            margin-bottom: 0.3rem;
+            color: #F5EFE6;
+        }
+
+        .reel-subtitle {
+            font-size: 0.95rem;
+            color: #B89A6A;
+            font-style: italic;
+        }
+
+        .reel-content {
+            padding: 2rem;
+        }
+
+        .meta-info {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+            padding: 1rem;
+            background: #F5EFE6;
+            border-radius: 4px;
+        }
+
+        .meta-item {
+            padding: 0.8rem;
+        }
+
+        .meta-label {
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            color: #B89A6A;
+            font-weight: bold;
+            margin-bottom: 0.3rem;
+        }
+
+        .meta-value {
+            font-size: 1rem;
+            color: #3D1F0D;
+            font-weight: 500;
+        }
+
+        .timeline {
+            margin: 1.5rem 0;
+            padding: 1rem;
+            background: rgba(184, 154, 106, 0.08);
+            border-left: 3px solid #B89A6A;
+            border-radius: 4px;
+        }
+
+        .timeline h4 {
+            color: #3D1F0D;
+            margin-bottom: 1rem;
+            font-size: 1rem;
+        }
+
+        .scene {
+            margin-bottom: 1rem;
+            padding-bottom: 1rem;
+            border-bottom: 1px solid #E8DDD0;
+        }
+
+        .scene:last-child {
+            border-bottom: none;
+            margin-bottom: 0;
+            padding-bottom: 0;
+        }
+
+        .timestamp {
+            display: inline-block;
+            background: #B89A6A;
+            color: white;
+            padding: 0.3rem 0.7rem;
+            border-radius: 3px;
+            font-size: 0.9rem;
+            font-weight: bold;
+            margin-right: 0.5rem;
+            min-width: 50px;
+            text-align: center;
+        }
+
+        .scene-description {
+            color: #3D1F0D;
+            margin-top: 0.3rem;
+        }
+
+        .section {
+            margin-top: 1.5rem;
+        }
+
+        .section-title {
+            color: #3D1F0D;
+            font-size: 1rem;
+            font-weight: bold;
+            text-transform: uppercase;
+            margin-bottom: 0.8rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 2px solid #B89A6A;
+        }
+
+        .section-content {
+            color: #3D1F0D;
+            margin-left: 0;
+            padding: 1rem;
+            background: #F5EFE6;
+            border-radius: 4px;
+            margin-bottom: 1rem;
+        }
+
+        .voiceover {
+            font-style: italic;
+            color: #5A3A1A;
+            padding: 0.8rem;
+            background: rgba(184, 154, 106, 0.1);
+            border-left: 2px solid #B89A6A;
+            margin: 0.8rem 0;
+            border-radius: 2px;
+        }
+
+        .hashtags {
+            margin-top: 1.5rem;
+            padding: 1rem;
+            background: #E8DDD0;
+            border-radius: 4px;
+        }
+
+        .hashtags-title {
+            font-weight: bold;
+            color: #3D1F0D;
+            margin-bottom: 0.5rem;
+        }
+
+        .hashtags-list {
+            color: #B89A6A;
+            font-weight: 500;
+            line-height: 1.6;
+        }
+
+        .cta-button {
+            display: inline-block;
+            background: #B89A6A;
+            color: #3D1F0D;
+            padding: 0.8rem 1.2rem;
+            border-radius: 4px;
+            font-weight: bold;
+            margin-top: 0.8rem;
+            font-size: 0.95rem;
+        }
+
+        footer {
+            text-align: center;
+            margin-top: 4rem;
+            padding: 2rem;
+            color: #3D1F0D;
+            border-top: 2px solid #B89A6A;
+        }
+
+        footer p {
+            margin: 0.5rem 0;
+            font-size: 0.95rem;
+        }
+
+        .brand-credit {
+            color: #B89A6A;
+            font-weight: bold;
+        }
+
+        @media (max-width: 768px) {
+            header h1 {
+                font-size: 2rem;
+            }
+
+            .meta-info {
+                grid-template-columns: 1fr;
+            }
+
+            .reel-title {
+                font-size: 1.4rem;
+            }
+
+            body {
+                padding: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>AENDRA</h1>
+            <p>Guión de Reels Virales | Interior Mood</p>
+            <p style="margin-top: 1rem; font-size: 0.95rem;">Por Alejandra Vasquezz</p>
+        </header>
+
+        <div class="intro">
+            <h2>Cómo usar este guión</h2>
+            <p>Cada reel está diseñado para ser natural, authentico y con el tono de Alejandra Vasquezz. No es contenido corporativo, es conversación real en video.</p>
+            <p><strong>Tips:</strong> Graba en buena iluminación natural, usa ángulos variados, mantén un ritmo rápido. La meta es que la gente no se desplace (swipe).</p>
+        </div>
+
+        <!-- REEL 1 -->
+        <div class="reel">
+            <div class="reel-header">
+                <div class="reel-number">REEL 01</div>
+                <h2 class="reel-title">Transformé mi cuarto con $80</h2>
+                <p class="reel-subtitle">Before & After en tiempo real</p>
+            </div>
+            <div class="reel-content">
+                <div class="meta-info">
+                    <div class="meta-item">
+                        <div class="meta-label">Duración</div>
+                        <div class="meta-value">45-50 segundos</div>
+                    </div>
+                    <div class="meta-item">
+                        <div class="meta-label">Tono</div>
+                        <div class="meta-value">Aspiracional, tangible</div>
+                    </div>
+                </div>
+
+                <div class="timeline">
+                    <h4>Estructura escena por escena:</h4>
+                    <div class="scene">
+                        <span class="timestamp">0:00-0:03</span>
+                        <div class="scene-description"><strong>HOOK:</strong> Plano del cuarto actual (oscuro, sin vida). Voz en off: "Mi cuarto parecía un sótano... hasta hoy". Texto en pantalla: "Transformé mi cuarto con $80"</div>
+                    </div>
+                    <div class="scene">
+                        <span class="timestamp">0:03-0:15</span>
+                        <div class="scene-description"><strong>COMPRA:</strong> Montaje rápido de items siendo colocados: almohadas (cream, beige), vela aromática, plantas. Cada item con su precio visible: +$18, +$15, +$25. Narración rápida: "Almohadas de AENDRA... vela... plantas de verdad"</div>
+                    </div>
+                    <div class="scene">
+                        <span class="timestamp">0:15-0:30</span>
+                        <div class="scene-description"><strong>TRANSFORMACIÓN:</strong> Time-lapse o montaje rápido colocando todo en el espacio. La cámara gira mostrando cada rincón. Sonido: aplauso o sonido satisfactorio.</div>
+                    </div>
+                    <div class="scene">
+                        <span class="timestamp">0:30-0:45</span>
+                        <div class="scene-description"><strong>REVEAL:</strong> Full room shot con luz natural. Alejandra en el frame sonriendo. Texto: "Antes vs. Ahora". Ella dice: "La mejor inversión que hice este mes"</div>
+                    </div>
+                    <div class="scene">
+                        <span class="timestamp">0:45-0:50</span>
+                        <div class="scene-description"><strong>CTA:</strong> Close-up de Alejandra. "¿Vos también querés transformar tu espacio? Chequea los kits en bio". Texto final: "Ver Kits →" con arrow animado.</div>
+                    </div>
+                </div>
+
+                <div class="section">
+                    <div class="section-title">Texto en Pantalla (On-Screen Text)</div>
+                    <div class="section-content">
+                        0:00 — "Transformé mi cuarto con $80"<br>
+                        0:15 — "3 piezas clave de AENDRA"<br>
+                        0:30 — "Antes vs. Ahora"<br>
+                        0:45 — "¿Te animas?"
+                    </div>
+                </div>
+
+                <div class="section">
+                    <div class="section-title">Narración / Voiceover</div>
+                    <div class="voiceover">
+                        "Mi cuarto parecía un sótano... hasta que decidí invertir en lo que realmente importa. Con menos de $100, agregué estas tres piezas de AENDRA y toda mi energía cambió. Almohadas que son pura textura, una vela que llena el espacio, y lo mejor es que todo se ve carito pero no lo es. La mejor parte? Puedo cambiar todo cuando quiera. Si vos también sentís que tu espacio necesita amor, yo tengo la solución."
+                    </div>
+                </div>
+
+                <div class="section">
+                    <div class="section-title">Música Recomendada</div>
+                    <div class="section-content">
+                        Upbeat indie-pop instrumental | Chill lofi beat con transiciones rápidas | Trending audio con ritmo optimista (algo tipo "It's a Vibe")
+                    </div>
+                </div>
+
+                <div class="section">
+                    <div class="section-title">CTA Final</div>
+                    <div class="section-content">
+                        "Los kits que necesitás están en bio ↓"<br>
+                        Botón/Link: "Ver Kits de AENDRA"
+                    </div>
+                </div>
+
+                <div class="hashtags">
+                    <div class="hashtags-title">Hashtags Sugeridos:</div>
+                    <div class="hashtags-list">
+                        #AENDRAInteriorMood #DecoracionAccesible #TransformatuEspacio #InteriorDesign #HomeInspo #RoomMakeover #DecorDIY #EstiloAsequible #AEstiloCasero
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- REEL 2 -->
+        <div class="reel">
+            <div class="reel-header">
+                <div class="reel-number">REEL 02</div>
+                <h2 class="reel-title">3 errores que arruinan tu sala</h2>
+                <p class="reel-subtitle">Educational + humor format</p>
+            </div>
+            <div class="reel-content">
+                <div class="meta-info">
+                    <div class="meta-item">
+                        <div class="meta-label">Duración</div>
+                        <div class="meta-value">30-35 segundos</div>
+                    </div>
+                    <div class="meta-item">
+                        <div class="meta-label">Tono</div>
+                        <div class="meta-value">Educativo, humor relatable</div>
+                    </div>
+                </div>
+
+                <div class="timeline">
+                    <h4>Estructura escena por escena:</h4>
+                    <div class="scene">
+                        <span class="timestamp">0:00-0:03</span>
+                        <div class="scene-description"><strong>HOOK:</strong> Alejandra en la sala. "Tu sala podría ser 10x mejor pero estás cometiendo estos 3 errores". Texto: "3 ERRORES QUE ARRUINAN TU SALA"</div>
+                    </div>
+                    <div class="scene">
+                        <span class="timestamp">0:03-0:11</span>
+                        <div class="scene-description"><strong>ERROR 1:</strong> Mostrar una sala vacía, deprimida. Alejandra señala: "Error #1: Demasiado espacio vacío". Ella agrega un cojín, una vela. Vuelve a mostrar: se ve diferente. Texto: "❌ Espacio vacío = Energía muerta"</div>
+                    </div>
+                    <div class="scene">
+                        <span class="timestamp">0:11-0:19</span>
+                        <div class="scene-description"><strong>ERROR 2:</strong> Mostrar iluminación mala (fluorescente dura). "Error #2: Iluminación de oficina en tu casa". Cambia a luz cálida + velas. Diferencia radical. Texto: "❌ Luz fluorescente = Depresión"</div>
+                    </div>
+                    <div class="scene">
+                        <span class="timestamp">0:19-0:27</span>
+                        <div class="scene-description"><strong>ERROR 3:</strong> Sala con cosas random sin coherencia. "Error #3: Sin paleta de colores". Alejandra organiza con tonos cream, beige, gold. Texto: "❌ Colores al azar = Caos visual"</div>
+                    </div>
+                    <div class="scene">
+                        <span class="timestamp">0:27-0:35</span>
+                        <div class="scene-description"><strong>SOLUTION + CTA:</strong> Mostrar la sala final, cohesiva. "Los kits de AENDRA resuelven todo esto. Link en bio". Ella sonríe. Texto: "✓ Tu sala puede verse así"</div>
+                    </div>
+                </div>
+
+                <div class="section">
+                    <div class="section-title">Narración / Voiceover</div>
+                    <div class="voiceover">
+                        "Escucha, tu sala podría transformarse completamente pero estás cometiendo estos tres errores. Primero: espacio vacío. Las paredes desnudas dan energía depresiva. Segundo: iluminación de oficina. No, las luces fluorescentes no van. Necesitás luz cálida, velas, atmósfera. Y tercero, y esto es importante: sin paleta de colores. Si mezclas todo random, tu mente no descansa. Con una paleta cohesiva —tonos cream, beige, un poco de dorado— todo se ve carito y premium. AENDRA resuelve los tres problemas de una."
+                    </div>
+                </div>
+
+                <div class="section">
+                    <div class="section-title">Música Recomendada</div>
+                    <div class="section-content">
+                        Punchy, educational podcast vibe | Trending hook-based audio | Upbeat editorial transition sounds
+                    </div>
+                </div>
+
+                <div class="section">
+                    <div class="section-title">CTA Final</div>
+                    <div class="section-content">
+                        "Arregla tu sala hoy"<br>
+                        "Los kits están en bio ↓"
+                    </div>
+                </div>
+
+                <div class="hashtags">
+                    <div class="hashtags-title">Hashtags Sugeridos:</div>
+                    <div class="hashtags-list">
+                        #ConsejosDeDecoracion #InteriorTips #DecorHomeHacks #RoomDesignTips #EstiloDeCasa #AmbientePerfecto #DecoracionInteligente #HomeDecorIdeas
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- REEL 3 -->
+        <div class="reel">
+            <div class="reel-header">
+                <div class="reel-number">REEL 03</div>
+                <h2 class="reel-title">Unboxing Kit Mood Cozy AENDRA</h2>
+                <p class="reel-subtitle">Product reveal, aesthetic packaging</p>
+            </div>
+            <div class="reel-content">
+                <div class="meta-info">
+                    <div class="meta-item">
+                        <div class="meta-label">Duración</div>
+                        <div class="meta-value">40-45 segundos</div>
+                    </div>
+                    <div class="meta-item">
+                        <div class="meta-label">Tono</div>
+                        <div class="meta-value">Sensorial, premium, authentico</div>
+                    </div>
+                </div>
+
+                <div class="timeline">
+                    <h4>Estructura escena por escena:</h4>
+                    <div class="scene">
+                        <span class="timestamp">0:00-0:03</span>
+                        <div class="scene-description"><strong>HOOK:</strong> Caja de AENDRA llega a puerta. Alejandra la recibe. "Acaba de llegar mi Kit Mood Cozy". Texto: "UNBOXING AENDRA"</div>
+                    </div>
+                    <div class="scene">
+                        <span class="timestamp">0:03-0:10</span>
+                        <div class="scene-description"><strong>OPENING:</strong> Close-up de la caja siendo abierta lentamente. Sonido ASMR (papel, tela). Se ve el branding interno, papel tissue. Alejandra: "Miren el empaque"</div>
+                    </div>
+                    <div class="scene">
+                        <span class="timestamp">0:10-0:25</span>
+                        <div class="scene-description"><strong>ITEMS REVEAL:</strong> Cada item sale lentamente. Almohadas cream/beige (muestra textura), vela aromática (muestra etiqueta AENDRA), una pequeña planta o decorativo. Alejandra describe: "Esto cuesta $35... y mira la calidad". Texto de precios aparece.</div>
+                    </div>
+                    <div class="scene">
+                        <span class="timestamp">0:25-0:38</span>
+                        <div class="scene-description"><strong>FLAT LAY:</strong> Todos los items organizados. Alejandra arregla: "La mejor combinación para empezar". Sonido: algo relajante, vela siendo encendida.</div>
+                    </div>
+                    <div class="scene">
+                        <span class="timestamp">0:38-0:45</span>
+                        <div class="scene-description"><strong>CTA:</strong> Alejandra en frame. "Este es el kit perfecto para quien quiere empezar hoy. Yo tengo los tres para que elijas el tuyo". Texto: "Desde $35"</div>
+                    </div>
+                </div>
+
+                <div class="section">
+                    <div class="section-title">Narración / Voiceover</div>
+                    <div class="voiceover">
+                        "Acaba de llegar y quería compartir con ustedes. Este es el Kit Mood Cozy, el que recomiendo para empezar. Miren el empaque, miren la calidad de esto. Almohadas con textura real, una vela aromática que dura semanas, y un detalle que suma. Todo por treinta y cinco pesos. Esto es lo que me encanta de AENDRA: no es solo lindo, es funcional. Lo pones en tu espacio hoy y ya tu cuarto te agradece."
+                    </div>
+                </div>
+
+                <div class="section">
+                    <div class="section-title">Música Recomendada</div>
+                    <div class="section-content">
+                        ASMR ambient + chill instrumental | Soft lofi beats | Trending cozy audio
+                    </div>
+                </div>
+
+                <div class="section">
+                    <div class="section-title">CTA Final</div>
+                    <div class="section-content">
+                        "Ordená tu kit hoy"<br>
+                        "Link en bio | Envío incluido"
+                    </div>
+                </div>
+
+                <div class="hashtags">
+                    <div class="hashtags-title">Hashtags Sugeridos:</div>
+                    <div class="hashtags-list">
+                        #Unboxing #AENDRAKit #MoodCozy #InteriorDesign #HomeAesthetic #ProductReview #CozyVibes #DecorUnboxing
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- REEL 4 -->
+        <div class="reel">
+            <div class="reel-header">
+                <div class="reel-number">REEL 04</div>
+                <h2 class="reel-title">Así se ve mi cuarto a las 11pm</h2>
+                <p class="reel-subtitle">Ambient, cozy, aesthetic</p>
+            </div>
+            <div class="reel-content">
+                <div class="meta-info">
+                    <div class="meta-item">
+                        <div class="meta-label">Duración</div>
+                        <div class="meta-value">35-40 segundos</div>
+                    </div>
+                    <div class="meta-item">
+                        <div class="meta-label">Tono</div>
+                        <div class="meta-value">Atmosférico, aspiracional, relaxing</div>
+                    </div>
+                </div>
+
+                <div class="timeline">
+                    <h4>Estructura escena por escena:</h4>
+                    <div class="scene">
+                        <span class="timestamp">0:00-0:03</span>
+                        <div class="scene-description"><strong>HOOK:</strong> Cuarto oscuro. Alejandra enciende vela. "A esta hora, mi cuarto se ve así". Texto: "11pm Vibe"</div>
+                    </div>
+                    <div class="scene">
+                        <span class="timestamp">0:03-0:15</span>
+                        <div class="scene-description"><strong>AMBIENCE:</strong> Slow pan por el cuarto. Velas encendidas (3-4), almohadas en la cama, luz cálida natural de luna + velas. Sin voiceover, solo sonido ambiental. Música suave de fondo.</div>
+                    </div>
+                    <div class="scene">
+                        <span class="timestamp">0:15-0:28</span>
+                        <div class="scene-description"><strong>CLOSE-UPS:</strong> Detalles: mano tocando almohada cozy, vela parpadeando, planta silhouette. Texto aparece: "Descompresión", "Paz", "Mi espacio seguro"</div>
+                    </div>
+                    <div class="scene">
+                        <span class="timestamp">0:28-0:40</span>
+                        <div class="scene-description"><strong>ALEJANDRA:</strong> Ella en la cama, rodeada de almohadas, velas encendidas. "Esto es lo que pasó cuando decidí que mi cuarto no era un lugar para dormir... era un refugio". Sonrisa. Texto: "¿Cuál es tu refugio?"</div>
+                    </div>
+                </div>
+
+                <div class="section">
+                    <div class="section-title">Narración / Voiceover</div>
+                    <div class="voiceover">
+                        "A esta hora, cuando apago todo, mi cuarto es donde me siento más yo. No es un cuarto cualquiera, es mi refugio. Ves que cada detalle está pensado para que cuando llego tarde, cansada, lo único que quiero es estar acá. Las almohadas, las velas, la luz cálida. Esto es lo que AENDRA hace: transforma un espacio funcional en un lugar donde querés estar. Donde respiras. Donde sos vos."
+                    </div>
+                </div>
+
+                <div class="section">
+                    <div class="section-title">Música Recomendada</div>
+                    <div class="section-content">
+                        Ambient, calming instrumental | Lo-fi sleep beats | Soft piano or strings
+                    </div>
+                </div>
+
+                <div class="section">
+                    <div class="section-title">CTA Final</div>
+                    <div class="section-content">
+                        "Tu refugio está esperando"<br>
+                        "Empezá hoy con AENDRA"
+                    </div>
+                </div>
+
+                <div class="hashtags">
+                    <div class="hashtags-title">Hashtags Sugeridos:</div>
+                    <div class="hashtags-list">
+                        #CozyRoom #HomeVibes #NightTime #AmbienteMagico #RefugioPersonal #Interior #CalmVibes #AtenightWithMe
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- REEL 5 -->
+        <div class="reel">
+            <div class="reel-header">
+                <div class="reel-number">REEL 05</div>
+                <h2 class="reel-title">Dime tu color y te digo cómo decorar</h2>
+                <p class="reel-subtitle">Interactive/carousel style engagement</p>
+            </div>
+            <div class="reel-content">
+                <div class="meta-info">
+                    <div class="meta-item">
+                        <div class="meta-label">Duración</div>
+                        <div class="meta-value">25-30 segundos</div>
+                    </div>
+                    <div class="meta-item">
+                        <div class="meta-label">Tono</div>
+                        <div class="meta-value">Conversacional, interactive</div>
+                    </div>
+                </div>
+
+                <div class="timeline">
+                    <h4>Estructura escena por escena:</h4>
+                    <div class="scene">
+                        <span class="timestamp">0:00-0:03</span>
+                        <div class="scene-description"><strong>HOOK:</strong> Alejandra en pantalla. "¿Cuál es tu color favorito? Yo te digo exactamente cómo decorar tu espacio". Texto: "TELL ME YOUR COLOR"</div>
+                    </div>
+                    <div class="scene">
+                        <span class="timestamp">0:03-0:09</span>
+                        <div class="scene-description"><strong>OPTION 1 - Blanco/Cream:</strong> Mostrar espacio en tonos cream, beige. Alejandra: "¿Cream? Minimalista, limpio, atemporal". Texto: "Paleta: Cream, Gold, White"</div>
+                    </div>
+                    <div class="scene">
+                        <span class="timestamp">0:09-0:15</span>
+                        <div class="scene-description"><strong>OPTION 2 - Marrón/Caramelo:</strong> Espacio en tonos chocolate, terracota. "¿Marrón? Cálido, acogedor, premium". Texto: "Paleta: Brown, Gold, Cream"</div>
+                    </div>
+                    <div class="scene">
+                        <span class="timestamp">0:15-0:21</span>
+                        <div class="scene-description"><strong>OPTION 3 - Verde/Gris:</strong> Espacio con tonos verdes suaves, grises. "¿Verde o gris? Sofisticado, zen, moderno". Texto: "Paleta: Green, Gray, Natural"</div>
+                    </div>
+                    <div class="scene">
+                        <span class="timestamp">0:21-0:30</span>
+                        <div class="scene-description"><strong>CTA:</strong> Alejandra sonriendo. "Comentá cuál es tuyo y te doy la paleta completa. O mejor, consultá conmigo en bio". Texto: "Preguntale a Alejandra ↓"</div>
+                    </div>
+                </div>
+
+                <div class="section">
+                    <div class="section-title">Narración / Voiceover</div>
+                    <div class="voiceover">
+                        "Tu color favorito dice mucho de cómo querés que se sienta tu espacio. Si sos cream, minimalista, buscás calma y limpieza. Si sos marrón, querés calidez, elegancia, algo envolvente. Si sos verde o gris, estás en la onda sofisticada, zen, pensante. Con AENDRA te ayudo a traducir eso en tu realidad. Dime cuál es tuyo y te armo la paleta perfecta para tu espacio."
+                    </div>
+                </div>
+
+                <div class="section">
+                    <div class="section-title">Música Recomendada</div>
+                    <div class="section-content">
+                        Upbeat, interactive audio | Trendy transition sounds | Light, approachable vibe
+                    </div>
+                </div>
+
+                <div class="section">
+                    <div class="section-title">CTA Final</div>
+                    <div class="section-content">
+                        "Comentá tu color ↓"<br>
+                        "O consulta personalizada en bio"
+                    </div>
+                </div>
+
+                <div class="hashtags">
+                    <div class="hashtags-title">Hashtags Sugeridos:</div>
+                    <div class="hashtags-list">
+                        #InteriorConsulting #ColorPalette #DecorTips #YourStyle #InteriorQuiz #ConsultaPersonalizada #AENDRAAsesoria
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- REEL 6 -->
+        <div class="reel">
+            <div class="reel-header">
+                <div class="reel-number">REEL 06</div>
+                <h2 class="reel-title">Lo que compraría con $50</h2>
+                <p class="reel-subtitle">Shopping list, budget-friendly inspiration</p>
+            </div>
+            <div class="reel-content">
+                <div class="meta-info">
+                    <div class="meta-item">
+                        <div class="meta-label">Duración</div>
+                        <div class="meta-value">35-40 segundos</div>
+                    </div>
+                    <div class="meta-item">
+                        <div class="meta-label">Tono</div>
+                        <div class="meta-value">Practical, relatable, actionable</div>
+                    </div>
+                </div>
+
+                <div class="timeline">
+                    <h4>Estructura escena por escena:</h4>
+                    <div class="scene">
+                        <span class="timestamp">0:00-0:03</span>
+                        <div class="scene-description"><strong>HOOK:</strong> Alejandra holding cash or wallet. "Si tuviera $50 para decorar hoy, esto es lo que compraría". Texto: "$50 CHALLENGE"</div>
+                    </div>
+                    <div class="scene">
+                        <span class="timestamp">0:03-0:12</span>
+                        <div class="scene-description"><strong>ITEM 1 - ALMOHADAS:</strong> Mostrando dos almohadas AENDRA. "$18. Almohadas que van a cambiar todo. Textura, color, impacto visual". Texto: "Almohadas AENDRA - $18"</div>
+                    </div>
+                    <div class="scene">
+                        <span class="timestamp">0:12-0:20</span>
+                        <div class="scene-description"><strong>ITEM 2 - VELA:</strong> Acercando vela aromática. "$12. Una vela buena es inversión. Dura semanas, tu casa huele bien, ambiance total". Texto: "Vela Aromática - $12"</div>
+                    </div>
+                    <div class="scene">
+                        <span class="timestamp">0:20-0:28</span>
+                        <div class="scene-description"><strong>ITEM 3 - PLANTAS/DECO:</strong> Planta pequeña o elemento decorativo. "$20. Algo vivo, algo que crece con vos. Hace toda la diferencia". Texto: "Planta + Deco - $20"</div>
+                    </div>
+                    <div class="scene">
+                        <span class="timestamp">0:28-0:40</span>
+                        <div class="scene-description"><strong>TOTAL + REVEAL:</strong> Alejandra mostrando todos los items juntos en un espacio. "Total: $50. Y tu cuarto? Irreconocible". Texto: "TOTAL: $50 | Resultado: Priceless"</div>
+                    </div>
+                </div>
+
+                <div class="section">
+                    <div class="section-title">Narración / Voiceover</div>
+                    <div class="voiceover">
+                        "Escucha, si hoy me das $50 y me mandas a comprar para tu cuarto, esto es exactamente lo que haría. Primero: almohadas. Es lo que ves todos los días, lo que tocas. No gastes en algo choto. Segundo: una vela buena. No cualquier vela, algo que dure, que huela bien, que cree ambiente. Y tercero: algo vivo. Una planta, un elemento que respire con vos. Con estos tres items, metidos en una paleta coherente, tu cuarto se transforma. No es magia, es estrategia. Y AENDRA tiene todos estos items a ese precio. Punto."
+                    </div>
+                </div>
+
+                <div class="section">
+                    <div class="section-title">Música Recomendada</div>
+                    <div class="section-content">
+                        Upbeat, practical vibe | Shopping-inspired audio | Motivational instrumental
+                    </div>
+                </div>
+
+                <div class="section">
+                    <div class="section-title">CTA Final</div>
+                    <div class="section-content">
+                        "Junta tus $50 y transformá tu cuarto"<br>
+                        "Los items están en bio"
+                    </div>
+                </div>
+
+                <div class="hashtags">
+                    <div class="hashtags-title">Hashtags Sugeridos:</div>
+                    <div class="hashtags-list">
+                        #ShoppingHaul #BudgetDecor #InteriorOnABudget #$50Challenge #DecorLoHacksPracticos #AENDRABudget #AccesibleDecor
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <footer>
+            <p><span class="brand-credit">AENDRA</span> — Interior Mood</p>
+            <p>Guión de Reels Virales por Alejandra Vasquezz</p>
+            <p style="font-size: 0.85rem; color: #B89A6A; margin-top: 1.5rem;">Todos los reels están diseñados para ser naturales, authenticos y conversacionales. El tono de Alejandra es la clave: accesible pero aspiracional, práctica pero elegante.</p>
+        </footer>
+    </div>
+
+    <script>
+        // Smooth scroll behavior
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+
+        // Light animation on scroll
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, {
+            threshold: 0.1
+        });
+
+        document.querySelectorAll('.reel').forEach(reel => {
+            reel.style.opacity = '0';
+            reel.style.transform = 'translateY(20px)';
+            reel.style.transition = 'opacity 0.6s ease-out, transform 0.6s ease-out';
+            observer.observe(reel);
+        });
+    </script>
+</body>
+</html>

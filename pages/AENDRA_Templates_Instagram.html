@@ -1,0 +1,1068 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AENDRA - Guía de Templates de Instagram para Canva</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --darkBrown: #3D1F0D;
+            --brown: #8B5E3C;
+            --gold: #B89A6A;
+            --cream: #F5EFE6;
+            --beige: #E8DDD0;
+            --sand: #C8B8A2;
+        }
+
+        body {
+            font-family: 'Calibri', 'Segoe UI', sans-serif;
+            background: linear-gradient(135deg, var(--cream) 0%, var(--beige) 100%);
+            color: var(--darkBrown);
+            line-height: 1.6;
+            padding: 40px 20px;
+        }
+
+        /* Header */
+        header {
+            max-width: 1200px;
+            margin: 0 auto 60px;
+            text-align: center;
+            padding-bottom: 40px;
+            border-bottom: 3px solid var(--gold);
+        }
+
+        h1 {
+            font-family: 'Georgia', serif;
+            font-size: 3em;
+            color: var(--darkBrown);
+            margin-bottom: 10px;
+            font-weight: normal;
+            letter-spacing: 2px;
+        }
+
+        .subtitle {
+            font-size: 1.3em;
+            color: var(--brown);
+            font-style: italic;
+            margin-bottom: 20px;
+        }
+
+        .brand-colors {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            flex-wrap: wrap;
+            margin-top: 30px;
+        }
+
+        .color-swatch {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .color-box {
+            width: 30px;
+            height: 30px;
+            border-radius: 4px;
+            border: 2px solid var(--darkBrown);
+        }
+
+        .color-label {
+            font-size: 0.85em;
+            font-weight: bold;
+            color: var(--brown);
+        }
+
+        /* Main container */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        /* Template section */
+        .template-section {
+            background: white;
+            border-radius: 12px;
+            padding: 40px;
+            margin-bottom: 50px;
+            box-shadow: 0 4px 15px rgba(61, 31, 13, 0.1);
+            border-left: 6px solid var(--gold);
+        }
+
+        .template-header {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            margin-bottom: 40px;
+            align-items: start;
+        }
+
+        .template-info h2 {
+            font-family: 'Georgia', serif;
+            font-size: 2em;
+            color: var(--darkBrown);
+            margin-bottom: 15px;
+            font-weight: normal;
+        }
+
+        .template-number {
+            display: inline-block;
+            background: var(--gold);
+            color: white;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            font-size: 1.5em;
+            margin-bottom: 15px;
+        }
+
+        .template-description {
+            color: var(--brown);
+            font-size: 1.05em;
+            line-height: 1.8;
+            margin-bottom: 20px;
+        }
+
+        /* Mockup area */
+        .mockup-container {
+            display: flex;
+            justify-content: center;
+            padding: 20px;
+            background: var(--sand);
+            border-radius: 8px;
+        }
+
+        .instagram-post {
+            width: 320px;
+            height: 320px;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.15);
+            display: flex;
+            flex-direction: column;
+        }
+
+        /* Template mockups styling */
+        .educativo {
+            background: linear-gradient(135deg, var(--beige) 0%, #F0E8DC 100%);
+            padding: 25px;
+            justify-content: space-between;
+        }
+
+        .educativo-title {
+            background: #FF6B5B;
+            color: white;
+            padding: 12px;
+            border-radius: 6px;
+            font-family: 'Georgia', serif;
+            font-size: 1.3em;
+            font-weight: bold;
+            text-align: center;
+            margin-bottom: 12px;
+        }
+
+        .educativo-list {
+            font-size: 0.9em;
+            line-height: 1.6;
+            margin: 10px 0;
+        }
+
+        .educativo-list span {
+            font-weight: bold;
+            color: #FF6B5B;
+        }
+
+        .educativo-logo {
+            background: var(--darkBrown);
+            color: white;
+            padding: 8px;
+            border-radius: 4px;
+            font-size: 0.8em;
+            text-align: center;
+            font-weight: bold;
+        }
+
+        .moodboard {
+            background: var(--darkBrown);
+            padding: 15px;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 10px;
+        }
+
+        .moodboard-img {
+            background: linear-gradient(135deg, #4A3728 0%, #5C4838 100%);
+            border-radius: 6px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2em;
+            color: var(--gold);
+            opacity: 0.6;
+        }
+
+        .moodboard-palette {
+            grid-column: 1 / -1;
+            display: flex;
+            gap: 8px;
+            justify-content: center;
+        }
+
+        .swatch {
+            width: 45px;
+            height: 30px;
+            border-radius: 4px;
+            border: 2px solid white;
+        }
+
+        .swatch-1 { background: var(--darkBrown); }
+        .swatch-2 { background: var(--brown); }
+        .swatch-3 { background: var(--gold); }
+        .swatch-4 { background: var(--cream); }
+
+        .antes-despues {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            height: 100%;
+        }
+
+        .antes-despues-side {
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .antes {
+            background: var(--beige);
+            border-right: 3px solid var(--gold);
+        }
+
+        .despues {
+            background: var(--darkBrown);
+            color: white;
+        }
+
+        .antes-despues-label {
+            font-family: 'Georgia', serif;
+            font-size: 1.2em;
+            font-weight: bold;
+            margin-bottom: 15px;
+        }
+
+        .antes-despues-img {
+            width: 100%;
+            height: 150px;
+            background: linear-gradient(135deg, rgba(255,255,255,0.3) 0%, rgba(255,255,255,0.1) 100%);
+            border-radius: 6px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--brown);
+        }
+
+        .despues .antes-despues-img {
+            background: linear-gradient(135deg, rgba(255,255,255,0.2) 0%, rgba(255,255,255,0.1) 100%);
+            color: var(--gold);
+        }
+
+        .producto {
+            background: var(--cream);
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            align-items: center;
+            text-align: center;
+        }
+
+        .producto-img {
+            width: 200px;
+            height: 150px;
+            background: linear-gradient(135deg, var(--sand) 0%, var(--beige) 100%);
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 3em;
+            color: var(--gold);
+            margin: 15px 0;
+        }
+
+        .producto-name {
+            font-family: 'Georgia', serif;
+            font-size: 1.1em;
+            color: var(--darkBrown);
+            font-weight: bold;
+            margin: 8px 0;
+        }
+
+        .producto-price {
+            font-size: 1.3em;
+            color: var(--gold);
+            font-weight: bold;
+        }
+
+        .cita {
+            background: var(--darkBrown);
+            padding: 30px 20px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            position: relative;
+        }
+
+        .cita-accent {
+            width: 60px;
+            height: 4px;
+            background: var(--gold);
+            margin-bottom: 15px;
+        }
+
+        .cita-text {
+            font-family: 'Georgia', serif;
+            font-size: 1.05em;
+            color: var(--cream);
+            font-style: italic;
+            line-height: 1.8;
+            margin: 0 10px;
+        }
+
+        .carrusel {
+            background: linear-gradient(135deg, var(--darkBrown) 0%, #2D1508 100%);
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .carrusel-slide {
+            width: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 12px;
+            margin: 8px 0;
+        }
+
+        .step-number {
+            background: var(--gold);
+            color: var(--darkBrown);
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.4em;
+            font-weight: bold;
+            flex-shrink: 0;
+        }
+
+        .step-content {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 12px;
+            border-radius: 6px;
+            flex: 1;
+            font-size: 0.85em;
+            color: var(--cream);
+        }
+
+        /* Canva instructions */
+        .canva-instructions {
+            background: var(--cream);
+            border-radius: 8px;
+            padding: 25px;
+            margin-top: 30px;
+        }
+
+        .instructions-title {
+            font-family: 'Georgia', serif;
+            font-size: 1.4em;
+            color: var(--darkBrown);
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .instructions-icon {
+            width: 30px;
+            height: 30px;
+            background: var(--gold);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: bold;
+        }
+
+        .instruction-list {
+            list-style: none;
+        }
+
+        .instruction-list li {
+            padding: 12px 0;
+            border-bottom: 1px solid var(--sand);
+            display: flex;
+            gap: 15px;
+            font-size: 0.95em;
+            line-height: 1.6;
+        }
+
+        .instruction-list li:last-child {
+            border-bottom: none;
+        }
+
+        .instruction-number {
+            background: var(--brown);
+            color: white;
+            width: 28px;
+            height: 28px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.9em;
+            font-weight: bold;
+            flex-shrink: 0;
+        }
+
+        .instruction-text strong {
+            color: var(--darkBrown);
+        }
+
+        .instruction-text {
+            flex: 1;
+        }
+
+        /* Tips section */
+        .tips-section {
+            background: linear-gradient(135deg, rgba(184, 154, 106, 0.1) 0%, rgba(184, 154, 106, 0.05) 100%);
+            border-left: 4px solid var(--gold);
+            padding: 20px;
+            margin-top: 20px;
+            border-radius: 6px;
+        }
+
+        .tips-title {
+            font-weight: bold;
+            color: var(--darkBrown);
+            margin-bottom: 10px;
+            font-size: 0.95em;
+        }
+
+        .tips-list {
+            font-size: 0.9em;
+            color: var(--brown);
+            line-height: 1.8;
+        }
+
+        .tips-list li {
+            margin-bottom: 8px;
+            margin-left: 20px;
+        }
+
+        /* Footer */
+        footer {
+            max-width: 1200px;
+            margin: 80px auto 0;
+            padding-top: 40px;
+            text-align: center;
+            border-top: 3px solid var(--gold);
+            color: var(--brown);
+            font-size: 0.95em;
+        }
+
+        .footer-text {
+            margin-bottom: 15px;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .template-header {
+                grid-template-columns: 1fr;
+            }
+
+            h1 {
+                font-size: 2em;
+            }
+
+            .brand-colors {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .template-section {
+                padding: 25px;
+            }
+
+            .instagram-post {
+                width: 280px;
+                height: 280px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>AENDRA</h1>
+        <p class="subtitle">Guía de Templates de Instagram para Canva</p>
+        <p style="color: var(--brown); margin-bottom: 20px;">6 plantillas diseñadas para crear contenido hermoso y alineado con tu marca</p>
+
+        <div class="brand-colors">
+            <div class="color-swatch">
+                <div class="color-box" style="background: var(--darkBrown);"></div>
+                <span class="color-label">Dark Brown #3D1F0D</span>
+            </div>
+            <div class="color-swatch">
+                <div class="color-box" style="background: var(--brown);"></div>
+                <span class="color-label">Brown #8B5E3C</span>
+            </div>
+            <div class="color-swatch">
+                <div class="color-box" style="background: var(--gold);"></div>
+                <span class="color-label">Gold #B89A6A</span>
+            </div>
+            <div class="color-swatch">
+                <div class="color-box" style="background: var(--cream);"></div>
+                <span class="color-label">Cream #F5EFE6</span>
+            </div>
+            <div class="color-swatch">
+                <div class="color-box" style="background: var(--beige);"></div>
+                <span class="color-label">Beige #E8DDD0</span>
+            </div>
+            <div class="color-swatch">
+                <div class="color-box" style="background: var(--sand);"></div>
+                <span class="color-label">Sand #C8B8A2</span>
+            </div>
+        </div>
+    </header>
+
+    <div class="container">
+        <!-- TEMPLATE 1: EDUCATIVO -->
+        <div class="template-section">
+            <div class="template-header">
+                <div class="template-info">
+                    <div class="template-number">1</div>
+                    <h2>Template Educativo</h2>
+                    <p class="template-description">
+                        Ideal para compartir tips, consejos y lecciones de diseño de interiores. Destaca un título en coral, lista numerada clara y el logo de AENDRA al final.
+                    </p>
+                </div>
+                <div class="mockup-container">
+                    <div class="instagram-post educativo">
+                        <div>
+                            <div class="educativo-title">3 TIPS de Color</div>
+                            <div class="educativo-list">
+                                <div><span>1.</span> Equilibra colores cálidos</div>
+                                <div><span>2.</span> Usa neutros como base</div>
+                                <div><span>3.</span> Destaca con acentos oro</div>
+                            </div>
+                        </div>
+                        <div class="educativo-logo">🏛️ AENDRA</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="canva-instructions">
+                <div class="instructions-title">
+                    <span class="instructions-icon">📋</span>
+                    Cómo crear en Canva
+                </div>
+                <ul class="instruction-list">
+                    <li>
+                        <span class="instruction-number">1</span>
+                        <div class="instruction-text">
+                            <strong>Crea un nuevo diseño</strong> — Selecciona "Instagram Post" (1080x1080px). Canva ajustará automáticamente a 1:1.
+                        </div>
+                    </li>
+                    <li>
+                        <span class="instruction-number">2</span>
+                        <div class="instruction-text">
+                            <strong>Configura el fondo</strong> — Usa "Fondos" → Gradiente beige/cream. O relleno sólido: #E8DDD0 (Beige AENDRA).
+                        </div>
+                    </li>
+                    <li>
+                        <span class="instruction-number">3</span>
+                        <div class="instruction-text">
+                            <strong>Añade el título</strong> — "Elementos" → "Formas" → Rectángulo redondeado, relleno coral (#FF6B5B). Texto blanco, Georgia bold, 36px.
+                        </div>
+                    </li>
+                    <li>
+                        <span class="instruction-number">4</span>
+                        <div class="instruction-text">
+                            <strong>Lista numerada</strong> — Texto: "1. Primer tip\n2. Segundo tip\n3. Tercer tip". Font: Calibri, 20px, color marrón #8B5E3C.
+                        </div>
+                    </li>
+                    <li>
+                        <span class="instruction-number">5</span>
+                        <div class="instruction-text">
+                            <strong>Logo al pie</strong> — Elemento > Formas > Rectángulo small, fondo marrón oscuro #3D1F0D. Texto "AENDRA" blanco, Calibri 14px bold.
+                        </div>
+                    </li>
+                    <li>
+                        <span class="instruction-number">6</span>
+                        <div class="instruction-text">
+                            <strong>Guarda y descarga</strong> — Clic en "Descargar" → PNG transparente o JPG. Recomendado: JPG para Instagram.
+                        </div>
+                    </li>
+                </ul>
+
+                <div class="tips-section">
+                    <div class="tips-title">💡 Tips de diseño:</div>
+                    <ul class="tips-list">
+                        <li><strong>Paleta AENDRA:</strong> Guarda los colores #3D1F0D, #8B5E3C, #B89A6A como "Mis colores" en Canva para acceso rápido.</li>
+                        <li><strong>Tipografía:</strong> Georgia para títulos (elegancia), Calibri para cuerpo (legibilidad en mobile).</li>
+                        <li><strong>Espaciado:</strong> Deja márgenes de 40px en los lados. Contenido principal 1000x1000px.</li>
+                        <li><strong>Número de tips:</strong> 3, 5 o 7 puntos funciona mejor. Evita listas largas (difícil de leer en Stories/Feed).</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- TEMPLATE 2: MOODBOARD -->
+        <div class="template-section">
+            <div class="template-header">
+                <div class="template-info">
+                    <div class="template-number">2</div>
+                    <h2>Template Moodboard</h2>
+                    <p class="template-description">
+                        Galería inspiracional con 4 imágenes de proyectos, ambiente y productos. Fondo marrón oscuro con paleta de colores AENDRA al pie.
+                    </p>
+                </div>
+                <div class="mockup-container">
+                    <div class="instagram-post moodboard">
+                        <div class="moodboard-img">📷</div>
+                        <div class="moodboard-img">📷</div>
+                        <div class="moodboard-img">📷</div>
+                        <div class="moodboard-img">📷</div>
+                        <div class="moodboard-palette">
+                            <div class="swatch swatch-1"></div>
+                            <div class="swatch swatch-2"></div>
+                            <div class="swatch swatch-3"></div>
+                            <div class="swatch swatch-4"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="canva-instructions">
+                <div class="instructions-title">
+                    <span class="instructions-icon">📋</span>
+                    Cómo crear en Canva
+                </div>
+                <ul class="instruction-list">
+                    <li>
+                        <span class="instruction-number">1</span>
+                        <div class="instruction-text">
+                            <strong>Fondo oscuro</strong> — Nuevo "Instagram Post". Relleno sólido marrón oscuro #3D1F0D.
+                        </div>
+                    </li>
+                    <li>
+                        <span class="instruction-number">2</span>
+                        <div class="instruction-text">
+                            <strong>Grid de imágenes</strong> — "Elementos" → "Marcos" → "Cuadrícula 2x2". Añade 4 fotos de tus proyectos best. Tamaño cada marco: ~480x480px.
+                        </div>
+                    </li>
+                    <li>
+                        <span class="instruction-number">3</span>
+                        <div class="instruction-text">
+                            <strong>Paleta de colores</strong> — "Elementos" → "Formas" → 4 cuadraditos pequeños (60x60px cada uno). Rellena con: Dark Brown, Brown, Gold, Cream.
+                        </div>
+                    </li>
+                    <li>
+                        <span class="instruction-number">4</span>
+                        <div class="instruction-text">
+                            <strong>Alineación</strong> — Centra los swatches al pie. Usa "Alinear" de Canva (centro horizontal, espaciado parejo).
+                        </div>
+                    </li>
+                    <li>
+                        <span class="instruction-number">5</span>
+                        <div class="instruction-text">
+                            <strong>Añade bordes (opcional)</strong> — Cada imagen puede tener un borde fino blanco (2-3px) para separación visual.
+                        </div>
+                    </li>
+                    <li>
+                        <span class="instruction-number">6</span>
+                        <div class="instruction-text">
+                            <strong>Exporta</strong> — "Descargar" → JPG. Mínimo 1080x1080px para calidad máxima en Instagram.
+                        </div>
+                    </li>
+                </ul>
+
+                <div class="tips-section">
+                    <div class="tips-title">💡 Tips de diseño:</div>
+                    <ul class="tips-list">
+                        <li><strong>Selección de fotos:</strong> Elige 4 imágenes de una misma paleta cromática o tema para coherencia visual.</li>
+                        <li><strong>Ratio homogéneo:</strong> Todas las 4 fotos deben tener el mismo aspect ratio (1:1 ideal).</li>
+                        <li><strong>Branding:</strong> Los swatches de color al pie refuerzan la identidad AENDRA. No los omitas.</li>
+                        <li><strong>Uso de marcos:</strong> Canva tiene marcos predefinidos "Moodboard" o "Galería" que hacen el trabajo rápido.</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- TEMPLATE 3: ANTES/DESPUÉS -->
+        <div class="template-section">
+            <div class="template-header">
+                <div class="template-info">
+                    <div class="template-number">3</div>
+                    <h2>Template Antes/Después</h2>
+                    <p class="template-description">
+                        Layout de dos columnas: izquierda beige (ANTES), derecha marrón oscuro (DESPUÉS). Perfecto para mostrar transformaciones de espacios.
+                    </p>
+                </div>
+                <div class="mockup-container">
+                    <div class="instagram-post antes-despues">
+                        <div class="antes-despues-side antes">
+                            <div class="antes-despues-label">ANTES</div>
+                            <div class="antes-despues-img">📸</div>
+                        </div>
+                        <div class="antes-despues-side despues">
+                            <div class="antes-despues-label">DESPUÉS</div>
+                            <div class="antes-despues-img">📸</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="canva-instructions">
+                <div class="instructions-title">
+                    <span class="instructions-icon">📋</span>
+                    Cómo crear en Canva
+                </div>
+                <ul class="instruction-list">
+                    <li>
+                        <span class="instruction-number">1</span>
+                        <div class="instruction-text">
+                            <strong>Canvas base</strong> — Nuevo "Instagram Post" 1080x1080px.
+                        </div>
+                    </li>
+                    <li>
+                        <span class="instruction-number">2</span>
+                        <div class="instruction-text">
+                            <strong>Dos rectángulos (columnas)</strong> — "Elementos" → "Formas" → Rectángulo. Primero: 540x1080px, relleno Beige #E8DDD0. Segundo: 540x1080px, relleno Dark Brown #3D1F0D.
+                        </div>
+                    </li>
+                    <li>
+                        <span class="instruction-number">3</span>
+                        <div class="instruction-text">
+                            <strong>Línea divisoria (opcional)</strong> — "Formas" → Línea vertical en medio. Grosor 3px, color Gold #B89A6A.
+                        </div>
+                    </li>
+                    <li>
+                        <span class="instruction-number">4</span>
+                        <div class="instruction-text">
+                            <strong>Texto "ANTES"</strong> — Georgia bold 32px, marrón oscuro #3D1F0D, arriba a la izquierda.
+                        </div>
+                    </li>
+                    <li>
+                        <span class="instruction-number">5</span>
+                        <div class="instruction-text">
+                            <strong>Texto "DESPUÉS"</strong> — Georgia bold 32px, color Cream #F5EFE6, arriba a la derecha.
+                        </div>
+                    </li>
+                    <li>
+                        <span class="instruction-number">6</span>
+                        <div class="instruction-text">
+                            <strong>Imágenes</strong> — "Subir" → 2 fotos. Una en cada lado. Mantén proporción 1:1, ajusta a ~500x500px.
+                        </div>
+                    </li>
+                    <li>
+                        <span class="instruction-number">7</span>
+                        <div class="instruction-text">
+                            <strong>Descarga</strong> — PNG o JPG, máxima resolución.
+                        </div>
+                    </li>
+                </ul>
+
+                <div class="tips-section">
+                    <div class="tips-title">💡 Tips de diseño:</div>
+                    <ul class="tips-list">
+                        <li><strong>Contraste cromático:</strong> Beige + Dark Brown crea impacto visual fuerte sin perder elegancia.</li>
+                        <li><strong>Alineación de fotos:</strong> Ambas imágenes deben tener la misma composición para que el "antes/después" sea evidente.</li>
+                        <li><strong>Variante sin línea divisoria:</strong> También funciona bien sin la raya dorada. Depende del contenido.</li>
+                        <li><strong>Storytelling:</strong> Este template cuenta historias. Úsalo para mostrar el antes de una consulta y después de la intervención.</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- TEMPLATE 4: PRODUCTO -->
+        <div class="template-section">
+            <div class="template-header">
+                <div class="template-info">
+                    <div class="template-number">4</div>
+                    <h2>Template Producto</h2>
+                    <p class="template-description">
+                        Destaca un producto, pieza de arte o servicio. Fondo cream, imagen central, nombre y precio elegantes. Minimalista y sofisticado.
+                    </p>
+                </div>
+                <div class="mockup-container">
+                    <div class="instagram-post producto">
+                        <div class="producto-img">🛋️</div>
+                        <div class="producto-name">Sillón Nórdico</div>
+                        <div class="producto-price">$2,450</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="canva-instructions">
+                <div class="instructions-title">
+                    <span class="instructions-icon">📋</span>
+                    Cómo crear en Canva
+                </div>
+                <ul class="instruction-list">
+                    <li>
+                        <span class="instruction-number">1</span>
+                        <div class="instruction-text">
+                            <strong>Fondo minimalista</strong> — Nuevo "Instagram Post". Relleno sólido Cream #F5EFE6. Limpio y elegante.
+                        </div>
+                    </li>
+                    <li>
+                        <span class="instruction-number">2</span>
+                        <div class="instruction-text">
+                            <strong>Imagen del producto</strong> — "Subir" → Foto del producto. Centra, ajusta a ~600x400px. Sin fondo blanco si es posible (o chroma key).
+                        </div>
+                    </li>
+                    <li>
+                        <span class="instruction-number">3</span>
+                        <div class="instruction-text">
+                            <strong>Nombre del producto</strong> — Georgia 28px bold, color Dark Brown #3D1F0D, centrado debajo de la imagen.
+                        </div>
+                    </li>
+                    <li>
+                        <span class="instruction-number">4</span>
+                        <div class="instruction-text">
+                            <strong>Precio</strong> — Calibri 24px bold, color Gold #B89A6A, justo debajo del nombre.
+                        </div>
+                    </li>
+                    <li>
+                        <span class="instruction-number">5</span>
+                        <div class="instruction-text">
+                            <strong>Opcional: CTA</strong> — Pequeño texto abajo "Más información en bio" o "Link en la bio". Calibri 12px, marrón.
+                        </div>
+                    </li>
+                    <li>
+                        <span class="instruction-number">6</span>
+                        <div class="instruction-text">
+                            <strong>Descarga</strong> — PNG (si tienes productos con fondo transparente) o JPG.
+                        </div>
+                    </li>
+                </ul>
+
+                <div class="tips-section">
+                    <div class="tips-title">💡 Tips de diseño:</div>
+                    <ul class="tips-list">
+                        <li><strong>Minimalismo:</strong> No cargues el diseño. Menos elementos = más impacto en scroll de Instagram.</li>
+                        <li><strong>Luz y sombra:</strong> Si el producto es oscuro, usa Cream. Si es claro, puedes usar Sand #C8B8A2.</li>
+                        <li><strong>Tipografía de lujo:</strong> Georgia comunica premium. No uses sans-serif ligera para precio.</li>
+                        <li><strong>Espaciado vertical:</strong> Deja espacio entre imagen, nombre y precio (visual breathing room).</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- TEMPLATE 5: CITA/REFLEXIÓN -->
+        <div class="template-section">
+            <div class="template-header">
+                <div class="template-info">
+                    <div class="template-number">5</div>
+                    <h2>Template Cita/Reflexión</h2>
+                    <p class="template-description">
+                        Fondo marrón oscuro, cita grande en Georgia, línea divisoria dorada. Perfecto para reflexiones sobre diseño, vida y belleza.
+                    </p>
+                </div>
+                <div class="mockup-container">
+                    <div class="instagram-post cita">
+                        <div class="cita-accent"></div>
+                        <div class="cita-text">"El hogar perfectamente diseñado es donde convergen belleza y funcionalidad."</div>
+                        <div class="cita-accent"></div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="canva-instructions">
+                <div class="instructions-title">
+                    <span class="instructions-icon">📋</span>
+                    Cómo crear en Canva
+                </div>
+                <ul class="instruction-list">
+                    <li>
+                        <span class="instruction-number">1</span>
+                        <div class="instruction-text">
+                            <strong>Fondo oscuro</strong> — Nuevo "Instagram Post". Relleno sólido Dark Brown #3D1F0D o gradiente marrón.
+                        </div>
+                    </li>
+                    <li>
+                        <span class="instruction-number">2</span>
+                        <div class="instruction-text">
+                            <strong>Línea superior</strong> — "Elementos" → "Formas" → Rectángulo delgado (600x4px), color Gold #B89A6A. Centro horizontal, arriba del texto.
+                        </div>
+                    </li>
+                    <li>
+                        <span class="instruction-number">3</span>
+                        <div class="instruction-text">
+                            <strong>Cita principal</strong> — Texto en Georgia 28px italic, color Cream #F5EFE6. Centrado, alineación centered. Ancho máx. 900px.
+                        </div>
+                    </li>
+                    <li>
+                        <span class="instruction-number">4</span>
+                        <div class="instruction-text">
+                            <strong>Línea inferior</strong> — Rectángulo delgado idéntico al superior, debajo del texto.
+                        </div>
+                    </li>
+                    <li>
+                        <span class="instruction-number">5</span>
+                        <div class="instruction-text">
+                            <strong>Autor (opcional)</strong> — "— Alejandra Vasquezz" en Calibri 12px, Cream, centrado abajo. En caso de cita de otros, cita al autor.
+                        </div>
+                    </li>
+                    <li>
+                        <span class="instruction-number">6</span>
+                        <div class="instruction-text">
+                            <strong>Descarga</strong> — JPG o PNG.
+                        </div>
+                    </li>
+                </ul>
+
+                <div class="tips-section">
+                    <div class="tips-title">💡 Tips de diseño:</div>
+                    <ul class="tips-list">
+                        <li><strong>Largo de cita:</strong> Entre 10-15 palabras funciona mejor. Máximo 20 palabras o el texto se verá apretado en mobile.</li>
+                        <li><strong>Georgia italic:</strong> La fuente serif + italic = elegancia pura. No cambies esto.</li>
+                        <li><strong>Líneas de oro:</strong> Las dos rayas Gold crean balance visual y enmarcan la cita perfectamente.</li>
+                        <li><strong>Contenido relevante:</strong> Citas sobre diseño, hogar, belleza, bienestar. Refleja los valores de AENDRA.</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- TEMPLATE 6: CARRUSEL PASO A PASO -->
+        <div class="template-section">
+            <div class="template-header">
+                <div class="template-info">
+                    <div class="template-number">6</div>
+                    <h2>Template Carrusel Paso a Paso</h2>
+                    <p class="template-description">
+                        Guía visual de múltiples pasos (Para Stories o Carousel Posts). Números grandes en gold, fondo marrón oscuro, contenido por pasos.
+                    </p>
+                </div>
+                <div class="mockup-container">
+                    <div class="instagram-post carrusel">
+                        <div class="carrusel-slide">
+                            <div class="step-number">1</div>
+                            <div class="step-content">Define tu estilo</div>
+                        </div>
+                        <div class="carrusel-slide">
+                            <div class="step-number">2</div>
+                            <div class="step-content">Elige colores</div>
+                        </div>
+                        <div class="carrusel-slide">
+                            <div class="step-number">3</div>
+                            <div class="step-content">Selecciona muebles</div>
+                        </div>
+                        <div class="carrusel-slide">
+                            <div class="step-number">4</div>
+                            <div class="step-content">¡Disfruta tu espacio!</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="canva-instructions">
+                <div class="instructions-title">
+                    <span class="instructions-icon">📋</span>
+                    Cómo crear en Canva
+                </div>
+                <ul class="instruction-list">
+                    <li>
+                        <span class="instruction-number">1</span>
+                        <div class="instruction-text">
+                            <strong>Nuevo post</strong> — "Instagram Post" (1080x1080px) para primer slide o "Instagram Story" (1080x1920px) para cada paso.
+                        </div>
+                    </li>
+                    <li>
+                        <span class="instruction-number">2</span>
+                        <div class="instruction-text">
+                            <strong>Fondo oscuro</strong> — Relleno Dark Brown #3D1F0D o degradado marrón (200x1080px en Story).
+                        </div>
+                    </li>
+                    <li>
+                        <span class="instruction-number">3</span>
+                        <div class="instruction-text">
+                            <strong>Número del paso (círculo grande)</strong> — "Elementos" → "Formas" → Círculo 120x120px, relleno Gold #B89A6A. Texto inside: número bold (72px) marrón oscuro.
+                        </div>
+                    </li>
+                    <li>
+                        <span class="instruction-number">4</span>
+                        <div class="instruction-text">
+                            <strong>Descripción del paso</strong> — Junto al número, texto Calibri 20px, Cream color. Max 8 palabras por línea.
+                        </div>
+                    </li>
+                    <li>
+                        <span class="instruction-number">5</span>
+                        <div class="instruction-text">
+                            <strong>Espaciado entre pasos</strong> — Si es carousel (múltiples slides), cada slide = 1 paso. Usa el mismo layout.
+                        </div>
+                    </li>
+                    <li>
+                        <span class="instruction-number">6</span>
+                        <div class="instruction-text">
+                            <strong>Crear como Carousel</strong> — "Archivo" → "Crear Carousel". Duplica el slide base 3-5 veces. Cambia solo número y texto.
+                        </div>
+                    </li>
+                    <li>
+                        <span class="instruction-number">7</span>
+                        <div class="instruction-text">
+                            <strong>Descarga</strong> — JPG para cada slide del carousel, o descarga directamente a Instagram como carousel post.
+                        </div>
+                    </li>
+                </ul>
+
+                <div class="tips-section">
+                    <div class="tips-title">💡 Tips de diseño:</div>
+                    <ul class="tips-list">
+                        <li><strong>Carousel post:</strong> Instagram permite hasta 10 slides. 4-6 pasos es ideal para no abrumar.</li>
+                        <li><strong>Números grandes:</strong> El círculo de 120px es visible incluso en preview. No lo hagas más pequeño.</li>
+                        <li><strong>Gold + Dark Brown:</strong> Combinación perfecta. El dorado "pop" destaca contra el marrón oscuro.</li>
+                        <li><strong>Repetición visual:</strong> Mantén el mismo layout en todos los pasos para coherencia. El usuario sabe qué esperar.</li>
+                        <li><strong>Call-to-action final:</strong> Último paso puede ser "¿Quieres saber más?" o "Contáctanos" en lugar de un paso del proceso.</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <div class="footer-text">
+            <strong>AENDRA | Diseño Interior Premium y Accesible</strong>
+        </div>
+        <div class="footer-text">
+            Diseñado por Alejandra Vasquezz
+        </div>
+        <div class="footer-text" style="font-size: 0.85em; margin-top: 20px;">
+            Esta guía fue creada para optimizar tu proceso de diseño en Canva y mantener consistencia visual de marca en Instagram.
+        </div>
+        <div class="footer-text" style="font-size: 0.85em; color: var(--sand); margin-top: 15px;">
+            Colores de marca AENDRA: Dark Brown #3D1F0D | Brown #8B5E3C | Gold #B89A6A | Cream #F5EFE6 | Beige #E8DDD0 | Sand #C8B8A2
+        </div>
+    </footer>
+</body>
+</html>

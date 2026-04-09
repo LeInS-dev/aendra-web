@@ -1,0 +1,1109 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AENDRA — Estrategia de Crecimiento</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300&family=Jost:wght@300;400;500;600&display=swap');
+
+    :root {
+      --cream: #F5EFE6;
+      --beige: #E8DDD0;
+      --brown: #8B5E3C;
+      --dark-brown: #3D1F0D;
+      --black: #1A1A1A;
+      --gold: #B89A6A;
+      --light: #FAF7F3;
+      --gray: #6B6259;
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      font-family: 'Jost', sans-serif;
+      background: var(--light);
+      color: var(--black);
+      font-weight: 300;
+      line-height: 1.7;
+    }
+
+    /* COVER */
+    .cover {
+      background: var(--dark-brown);
+      color: var(--cream);
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      padding: 60px 40px;
+      position: relative;
+      overflow: hidden;
+    }
+    .cover::before {
+      content: '';
+      position: absolute;
+      width: 500px; height: 500px;
+      border-radius: 50%;
+      border: 1px solid rgba(184,154,106,0.2);
+      top: -100px; right: -100px;
+    }
+    .cover::after {
+      content: '';
+      position: absolute;
+      width: 300px; height: 300px;
+      border-radius: 50%;
+      border: 1px solid rgba(184,154,106,0.15);
+      bottom: -50px; left: -80px;
+    }
+    .cover-tag {
+      font-size: 11px;
+      letter-spacing: 4px;
+      color: var(--gold);
+      text-transform: uppercase;
+      margin-bottom: 24px;
+    }
+    .cover h1 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(64px, 10vw, 120px);
+      font-weight: 300;
+      letter-spacing: 8px;
+      margin-bottom: 16px;
+    }
+    .cover-sub {
+      font-size: 13px;
+      letter-spacing: 6px;
+      color: var(--gold);
+      text-transform: uppercase;
+      margin-bottom: 48px;
+    }
+    .cover-divider {
+      width: 80px;
+      height: 1px;
+      background: var(--gold);
+      margin: 0 auto 48px;
+    }
+    .cover-desc {
+      max-width: 500px;
+      font-size: 15px;
+      color: rgba(245,239,230,0.75);
+      line-height: 1.9;
+    }
+    .cover-date {
+      margin-top: 60px;
+      font-size: 11px;
+      letter-spacing: 3px;
+      color: rgba(184,154,106,0.6);
+      text-transform: uppercase;
+    }
+
+    /* SECTIONS */
+    section {
+      padding: 80px 40px;
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+
+    .section-label {
+      font-size: 10px;
+      letter-spacing: 5px;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 16px;
+    }
+
+    h2 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(36px, 5vw, 56px);
+      font-weight: 300;
+      color: var(--dark-brown);
+      margin-bottom: 40px;
+      line-height: 1.2;
+    }
+
+    h3 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 26px;
+      font-weight: 400;
+      color: var(--dark-brown);
+      margin-bottom: 16px;
+    }
+
+    p {
+      font-size: 15px;
+      color: var(--gray);
+      line-height: 1.9;
+      margin-bottom: 16px;
+    }
+
+    /* DIVIDER */
+    .divider {
+      width: 100%;
+      height: 1px;
+      background: var(--beige);
+      margin: 0;
+    }
+
+    /* BRAND AUDIT */
+    .audit-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 24px;
+      margin-top: 40px;
+    }
+    .audit-card {
+      padding: 36px;
+      border-radius: 2px;
+    }
+    .audit-card.green {
+      background: #F0EDE8;
+      border-left: 3px solid #8B7355;
+    }
+    .audit-card.orange {
+      background: #F5EDE5;
+      border-left: 3px solid var(--brown);
+    }
+    .audit-card h4 {
+      font-size: 11px;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 20px;
+    }
+    .audit-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+      margin-bottom: 14px;
+    }
+    .audit-dot {
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      margin-top: 7px;
+      flex-shrink: 0;
+    }
+    .dot-green { background: #8B7355; }
+    .dot-orange { background: var(--brown); }
+    .audit-item p { margin: 0; font-size: 14px; }
+
+    /* FULL WIDTH BANNER */
+    .banner {
+      background: var(--dark-brown);
+      color: var(--cream);
+      padding: 80px 60px;
+      text-align: center;
+    }
+    .banner h2 { color: var(--cream); margin-bottom: 20px; }
+    .banner p { color: rgba(245,239,230,0.7); max-width: 600px; margin: 0 auto; }
+
+    /* CARDS GRID */
+    .cards-3 {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+      margin-top: 40px;
+    }
+    .cards-2 {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 24px;
+      margin-top: 40px;
+    }
+    .card {
+      background: var(--cream);
+      padding: 36px;
+      border-radius: 2px;
+    }
+    .card-number {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 48px;
+      color: var(--beige);
+      font-weight: 300;
+      line-height: 1;
+      margin-bottom: 16px;
+    }
+    .card h3 { font-size: 20px; margin-bottom: 12px; }
+    .card p { font-size: 14px; margin: 0; }
+
+    .card-dark {
+      background: var(--dark-brown);
+      color: var(--cream);
+    }
+    .card-dark h3 { color: var(--cream); }
+    .card-dark p { color: rgba(245,239,230,0.7); }
+    .card-dark .card-number { color: rgba(184,154,106,0.3); }
+
+    .card-gold {
+      background: var(--gold);
+      color: var(--dark-brown);
+    }
+    .card-gold h3 { color: var(--dark-brown); }
+    .card-gold p { color: rgba(61,31,13,0.8); }
+    .card-gold .card-number { color: rgba(61,31,13,0.2); }
+
+    /* TAG */
+    .tag {
+      display: inline-block;
+      padding: 6px 16px;
+      background: var(--beige);
+      border-radius: 20px;
+      font-size: 12px;
+      letter-spacing: 1px;
+      color: var(--dark-brown);
+      margin: 4px;
+    }
+    .tag-gold {
+      background: var(--gold);
+      color: var(--dark-brown);
+    }
+
+    /* KIT SECTION */
+    .kit-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 2px;
+      margin-top: 40px;
+    }
+    .kit-item {
+      padding: 48px 36px;
+      background: var(--cream);
+      position: relative;
+      overflow: hidden;
+    }
+    .kit-item::before {
+      content: attr(data-emoji);
+      position: absolute;
+      top: -10px;
+      right: 20px;
+      font-size: 80px;
+      opacity: 0.08;
+    }
+    .kit-badge {
+      display: inline-block;
+      padding: 4px 12px;
+      background: var(--gold);
+      color: var(--dark-brown);
+      font-size: 10px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      margin-bottom: 20px;
+      border-radius: 2px;
+    }
+    .kit-item h3 { font-size: 22px; margin-bottom: 12px; }
+    .kit-item p { font-size: 13px; margin-bottom: 16px; }
+    .kit-price {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 32px;
+      color: var(--dark-brown);
+      font-weight: 300;
+    }
+    .kit-price span { font-size: 14px; font-family: 'Jost', sans-serif; color: var(--gray); }
+
+    /* CONTENT CALENDAR */
+    .content-grid {
+      display: grid;
+      grid-template-columns: repeat(7, 1fr);
+      gap: 4px;
+      margin-top: 40px;
+    }
+    .day-header {
+      text-align: center;
+      font-size: 10px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--gold);
+      padding: 12px 4px;
+    }
+    .content-item {
+      background: var(--cream);
+      padding: 16px 12px;
+      font-size: 12px;
+      color: var(--gray);
+      min-height: 80px;
+      line-height: 1.5;
+    }
+    .content-item.tipo-reel { border-top: 3px solid #C97B5B; }
+    .content-item.tipo-foto { border-top: 3px solid #8B7355; }
+    .content-item.tipo-edu { border-top: 3px solid var(--gold); }
+    .content-item.tipo-off { background: var(--light); color: var(--beige); }
+    .tipo-label {
+      font-size: 9px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      margin-bottom: 6px;
+      font-weight: 500;
+    }
+    .tipo-reel .tipo-label { color: #C97B5B; }
+    .tipo-foto .tipo-label { color: #8B7355; }
+    .tipo-edu .tipo-label { color: var(--gold); }
+
+    /* PRICING */
+    .pricing-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 2px;
+      margin-top: 40px;
+    }
+    .price-card {
+      padding: 40px 28px;
+      background: var(--cream);
+      text-align: center;
+    }
+    .price-card.featured { background: var(--dark-brown); color: var(--cream); }
+    .price-card h4 {
+      font-size: 10px;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 16px;
+    }
+    .price-card .price-big {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 48px;
+      font-weight: 300;
+      color: var(--dark-brown);
+      line-height: 1;
+      margin-bottom: 8px;
+    }
+    .price-card.featured .price-big { color: var(--cream); }
+    .price-card .price-desc { font-size: 12px; color: var(--gray); margin-bottom: 24px; }
+    .price-card.featured .price-desc { color: rgba(245,239,230,0.6); }
+    .price-feature { font-size: 13px; color: var(--gray); margin-bottom: 8px; }
+    .price-card.featured .price-feature { color: rgba(245,239,230,0.7); }
+
+    /* SOCIAL PILLARS */
+    .pillar-row {
+      display: grid;
+      grid-template-columns: 140px 1fr;
+      gap: 0;
+      margin-bottom: 2px;
+      background: var(--cream);
+    }
+    .pillar-num {
+      background: var(--dark-brown);
+      color: var(--gold);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 48px;
+      font-weight: 300;
+    }
+    .pillar-content { padding: 32px 36px; }
+    .pillar-content h3 { font-size: 20px; margin-bottom: 8px; }
+    .pillar-content p { font-size: 14px; margin: 0; }
+
+    /* IDEAS VISUAL */
+    .idea-box {
+      border: 1px solid var(--beige);
+      padding: 32px;
+      margin-bottom: 16px;
+      position: relative;
+    }
+    .idea-box::before {
+      content: attr(data-label);
+      position: absolute;
+      top: -10px;
+      left: 24px;
+      background: var(--light);
+      padding: 0 8px;
+      font-size: 10px;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: var(--gold);
+    }
+
+    /* ROADMAP */
+    .roadmap {
+      margin-top: 40px;
+    }
+    .roadmap-phase {
+      display: grid;
+      grid-template-columns: 200px 1fr;
+      gap: 0;
+      margin-bottom: 2px;
+    }
+    .phase-label {
+      background: var(--dark-brown);
+      color: var(--cream);
+      padding: 32px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+    .phase-label small {
+      font-size: 10px;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 8px;
+    }
+    .phase-label strong {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 24px;
+      font-weight: 300;
+    }
+    .phase-content {
+      background: var(--cream);
+      padding: 32px 40px;
+    }
+    .phase-tasks {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 12px;
+    }
+
+    /* IDENTITY REFINEMENTS */
+    .color-swatch {
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      margin-right: 16px;
+      margin-bottom: 12px;
+    }
+    .swatch {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+    }
+    .swatch-label { font-size: 13px; color: var(--gray); }
+
+    /* TIPS */
+    .tip-list {
+      margin-top: 32px;
+    }
+    .tip-item {
+      display: grid;
+      grid-template-columns: 48px 1fr;
+      gap: 20px;
+      padding: 24px 0;
+      border-bottom: 1px solid var(--beige);
+      align-items: start;
+    }
+    .tip-icon {
+      width: 48px;
+      height: 48px;
+      background: var(--dark-brown);
+      color: var(--gold);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 20px;
+      border-radius: 2px;
+      flex-shrink: 0;
+    }
+    .tip-item h4 { font-size: 16px; color: var(--dark-brown); margin-bottom: 6px; font-weight: 500; }
+    .tip-item p { font-size: 14px; margin: 0; }
+
+    /* FOOTER */
+    footer {
+      background: var(--dark-brown);
+      color: var(--cream);
+      padding: 60px 40px;
+      text-align: center;
+    }
+    footer h2 { color: var(--cream); margin-bottom: 16px; }
+    footer p { color: rgba(245,239,230,0.6); max-width: 500px; margin: 0 auto 32px; }
+    .footer-brand {
+      font-size: 10px;
+      letter-spacing: 5px;
+      text-transform: uppercase;
+      color: var(--gold);
+    }
+
+    @media (max-width: 768px) {
+      .audit-grid, .cards-3, .cards-2, .kit-grid, .pricing-grid { grid-template-columns: 1fr; }
+      .content-grid { grid-template-columns: repeat(3, 1fr); }
+      .roadmap-phase { grid-template-columns: 1fr; }
+      .pillar-row { grid-template-columns: 80px 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- COVER -->
+<div class="cover">
+  <div class="cover-tag">Estrategia de Crecimiento · 2026</div>
+  <h1>AENDRA</h1>
+  <div class="cover-sub">Interior Mood</div>
+  <div class="cover-divider"></div>
+  <p class="cover-desc">Una guía completa de propuestas, ideas de contenido, estrategia de producto y hoja de ruta para transformar AENDRA en la marca de decoración accesible más deseada de tu generación.</p>
+  <div class="cover-date">Para Alejandra Vasquezz · Abril 2026</div>
+</div>
+
+<!-- INTRO / AUDIT -->
+<section>
+  <div class="section-label">Diagnóstico Inicial</div>
+  <h2>Lo que ya tienes es muy bueno.</h2>
+  <p>Tu portafolio muestra claridad de visión, identidad visual coherente y una propuesta de valor muy real: diseño de interiores accesible con imagen premium. Eso es difícil de lograr, y ya lo tienes. Ahora hay que construir sobre esa base.</p>
+
+  <div class="audit-grid">
+    <div class="audit-card green">
+      <h4>Fortalezas actuales</h4>
+      <div class="audit-item">
+        <div class="audit-dot dot-green"></div>
+        <p>Identidad visual sólida: paleta neutra cálida, tipografía elegante, feel premium</p>
+      </div>
+      <div class="audit-item">
+        <div class="audit-dot dot-green"></div>
+        <p>Propuesta de valor clara: "diseño accesible" resuelve un dolor real del mercado</p>
+      </div>
+      <div class="audit-item">
+        <div class="audit-dot dot-green"></div>
+        <p>Nombre "AENDRA" es único, fácil de recordar y fonéticamente elegante</p>
+      </div>
+      <div class="audit-item">
+        <div class="audit-dot dot-green"></div>
+        <p>Tagline "Transforma tu espacio" es directo, aspiracional y accionable</p>
+      </div>
+      <div class="audit-item">
+        <div class="audit-dot dot-green"></div>
+        <p>El concepto de "kits" es brillante: reduce la fricción de compra y facilita el upsell</p>
+      </div>
+      <div class="audit-item">
+        <div class="audit-dot dot-green"></div>
+        <p>Ya tienes estrategia de contenido planteada (educativo + visual + reels)</p>
+      </div>
+    </div>
+    <div class="audit-card orange">
+      <h4>Oportunidades de mejora</h4>
+      <div class="audit-item">
+        <div class="audit-dot dot-orange"></div>
+        <p>Definir mejor el cliente ideal (¿edad, ciudad, estilo de vida, presupuesto?)</p>
+      </div>
+      <div class="audit-item">
+        <div class="audit-dot dot-orange"></div>
+        <p>Falta una historia de marca más personal — Alejandra debe ser visible en el contenido</p>
+      </div>
+      <div class="audit-item">
+        <div class="audit-dot dot-orange"></div>
+        <p>No hay diferencial claro aún frente a otras cuentas de deco en Instagram</p>
+      </div>
+      <div class="audit-item">
+        <div class="audit-dot dot-orange"></div>
+        <p>Los productos listados son muy genéricos — necesitan descripciones con personalidad AENDRA</p>
+      </div>
+      <div class="audit-item">
+        <div class="audit-dot dot-orange"></div>
+        <p>Falta estructura de precios, política de envíos y canal de venta definido</p>
+      </div>
+      <div class="audit-item">
+        <div class="audit-dot dot-orange"></div>
+        <p>El subtítulo "Interior Mood" podría reforzarse con una frase que explique la promesa de la marca</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- CLIENTE IDEAL -->
+<section>
+  <div class="section-label">Estrategia de Audiencia</div>
+  <h2>¿A quién le habla AENDRA?</h2>
+  <p>Definir tu cliente ideal no es limitar tu mercado — es hablarle tan bien a una persona que miles se identifiquen. AENDRA tiene dos perfiles clave:</p>
+
+  <div class="cards-2">
+    <div class="card">
+      <div class="card-number">01</div>
+      <h3>La "Dreamer"</h3>
+      <p><strong style="color:var(--dark-brown)">Perfil:</strong> 18–26 años, estudiante o primer empleo, vive con sus padres o en apartamento pequeño. Ve TikTok e Instagram, ama el aesthetic cozy, pero no sabe por dónde empezar ni tiene mucho presupuesto.</p>
+      <br>
+      <p><strong style="color:var(--dark-brown)">Su dolor:</strong> "Quiero mi cuarto así pero no sé cómo ni con qué dinero."</p>
+      <br>
+      <div>
+        <span class="tag">Cuartos aesthetic</span>
+        <span class="tag">Primeros pasos</span>
+        <span class="tag">Kits completos</span>
+        <span class="tag">Budget-friendly</span>
+      </div>
+    </div>
+    <div class="card">
+      <div class="card-number">02</div>
+      <h3>La "Nester"</h3>
+      <p><strong style="color:var(--dark-brown)">Perfil:</strong> 26–38 años, profesional independiente o pareja joven, acaba de mudarse o quiere renovar su espacio. Tiene un poco más de presupuesto pero no quiere contratar un decorador caro.</p>
+      <br>
+      <p><strong style="color:var(--dark-brown)">Su dolor:</strong> "Sé lo que quiero pero no sé cómo ejecutarlo bien. Los diseñadores cobran demasiado."</p>
+      <br>
+      <div>
+        <span class="tag">Asesorías express</span>
+        <span class="tag">Sala / Comedor</span>
+        <span class="tag">Combos completos</span>
+        <span class="tag">Estilo definido</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- PROPUESTA DE PRODUCTOS EXPANDIDA -->
+<section>
+  <div class="section-label">Línea de Productos</div>
+  <h2>Kits que la gente va a querer regalar y recibir.</h2>
+  <p>Los kits son tu mejor idea. Aquí te propongo una línea completa con nombre, contenido y enfoque emocional para cada uno:</p>
+</section>
+
+<div class="kit-grid">
+  <div class="kit-item" data-emoji="🕯">
+    <div class="kit-badge">Kit Starter</div>
+    <h3>Kit Mood Cozy</h3>
+    <p>Para quien quiere empezar a transformar su cuarto con lo básico pero bien elegido. Warm, textured, minimal.</p>
+    <p style="font-size:12px; color:var(--gray)">Incluye: vela, funda de cojín, planta pequeña + guía de decoración digital</p>
+    <div class="kit-price">desde $35 USD <span>/ kit</span></div>
+  </div>
+  <div class="kit-item" data-emoji="🛋">
+    <div class="kit-badge">Kit Mid</div>
+    <h3>Kit Sala Aesthetic</h3>
+    <p>Para transformar una sala en un espacio de revista sin gastar una fortuna. Estilo editorial accesible.</p>
+    <p style="font-size:12px; color:var(--gray)">Incluye: alfombra pequeña, lámpara de piso, 2 cojines, cuadro abstracto</p>
+    <div class="kit-price">desde $90 USD <span>/ kit</span></div>
+  </div>
+  <div class="kit-item" data-emoji="✨">
+    <div class="kit-badge">Kit Premium</div>
+    <h3>Kit Cuarto Dream</h3>
+    <p>Transformación completa del dormitorio. Incluye asesoría personalizada de 30 min + productos seleccionados.</p>
+    <p style="font-size:12px; color:var(--gray)">Incluye: todo el Kit Cozy + alfombra + asesoría + moodboard personalizado</p>
+    <div class="kit-price">desde $150 USD <span>/ kit</span></div>
+  </div>
+  <div class="kit-item" data-emoji="🎁">
+    <div class="kit-badge">Kit Regalo</div>
+    <h3>Kit Gift Mood</h3>
+    <p>El kit perfecto para regalar. Empacado de forma premium, con tarjeta personalizable. Ideal para cumpleaños o mudanzas.</p>
+    <p style="font-size:12px; color:var(--gray)">Incluye: vela + funda + tarjeta + packaging premium AENDRA</p>
+    <div class="kit-price">desde $45 USD <span>/ kit</span></div>
+  </div>
+  <div class="kit-item" data-emoji="🌿">
+    <div class="kit-badge">Kit Tendencia</div>
+    <h3>Kit Japandi Edit</h3>
+    <p>Para los amantes del estilo japonés-escandinavo. Minimalismo cálido con piezas de textura natural.</p>
+    <p style="font-size:12px; color:var(--gray)">Incluye: cuadro lineal, cojín boucle, vela de bamboo, bandeja de madera</p>
+    <div class="kit-price">desde $75 USD <span>/ kit</span></div>
+  </div>
+  <div class="kit-item" data-emoji="💼">
+    <div class="kit-badge">Servicio</div>
+    <h3>Mini Asesoría AENDRA</h3>
+    <p>30 minutos de consultoría 1:1 por videollamada. La clienta comparte fotos de su espacio y recibe un plan de acción + lista de compras.</p>
+    <p style="font-size:12px; color:var(--gray)">Entregables: moodboard digital + lista de productos con links</p>
+    <div class="kit-price">desde $25 USD <span>/ sesión</span></div>
+  </div>
+</div>
+
+<div class="divider"></div>
+
+<!-- ESTRATEGIA DE CONTENIDO -->
+<section>
+  <div class="section-label">Marketing de Contenido</div>
+  <h2>Los 5 pilares de contenido AENDRA</h2>
+  <p>Cada post que publiques debe encajar en uno de estos 5 pilares. Así mantienes consistencia sin aburrir a tu audiencia:</p>
+</section>
+
+<div style="max-width:1100px; margin:0 auto; padding: 0 40px 80px;">
+  <div class="pillar-row">
+    <div class="pillar-num">1</div>
+    <div class="pillar-content">
+      <h3>INSPIRA — "Así puede quedar tu espacio"</h3>
+      <p>Moodboards, renders, spaces reales, combinaciones de colores. El objetivo es que la gente piense: "yo quiero eso". Frecuencia: 2–3 veces por semana.</p>
+      <div class="phase-tasks" style="margin-top:12px">
+        <span class="tag">Fotos de espacios</span><span class="tag">Moodboards</span><span class="tag">Paletas de color</span><span class="tag">Carousel estético</span>
+      </div>
+    </div>
+  </div>
+  <div class="pillar-row">
+    <div class="pillar-num">2</div>
+    <div class="pillar-content">
+      <h3>EDUCA — "Aprende a decorar sin gastar de más"</h3>
+      <p>Tips rápidos, errores comunes, cómo combinar colores, qué evitar. Posiciona a Alejandra como experta accesible. Frecuencia: 2 veces por semana.</p>
+      <div class="phase-tasks" style="margin-top:12px">
+        <span class="tag">5 errores al decorar</span><span class="tag">Cómo elegir alfombra</span><span class="tag">Regla del 60-30-10</span><span class="tag">Tips de lighting</span>
+      </div>
+    </div>
+  </div>
+  <div class="pillar-row">
+    <div class="pillar-num">3</div>
+    <div class="pillar-content">
+      <h3>TRANSFORMA — Antes y después</h3>
+      <p>El contenido más viral de decoración. Documenta transformaciones reales (empieza con tu propio espacio o el de amigas). El contraste vende solo. Frecuencia: 1 vez por semana.</p>
+      <div class="phase-tasks" style="margin-top:12px">
+        <span class="tag">Reel antes/después</span><span class="tag">Time-lapse decorando</span><span class="tag">Unboxing del kit</span><span class="tag">Proceso completo</span>
+      </div>
+    </div>
+  </div>
+  <div class="pillar-row">
+    <div class="pillar-num">4</div>
+    <div class="pillar-content">
+      <h3>VENDE — Presentación de productos y kits</h3>
+      <p>Muestra tus productos como si fueran de una revista de lujo. Close-ups de textura, flat lays, videos de ambiente. No vendas, seduce. Frecuencia: 1–2 veces por semana.</p>
+      <div class="phase-tasks" style="margin-top:12px">
+        <span class="tag">Close-up texturas</span><span class="tag">Flat lay productos</span><span class="tag">Kit unboxing</span><span class="tag">"Lo que incluye..."</span>
+      </div>
+    </div>
+  </div>
+  <div class="pillar-row">
+    <div class="pillar-num">5</div>
+    <div class="pillar-content">
+      <h3>CONECTA — La persona detrás de AENDRA</h3>
+      <p>Alejandra debe aparecer. Mostrar el proceso creativo, detrás de cámaras, decisiones de diseño, inspiraciones personales. Esto construye comunidad y confianza. Frecuencia: 1 vez por semana.</p>
+      <div class="phase-tasks" style="margin-top:12px">
+        <span class="tag">Detrás de cámaras</span><span class="tag">Mi proceso creativo</span><span class="tag">Cómo encontré X</span><span class="tag">Q&A de decoración</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- CALENDAR -->
+<div class="banner">
+  <div class="section-label" style="color:rgba(184,154,106,0.8); margin-bottom:12px">Calendario Semanal</div>
+  <h2>Semana tipo en AENDRA</h2>
+  <p>Un ritmo de publicación consistente importa más que publicar mucho. Aquí una estructura de 5 posts semanales que no te agotará.</p>
+</div>
+
+<div style="max-width:1100px; margin:0 auto; padding:0 40px 80px; background:var(--light);">
+  <div class="content-grid" style="margin-top:40px">
+    <div class="day-header">Lunes</div>
+    <div class="day-header">Martes</div>
+    <div class="day-header">Miércoles</div>
+    <div class="day-header">Jueves</div>
+    <div class="day-header">Viernes</div>
+    <div class="day-header">Sábado</div>
+    <div class="day-header">Domingo</div>
+
+    <div class="content-item tipo-edu">
+      <div class="tipo-label">Educativo</div>
+      Tip de decoración en carousel: "3 errores que arruinan tu sala"
+    </div>
+    <div class="content-item tipo-foto">
+      <div class="tipo-label">Inspiración</div>
+      Foto editorial de espacio con paleta AENDRA
+    </div>
+    <div class="content-item tipo-reel">
+      <div class="tipo-label">Reel</div>
+      Antes / después de una habitación real
+    </div>
+    <div class="content-item tipo-foto">
+      <div class="tipo-label">Producto</div>
+      Close-up de textura + descripción del kit que incluye ese producto
+    </div>
+    <div class="content-item tipo-edu">
+      <div class="tipo-label">Educativo</div>
+      "Cómo armar un rincón aesthetic con menos de $50"
+    </div>
+    <div class="content-item tipo-reel">
+      <div class="tipo-label">Personal</div>
+      Alejandra muestra su proceso: cómo armó un moodboard
+    </div>
+    <div class="content-item tipo-off">
+      <div class="tipo-label" style="color:var(--beige)">Descanso</div>
+      —
+    </div>
+  </div>
+</div>
+
+<div class="divider"></div>
+
+<!-- IDEAS DE REELS / VIRAL -->
+<section>
+  <div class="section-label">Ideas de Contenido Viral</div>
+  <h2>Reels que la gente comparte.</h2>
+  <p>Estos formatos están probados en el nicho de decoración e interiores. Son altamente compartibles y generan seguidores nuevos orgánicamente:</p>
+
+  <div class="tip-list">
+    <div class="tip-item">
+      <div class="tip-icon">🪞</div>
+      <div>
+        <h4>"Transformé mi cuarto con $80" — Serie de presupuesto real</h4>
+        <p>Muestra el proceso completo: antes horrible → proceso → resultado final. Pon el número en el título ($40, $60, $80). Los números en reels de decoración tienen altísimo engagement.</p>
+      </div>
+    </div>
+    <div class="tip-item">
+      <div class="tip-icon">🎨</div>
+      <div>
+        <h4>"Dime tu color favorito y te digo cómo decorar" — Serie interactiva</h4>
+        <p>Crea reels donde según un color base (beige, verde, azul) muestras una combinación completa de decoración. Esto genera comentarios y guardados masivos.</p>
+      </div>
+    </div>
+    <div class="tip-item">
+      <div class="tip-icon">🛒</div>
+      <div>
+        <h4>"Lo que compraría si tuviera $X para decorar" — Serie de compras</h4>
+        <p>Con $30, $50, $100... Muestra los productos específicos (links en bio). Genera tráfico de compra y posiciona a AENDRA como curadora de buen gusto accesible.</p>
+      </div>
+    </div>
+    <div class="tip-item">
+      <div class="tip-icon">❌</div>
+      <div>
+        <h4>"5 cosas que NUNCA deberías poner en tu sala" — Contenido de choque</h4>
+        <p>Los videos de "errores" y "cosas que no hacer" tienen engagement altísimo porque la gente quiere saber si está cometiendo esos errores. Pone a AENDRA como autoridad.</p>
+      </div>
+    </div>
+    <div class="tip-item">
+      <div class="tip-icon">📦</div>
+      <div>
+        <h4>Unboxing del Kit AENDRA — Social proof visual</h4>
+        <p>Cada vez que llegue un pedido (propio o de clientas), filma el unboxing. El packaging premium + los productos bien elegidos vendes solos. Pide a clientas que compartan el suyo con #AENDRA.</p>
+      </div>
+    </div>
+    <div class="tip-item">
+      <div class="tip-icon">🌙</div>
+      <div>
+        <h4>"Así se ve mi cuarto a las 11pm" — Contenido de ambiente</h4>
+        <p>Videos de ambientación nocturna con velas encendidas, luces tenues, mood cálido. Son extremadamente guardados y generan aspiración de compra inmediata.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- IDENTIDAD DE MARCA REFINADA -->
+<section>
+  <div class="section-label">Identidad Visual</div>
+  <h2>Propuestas para fortalecer la imagen de AENDRA.</h2>
+  <p>Tu paleta y logo base son excelentes. Aquí algunas propuestas para llevar la identidad visual al siguiente nivel:</p>
+
+  <div class="idea-box" data-label="Propuesta 01 — Paleta extendida">
+    <h3>Paleta de colores extendida</h3>
+    <p>Tu paleta actual (blanco, terracota, negro, crema) es sólida. Te propongo sumarle dos tonos de apoyo para dar más profundidad al contenido:</p>
+    <br>
+    <div>
+      <div class="color-swatch"><div class="swatch" style="background:#F5EFE6"></div><span class="swatch-label">#F5EFE6 — Cream (base)</span></div>
+      <div class="color-swatch"><div class="swatch" style="background:#8B5E3C"></div><span class="swatch-label">#8B5E3C — Terracota (ya tienes)</span></div>
+      <div class="color-swatch"><div class="swatch" style="background:#1A1A1A"></div><span class="swatch-label">#1A1A1A — Ebony (ya tienes)</span></div>
+      <div class="color-swatch"><div class="swatch" style="background:#B89A6A; border:1px solid #ddd"></div><span class="swatch-label" style="color:var(--gold)"><strong>#B89A6A — Gold (añadir)</strong></span></div>
+      <div class="color-swatch"><div class="swatch" style="background:#C8B8A2; border:1px solid #ddd"></div><span class="swatch-label" style="color:var(--gold)"><strong>#C8B8A2 — Sand (añadir)</strong></span></div>
+    </div>
+  </div>
+
+  <div class="idea-box" data-label="Propuesta 02 — Tipografía">
+    <h3>Sistema tipográfico de dos niveles</h3>
+    <p><strong>Títulos y nombres de productos:</strong> Tipografía serif elegante como Cormorant Garamond, Playfair Display o Libre Baskerville — transmite lujo y temporalidad.</p>
+    <p><strong>Texto y precio:</strong> Sans-serif limpia como Jost, Raleway o Montserrat Light — transmite modernidad y claridad.</p>
+    <p>Esta combinación serif + sans es la misma que usan marcas como Muji, Zara Home y H&M Home. Funciona perfecto para AENDRA.</p>
+  </div>
+
+  <div class="idea-box" data-label="Propuesta 03 — Templates de Instagram">
+    <h3>Plantillas de Instagram con coherencia visual</h3>
+    <p>Crea 5–6 plantillas base en Canva (o que te ayuden a diseñar en Figma) para cada tipo de contenido. Así tu feed se ve profesional sin diseñar desde cero cada vez:</p>
+    <br>
+    <div>
+      <span class="tag tag-gold">Template tip educativo</span>
+      <span class="tag tag-gold">Template moodboard</span>
+      <span class="tag tag-gold">Template antes/después</span>
+      <span class="tag tag-gold">Template producto</span>
+      <span class="tag tag-gold">Template cita / reflexión</span>
+      <span class="tag tag-gold">Template carrusel paso a paso</span>
+    </div>
+  </div>
+
+  <div class="idea-box" data-label="Propuesta 04 — Packaging">
+    <h3>Packaging como experiencia de marca</h3>
+    <p>Aunque estés empezando, el packaging hace la diferencia entre una compra y una experiencia. Propuesta de bajo costo pero alto impacto:</p>
+    <br>
+    <div class="cards-3">
+      <div class="card">
+        <h3>Caja kraft neutra</h3>
+        <p>Caja kraft natural + sticker circular con logo AENDRA en terracota. Coste mínimo, look editorial máximo.</p>
+      </div>
+      <div class="card">
+        <h3>Tarjeta de curación</h3>
+        <p>Una tarjeta pequeña dentro de cada kit con "Por qué elegí esto para ti" firmada por Alejandra. Da calidez personal a la compra.</p>
+      </div>
+      <div class="card">
+        <h3>Papel tissue + sello</h3>
+        <p>Papel de seda en crema o arena con el nombre AENDRA impreso. Transforma cualquier producto en un regalo de lujo por menos de $0.50 extra por pedido.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- PRECIOS -->
+<section>
+  <div class="section-label">Estrategia de Precios</div>
+  <h2>Cómo estructurar tus precios para crecer.</h2>
+  <p>Tienes razón en querer imagen premium con precios accesibles. La clave está en la presentación y en crear distintos puntos de entrada. Aquí el modelo de tres niveles recomendado:</p>
+</section>
+
+<div style="max-width:1100px; margin:0 auto 80px; padding:0 40px;">
+  <div class="pricing-grid">
+    <div class="price-card">
+      <h4>Nivel Entrada</h4>
+      <div class="price-big">$15–40</div>
+      <div class="price-desc">Productos individuales o mini kit</div>
+      <p class="price-feature">Velas, fundas individuales</p>
+      <p class="price-feature">Kit Mood Cozy base</p>
+      <p class="price-feature">Cuadros pequeños</p>
+      <p class="price-feature">Perfecto para redes sociales</p>
+    </div>
+    <div class="price-card featured">
+      <h4>Nivel Core ★</h4>
+      <div class="price-big">$60–120</div>
+      <div class="price-desc">Kits completos — tu producto estrella</div>
+      <p class="price-feature">Kit Sala Aesthetic</p>
+      <p class="price-feature">Kit Japandi Edit</p>
+      <p class="price-feature">Kit Gift Mood premium</p>
+      <p class="price-feature">Aquí está tu mayor margen</p>
+    </div>
+    <div class="price-card">
+      <h4>Nivel Premium</h4>
+      <div class="price-big">$130–200</div>
+      <div class="price-desc">Kit completo + servicio incluido</div>
+      <p class="price-feature">Kit Cuarto Dream</p>
+      <p class="price-feature">Asesoría + moodboard</p>
+      <p class="price-feature">Lista de compras personalizada</p>
+      <p class="price-feature">Factura promedio más alta</p>
+    </div>
+    <div class="price-card">
+      <h4>Servicio Puro</h4>
+      <div class="price-big">$25–80</div>
+      <div class="price-desc">Sin productos — solo tu expertise</div>
+      <p class="price-feature">Mini asesoría 30 min</p>
+      <p class="price-feature">Moodboard digital</p>
+      <p class="price-feature">Lista de compras con links</p>
+      <p class="price-feature">Escala sin inventario</p>
+    </div>
+  </div>
+  <p style="margin-top:24px; font-size:13px; text-align:center; color:var(--gray)">💡 <strong>Regla de oro:</strong> Nunca bajes los precios para vender más — mejor ofrece más valor al mismo precio. Un descuento del 20% daña tu imagen. Una "edición especial" con un extra incluido, no.</p>
+</div>
+
+<div class="divider"></div>
+
+<!-- CANALES DE VENTA -->
+<section>
+  <div class="section-label">Canales de Venta</div>
+  <h2>Dónde vender al principio.</h2>
+
+  <div class="cards-3">
+    <div class="card card-dark">
+      <div class="card-number">01</div>
+      <h3>Instagram DM + Highlights</h3>
+      <p>Al inicio, vende directamente por DM. Crea un Highlight de "SHOP" en tu perfil con los kits disponibles. Simple, sin costos de plataforma.</p>
+    </div>
+    <div class="card">
+      <div class="card-number">02</div>
+      <h3>WhatsApp Business</h3>
+      <p>Catálogo de productos en WhatsApp Business. Permite mostrar precios, fotos y aceptar pedidos de forma profesional sin necesidad de una tienda online.</p>
+    </div>
+    <div class="card card-gold">
+      <div class="card-number">03</div>
+      <h3>Tienda Online (mes 2–3)</h3>
+      <p>Shopify o Tiendanube son las mejores opciones. Fáciles de configurar, con tu branding AENDRA. Meta para cuando tengas al menos 500 seguidores activos.</p>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- HOJA DE RUTA -->
+<section>
+  <div class="section-label">Plan de Acción</div>
+  <h2>Hoja de ruta para los próximos 3 meses.</h2>
+  <p>No hay que hacer todo a la vez. Este plan por fases te permite construir de forma sostenible sin agotarte:</p>
+</section>
+
+<div style="max-width:1100px; margin:0 auto 80px; padding:0 40px;">
+  <div class="roadmap">
+    <div class="roadmap-phase">
+      <div class="phase-label">
+        <small>Mes 1</small>
+        <strong>Cimientos</strong>
+      </div>
+      <div class="phase-content">
+        <h3>Construye la base de la marca</h3>
+        <p>Este mes es de preparación y primeros pasos. Nada de ventas aún — todo es construir la base correctamente.</p>
+        <div class="phase-tasks">
+          <span class="tag">Perfil Instagram optimizado</span>
+          <span class="tag">Bio clara con propuesta de valor</span>
+          <span class="tag">3–5 fotos de feed para arrancar</span>
+          <span class="tag">Templates de contenido en Canva</span>
+          <span class="tag">Primer kit armado y fotografiado</span>
+          <span class="tag">WhatsApp Business configurado</span>
+          <span class="tag">Precio de los 3 kits iniciales</span>
+          <span class="tag">Packaging básico listo</span>
+        </div>
+      </div>
+    </div>
+    <div class="roadmap-phase">
+      <div class="phase-label">
+        <small>Mes 2</small>
+        <strong>Arranque</strong>
+      </div>
+      <div class="phase-content">
+        <h3>Primeras ventas y primeras seguidoras</h3>
+        <p>Comienza a publicar con los 5 pilares de contenido. Meta: 3–5 posts por semana. Ofrece el Kit Starter a amigas o familia para tener testimonios reales y fotos de uso.</p>
+        <div class="phase-tasks">
+          <span class="tag">Publicar 3–5x por semana</span>
+          <span class="tag">Primer reel antes/después</span>
+          <span class="tag">5 primeras ventas (aunque sean a conocidas)</span>
+          <span class="tag">Primeras fotos de clientas reales</span>
+          <span class="tag">Hashtag propio #AENDRAHome</span>
+          <span class="tag">Lanzar mini asesoría ($25)</span>
+          <span class="tag">Meta: 300–500 seguidores</span>
+        </div>
+      </div>
+    </div>
+    <div class="roadmap-phase">
+      <div class="phase-label">
+        <small>Mes 3</small>
+        <strong>Escalada</strong>
+      </div>
+      <div class="phase-content">
+        <h3>Crecer y sistematizar</h3>
+        <p>Con testimonios y contenido publicado, es hora de escalar. Abre la tienda online, considera colaboraciones con micro-influencers del nicho de lifestyle y decoración.</p>
+        <div class="phase-tasks">
+          <span class="tag">Tienda online (Shopify / Tiendanube)</span>
+          <span class="tag">3 testimonios reales con foto</span>
+          <span class="tag">Primer colaboración con micro influencer</span>
+          <span class="tag">Serie "Transforma tu cuarto" (3 episodios)</span>
+          <span class="tag">Kit de temporada / edición especial</span>
+          <span class="tag">Meta: 1,000 seguidores</span>
+          <span class="tag">20+ ventas acumuladas</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- EXTRAS -->
+<div class="banner">
+  <div class="section-label" style="color:rgba(184,154,106,0.8); margin-bottom:12px">Ideas extra</div>
+  <h2>Más formas de crecer con AENDRA</h2>
+</div>
+
+<section>
+  <div class="cards-2">
+    <div class="card">
+      <h3>Guías digitales descargables</h3>
+      <p>Crea una "Guía AENDRA para decorar tu cuarto desde cero" como PDF de $5–10. Es ingreso pasivo, no requiere inventario y te posiciona como experta. Puede ser tu lead magnet gratuito para crecer la lista de correos.</p>
+    </div>
+    <div class="card">
+      <h3>Programa de afiliados / referidos</h3>
+      <p>Cuando tengas 10+ clientas satisfechas, crea un programa donde si refieren a alguien que compra, reciben un descuento en su próximo kit. Word of mouth es el canal más poderoso en decoración.</p>
+    </div>
+    <div class="card">
+      <h3>Colección de temporada</h3>
+      <p>Cada 3 meses lanza una "edición" con nombre y paleta específica: "AENDRA Otoño · Warm Edition" o "AENDRA Verano · Fresh Edit". Crea escasez percibida y mantiene el interés de quienes ya compraron.</p>
+    </div>
+    <div class="card">
+      <h3>TikTok como canal paralelo</h3>
+      <p>El algoritmo de TikTok es más generoso que Instagram para cuentas nuevas. El mismo contenido que haces para Reels va perfecto para TikTok. Publica los mismos videos en ambas plataformas para crecer el doble de rápido.</p>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="section-label" style="color:var(--gold); margin-bottom:20px">AENDRA · Interior Mood</div>
+  <h2>Transforma tu espacio.<br>Transforma tu negocio.</h2>
+  <p>Tienes todos los ingredientes para construir una marca que la gente ame y que les cambie su hogar. El siguiente paso es el primero.</p>
+  <br><br>
+  <div class="footer-brand">Estrategia preparada con intención · 2026</div>
+</footer>
+
+</body>
+</html>

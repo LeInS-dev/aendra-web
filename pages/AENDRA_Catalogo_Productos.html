@@ -1,0 +1,524 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AENDRA - Catálogo de Productos 2026</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Helvetica Neue', sans-serif;
+            background-color: #F5EFE6;
+            color: #3D1F0D;
+            line-height: 1.6;
+        }
+
+        h1, h2, h3, h4 {
+            font-family: Georgia, serif;
+            font-weight: normal;
+            letter-spacing: 0.02em;
+        }
+
+        .page {
+            width: 8.5in;
+            height: 11in;
+            margin: 0 auto 0.5in;
+            background: white;
+            padding: 0.75in;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+            page-break-after: always;
+            display: flex;
+            flex-direction: column;
+        }
+
+        @media print {
+            body {
+                background: white;
+                margin: 0;
+            }
+            .page {
+                margin: 0;
+                box-shadow: none;
+                page-break-after: always;
+            }
+        }
+
+        /* COVER PAGE */
+        .cover {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            background: linear-gradient(135deg, #F5EFE6 0%, #E8DDD0 100%);
+            gap: 3rem;
+        }
+
+        .logo-box {
+            width: 200px;
+            height: 200px;
+            background: linear-gradient(135deg, #B89A6A, #8B5E3C);
+            border-radius: 4px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 8px 24px rgba(61, 31, 13, 0.15);
+        }
+
+        .logo {
+            font-family: Georgia, serif;
+            font-size: 3.5rem;
+            color: #F5EFE6;
+            font-weight: bold;
+            letter-spacing: 0.05em;
+        }
+
+        .cover h1 {
+            font-size: 2.8rem;
+            color: #3D1F0D;
+            margin: 1rem 0;
+            letter-spacing: 0.03em;
+        }
+
+        .tagline {
+            font-size: 1.8rem;
+            color: #B89A6A;
+            font-family: Georgia, serif;
+            font-style: italic;
+            margin-bottom: 1rem;
+        }
+
+        .subtitle {
+            font-size: 1.1rem;
+            color: #8B5E3C;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+        }
+
+        .brand-line {
+            margin-top: 2rem;
+            font-size: 0.9rem;
+            color: #8B5E3C;
+            letter-spacing: 0.15em;
+        }
+
+        /* SECTION PAGES */
+        .content-page {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+        }
+
+        .section-header {
+            border-bottom: 3px solid #B89A6A;
+            padding-bottom: 0.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .section-header h2 {
+            font-size: 2rem;
+            color: #3D1F0D;
+        }
+
+        .section-header p {
+            font-size: 0.95rem;
+            color: #8B5E3C;
+            margin-top: 0.3rem;
+        }
+
+        /* PRODUCT CARDS */
+        .products-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 1.5rem;
+            flex: 1;
+        }
+
+        .product-card {
+            background: #F5EFE6;
+            border-left: 4px solid #B89A6A;
+            padding: 1.25rem;
+            display: grid;
+            grid-template-columns: 200px 1fr;
+            gap: 1.25rem;
+            align-items: flex-start;
+        }
+
+        .product-image {
+            width: 200px;
+            height: 180px;
+            background: linear-gradient(135deg, #E8DDD0, #C8B8A2);
+            border-radius: 2px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #8B5E3C;
+            font-size: 0.85rem;
+            text-align: center;
+            padding: 1rem;
+        }
+
+        .product-info h3 {
+            font-size: 1.3rem;
+            color: #3D1F0D;
+            margin-bottom: 0.25rem;
+        }
+
+        .product-price {
+            font-size: 1.5rem;
+            color: #B89A6A;
+            font-weight: bold;
+            margin-bottom: 0.75rem;
+            font-family: Georgia, serif;
+        }
+
+        .product-description {
+            font-size: 0.95rem;
+            color: #5C3D28;
+            margin-bottom: 0.75rem;
+            line-height: 1.5;
+            font-style: italic;
+        }
+
+        .product-includes {
+            font-size: 0.9rem;
+            color: #3D1F0D;
+            line-height: 1.6;
+        }
+
+        .product-includes strong {
+            color: #8B5E3C;
+            display: block;
+            margin-top: 0.5rem;
+            margin-bottom: 0.3rem;
+        }
+
+        /* INDIVIDUAL PRODUCTS SECTION */
+        .individual-products {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1rem;
+        }
+
+        .small-product {
+            background: #F5EFE6;
+            border-left: 3px solid #B89A6A;
+            padding: 1rem;
+        }
+
+        .small-product h4 {
+            font-size: 1rem;
+            color: #3D1F0D;
+            margin-bottom: 0.3rem;
+        }
+
+        .small-product p {
+            font-size: 0.9rem;
+            color: #B89A6A;
+            font-weight: bold;
+        }
+
+        /* SERVICES SECTION */
+        .service-card {
+            background: #F5EFE6;
+            border-left: 4px solid #B89A6A;
+            padding: 1rem;
+            margin-bottom: 1rem;
+        }
+
+        .service-card h4 {
+            font-size: 1.1rem;
+            color: #3D1F0D;
+            margin-bottom: 0.25rem;
+        }
+
+        .service-price {
+            font-size: 1.2rem;
+            color: #B89A6A;
+            font-weight: bold;
+        }
+
+        /* BACK PAGE */
+        .back-page {
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            padding-top: 2rem;
+        }
+
+        .manifesto {
+            text-align: center;
+            margin: 2rem 0;
+            padding: 2rem;
+            background: #F5EFE6;
+            border-top: 3px solid #B89A6A;
+            border-bottom: 3px solid #B89A6A;
+        }
+
+        .manifesto h3 {
+            font-size: 1.1rem;
+            color: #8B5E3C;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            margin-bottom: 1rem;
+        }
+
+        .manifesto p {
+            font-size: 1.2rem;
+            color: #3D1F0D;
+            line-height: 1.8;
+            font-style: italic;
+            font-family: Georgia, serif;
+        }
+
+        .contact-section {
+            text-align: center;
+            margin-top: auto;
+            padding-top: 2rem;
+        }
+
+        .contact-section h3 {
+            font-size: 1.2rem;
+            color: #3D1F0D;
+            margin-bottom: 1rem;
+        }
+
+        .contact-info {
+            font-size: 0.95rem;
+            color: #8B5E3C;
+            line-height: 1.8;
+            margin-bottom: 1.5rem;
+        }
+
+        .social-links {
+            font-size: 0.9rem;
+            color: #B89A6A;
+        }
+
+        .social-links span {
+            margin: 0 0.5rem;
+        }
+
+        /* RESPONSIVE FOR TWO-COLUMN CARDS */
+        @media (max-width: 960px) {
+            .product-card {
+                grid-template-columns: 1fr;
+            }
+            .product-image {
+                width: 100%;
+                height: 150px;
+            }
+        }
+
+        /* PAGE NUMBERS */
+        .page-number {
+            text-align: center;
+            font-size: 0.8rem;
+            color: #C8B8A2;
+            margin-top: 1rem;
+            padding-top: 1rem;
+            border-top: 1px solid #E8DDD0;
+        }
+    </style>
+</head>
+<body>
+    <!-- COVER PAGE -->
+    <div class="page cover">
+        <div class="logo-box">
+            <div class="logo">A</div>
+        </div>
+        <div>
+            <div class="tagline">Transforma Tu Espacio</div>
+            <h1>AENDRA</h1>
+            <div class="subtitle">Catálogo de Productos 2026</div>
+            <div class="brand-line">Interior Mood</div>
+        </div>
+    </div>
+
+    <!-- SECTION 1: KITS -->
+    <div class="page content-page">
+        <div class="section-header">
+            <h2>Kits Completos</h2>
+            <p>Colecciones curadas para transformar tu espacio</p>
+        </div>
+        <div class="products-grid">
+            <div class="product-card">
+                <div class="product-image">Producto</div>
+                <div class="product-info">
+                    <h3>Kit Mood Cozy</h3>
+                    <div class="product-price">USD $35</div>
+                    <p class="product-description">Para quien quiere empezar a transformar su espacio con lo básico bien elegido.</p>
+                    <div class="product-includes">
+                        <strong>Incluye:</strong>
+                        Vela minimalista + funda de cojín neutral + planta pequeña + guía de decoración digital
+                    </div>
+                </div>
+            </div>
+
+            <div class="product-card">
+                <div class="product-image">Producto</div>
+                <div class="product-info">
+                    <h3>Kit Japandi Edit</h3>
+                    <div class="product-price">USD $75</div>
+                    <p class="product-description">Minimalismo cálido con texturas naturales.</p>
+                    <div class="product-includes">
+                        <strong>Incluye:</strong>
+                        Cuadro lineal + cojín boucle + vela + bandeja de madera
+                    </div>
+                </div>
+            </div>
+
+            <div class="product-card">
+                <div class="product-image">Producto</div>
+                <div class="product-info">
+                    <h3>Kit Gift Mood</h3>
+                    <div class="product-price">USD $45</div>
+                    <p class="product-description">El kit perfecto para regalar en cumpleaños o mudanzas.</p>
+                    <div class="product-includes">
+                        <strong>Incluye:</strong>
+                        Vela + funda + tarjeta personalizable + packaging premium
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="page-number">— 1 —</div>
+    </div>
+
+    <!-- SECTION 1B: MORE KITS -->
+    <div class="page content-page">
+        <div class="section-header">
+            <h2>Kits Completos</h2>
+            <p>Continúa tu transformación</p>
+        </div>
+        <div class="products-grid">
+            <div class="product-card">
+                <div class="product-image">Producto</div>
+                <div class="product-info">
+                    <h3>Kit Sala Aesthetic</h3>
+                    <div class="product-price">USD $90</div>
+                    <p class="product-description">Para transformar tu sala en un espacio de revista.</p>
+                    <div class="product-includes">
+                        <strong>Incluye:</strong>
+                        Alfombra pequeña cálida + lámpara + 2 fundas de cojín + cuadro abstracto
+                    </div>
+                </div>
+            </div>
+
+            <div class="product-card">
+                <div class="product-image">Producto</div>
+                <div class="product-info">
+                    <h3>Kit Cuarto Dream</h3>
+                    <div class="product-price">USD $150</div>
+                    <p class="product-description">Transformación completa de tu dormitorio.</p>
+                    <div class="product-includes">
+                        <strong>Incluye:</strong>
+                        Todo el Kit Cozy + alfombra + asesoría personalizada 30 min + moodboard digital
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="page-number">— 2 —</div>
+    </div>
+
+    <!-- SECTION 2: INDIVIDUAL PRODUCTS -->
+    <div class="page content-page">
+        <div class="section-header">
+            <h2>Productos Individuales</h2>
+            <p>Elige piezas sueltas para personalizar tu decoración</p>
+        </div>
+        <div class="individual-products">
+            <div class="small-product">
+                <div class="product-image" style="width: 100%; height: 120px; margin-bottom: 0.75rem;">Producto</div>
+                <h4>Alfombras Pequeñas Cálidas</h4>
+                <p>Desde USD $20</p>
+            </div>
+            <div class="small-product">
+                <div class="product-image" style="width: 100%; height: 120px; margin-bottom: 0.75rem;">Producto</div>
+                <h4>Velas Minimalistas</h4>
+                <p>Desde USD $12</p>
+            </div>
+            <div class="small-product">
+                <div class="product-image" style="width: 100%; height: 120px; margin-bottom: 0.75rem;">Producto</div>
+                <h4>Cuadros Abstractos</h4>
+                <p>Desde USD $18</p>
+            </div>
+            <div class="small-product">
+                <div class="product-image" style="width: 100%; height: 120px; margin-bottom: 0.75rem;">Producto</div>
+                <h4>Fundas de Cojines</h4>
+                <p>Desde USD $15</p>
+            </div>
+            <div class="small-product">
+                <div class="product-image" style="width: 100%; height: 120px; margin-bottom: 0.75rem;">Producto</div>
+                <h4>Lámparas de Ambiente</h4>
+                <p>Desde USD $35</p>
+            </div>
+            <div class="small-product">
+                <div class="product-image" style="width: 100%; height: 120px; margin-bottom: 0.75rem;">Producto</div>
+                <h4>Accesorios & Decor</h4>
+                <p>Precios Especiales</p>
+            </div>
+        </div>
+        <div class="page-number">— 3 —</div>
+    </div>
+
+    <!-- SECTION 3: SERVICES -->
+    <div class="page content-page">
+        <div class="section-header">
+            <h2>Servicios Personalizados</h2>
+            <p>Acompañamiento experto para tu transformación</p>
+        </div>
+        <div style="flex: 1;">
+            <div class="service-card">
+                <h4>Mini Asesoría Express</h4>
+                <p style="font-size: 0.9rem; color: #8B5E3C; margin: 0.3rem 0;">30 minutos • Videollamada</p>
+                <div class="service-price">USD $25</div>
+                <p style="font-size: 0.9rem; color: #5C3D28; margin-top: 0.5rem;">Consulta rápida para definir la dirección de tu proyecto. Ideal para obtener recomendaciones y resolver dudas específicas.</p>
+            </div>
+
+            <div class="service-card">
+                <h4>Moodboard Digital Personalizado</h4>
+                <p style="font-size: 0.9rem; color: #8B5E3C; margin: 0.3rem 0;">Entrega en 5-7 días hábiles</p>
+                <div class="service-price">USD $40</div>
+                <p style="font-size: 0.9rem; color: #5C3D28; margin-top: 0.5rem;">Tablero visual personalizado con la estética y ambiente que deseas crear. Colores, texturas, y referencias curadas específicamente para ti.</p>
+            </div>
+
+            <div class="service-card">
+                <h4>Lista de Compras con Links</h4>
+                <p style="font-size: 0.9rem; color: #8B5E3C; margin: 0.3rem 0;">Entrega inmediata</p>
+                <div class="service-price">USD $15</div>
+                <p style="font-size: 0.9rem; color: #5C3D28; margin-top: 0.5rem;">Lista curada de productos similares a los de AENDRA, con links directos para facilitarte el proceso de compra. Tu atajo hacia un espacio hermoso.</p>
+            </div>
+        </div>
+        <div class="page-number">— 4 —</div>
+    </div>
+
+    <!-- BACK PAGE -->
+    <div class="page back-page">
+        <div class="manifesto">
+            <h3>Nuestro Manifiesto</h3>
+            <p>"Creemos que cada persona merece un espacio hermoso. No hace falta un presupuesto de lujo — solo las piezas correctas, en el lugar correcto."</p>
+        </div>
+
+        <div class="contact-section">
+            <h3>Contáctanos</h3>
+            <div class="contact-info">
+                <div><strong>Email:</strong> hello@aendra.design</div>
+                <div><strong>Instagram:</strong> @aendra.interior</div>
+                <div><strong>Web:</strong> www.aendra.design</div>
+            </div>
+            <div class="social-links">
+                Síguenos para inspiración diaria • Interior Mood by Alejandra Vasquezz
+            </div>
+        </div>
+
+        <div style="text-align: center; font-size: 0.85rem; color: #C8B8A2; margin-top: auto; padding-top: 1rem; border-top: 1px solid #E8DDD0;">
+            <p>© 2026 AENDRA. Todos los derechos reservados.<br>Catálogo Oficial de Productos</p>
+        </div>
+    </div>
+</body>
+</html>
