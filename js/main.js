@@ -255,3 +255,53 @@ function setActiveNav(id) {
 }
 
 } /* end if !prefersReducedMotion */
+
+/* ========================================
+   PRODUCT IMAGE GALLERY / CAROUSEL
+   ======================================== */
+function initGalleries() {
+    document.querySelectorAll('.card-gallery').forEach(gallery => {
+        const slides = gallery.querySelectorAll('.gallery-slide');
+        if (slides.length <= 1) return; // nothing to carousel
+
+        const track  = gallery.querySelector('.gallery-slides');
+        const dots   = gallery.querySelectorAll('.gallery-dot');
+        let current  = 0;
+        let timer    = null;
+
+        function goTo(n) {
+            current = ((n % slides.length) + slides.length) % slides.length;
+            track.style.transform = `translateX(-${current * 100}%)`;
+            dots.forEach((d, i) => d.classList.toggle('active', i === current));
+        }
+
+        function startAuto() {
+            timer = setInterval(() => goTo(current + 1), 3800);
+        }
+        function stopAuto() {
+            clearInterval(timer);
+        }
+
+        gallery.querySelector('.gallery-arrow.prev')
+            ?.addEventListener('click', e => { e.stopPropagation(); stopAuto(); goTo(current - 1); startAuto(); });
+        gallery.querySelector('.gallery-arrow.next')
+            ?.addEventListener('click', e => { e.stopPropagation(); stopAuto(); goTo(current + 1); startAuto(); });
+        dots.forEach((dot, i) =>
+            dot.addEventListener('click', e => { e.stopPropagation(); stopAuto(); goTo(i); startAuto(); }));
+
+        // Touch / swipe support
+        let touchStartX = 0;
+        gallery.addEventListener('touchstart', e => { touchStartX = e.touches[0].clientX; }, { passive: true });
+        gallery.addEventListener('touchend', e => {
+            const diff = touchStartX - e.changedTouches[0].clientX;
+            if (Math.abs(diff) > 40) { stopAuto(); goTo(current + (diff > 0 ? 1 : -1)); startAuto(); }
+        });
+
+        gallery.addEventListener('mouseenter', stopAuto);
+        gallery.addEventListener('mouseleave', startAuto);
+
+        startAuto();
+    });
+}
+
+document.addEventListener('DOMContentLoaded', initGalleries);

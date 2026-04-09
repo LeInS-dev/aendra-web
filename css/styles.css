@@ -1595,6 +1595,81 @@ footer {
 .bg-white { background: #fff; }
 .bg-cream  { background: var(--cream); }
 
+/* ========== PRODUCT IMAGE GALLERY / CAROUSEL ========== */
+.card-gallery {
+    position: relative;
+    width: 100%;
+    height: 220px;
+    overflow: hidden;
+    border-radius: 4px 4px 0 0;
+    background: var(--beige);
+}
+.gallery-slides {
+    display: flex;
+    height: 100%;
+    transition: transform 0.45s cubic-bezier(.4,0,.2,1);
+    will-change: transform;
+}
+.gallery-slide {
+    flex-shrink: 0;
+    width: 100%;
+    height: 100%;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+.gallery-arrow {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: rgba(255,255,255,0.88);
+    border: none;
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    cursor: pointer;
+    font-size: 1rem;
+    line-height: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 3;
+    color: var(--dark);
+    opacity: 0;
+    transition: opacity 0.2s, background 0.2s;
+    pointer-events: none;
+}
+.card-gallery:hover .gallery-arrow {
+    opacity: 1;
+    pointer-events: all;
+}
+.gallery-arrow:hover { background: #fff; }
+.gallery-arrow.prev { left: 7px; }
+.gallery-arrow.next { right: 7px; }
+.gallery-dots {
+    position: absolute;
+    bottom: 8px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    gap: 5px;
+    z-index: 3;
+}
+.gallery-dot {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: rgba(255,255,255,0.55);
+    cursor: pointer;
+    transition: background 0.2s, transform 0.2s;
+    border: none;
+    padding: 0;
+}
+.gallery-dot.active {
+    background: #fff;
+    transform: scale(1.25);
+}
+
 /* ========== REDUCED MOTION ========== */
 @media (prefers-reduced-motion: reduce) {
     *, *::before, *::after { transition: none !important; animation: none !important; }
