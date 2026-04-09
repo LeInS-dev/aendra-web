@@ -178,7 +178,10 @@
                             </ul>
                             <div class="kit-footer">
                                 <div class="kit-price"><span>S/</span>45</div>
-                                <button class="kit-btn" onclick="orderKit(this)">Pedir</button>
+                                <div style="display:flex;gap:0.5rem">
+                                    <button class="kit-btn" onclick="orderKit(this)">WA</button>
+                                    <button class="btn-add-cart" onclick="Cart.add({tipo:'kit',item_name:'Kit Gift Mood',item_slug:'kit-gift-mood',item_price:45,image_url:'https://images.unsplash.com/photo-1549465220-1a8b9238cd48?w=300&h=300&fit=crop'})">+ Carrito</button>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -196,7 +199,10 @@
                             </ul>
                             <div class="kit-footer">
                                 <div class="kit-price"><span>S/</span>75</div>
-                                <button class="kit-btn" onclick="orderKit(this)">Pedir</button>
+                                <div style="display:flex;gap:0.5rem">
+                                    <button class="kit-btn" onclick="orderKit(this)">WA</button>
+                                    <button class="btn-add-cart" onclick="Cart.add({tipo:'kit',item_name:'Kit Japandi Edit',item_slug:'kit-japandi-edit',item_price:75,image_url:'https://images.unsplash.com/photo-1586023492125-27b2c045efd7?w=300&h=300&fit=crop'})">+ Carrito</button>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -214,7 +220,10 @@
                             </ul>
                             <div class="kit-footer">
                                 <div class="kit-price"><span>S/</span>90</div>
-                                <button class="kit-btn" onclick="orderKit(this)">Pedir</button>
+                                <div style="display:flex;gap:0.5rem">
+                                    <button class="kit-btn" onclick="orderKit(this)">WA</button>
+                                    <button class="btn-add-cart" onclick="Cart.add({tipo:'kit',item_name:'Kit Sala Aesthetic',item_slug:'kit-sala-aesthetic',item_price:90,image_url:'https://images.unsplash.com/photo-1555041469-a586c61ea9bc?w=300&h=300&fit=crop'})">+ Carrito</button>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -233,7 +242,10 @@
                             </ul>
                             <div class="kit-footer">
                                 <div class="kit-price"><span>S/</span>150</div>
-                                <button class="kit-btn" onclick="orderKit(this)">Pedir</button>
+                                <div style="display:flex;gap:0.5rem">
+                                    <button class="kit-btn" onclick="orderKit(this)">WA</button>
+                                    <button class="btn-add-cart" onclick="Cart.add({tipo:'kit',item_name:'Kit Cuarto Dream',item_slug:'kit-cuarto-dream',item_price:150,image_url:'https://images.unsplash.com/photo-1540518614846-7eded433c457?w=300&h=300&fit=crop'})">+ Carrito</button>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -298,86 +310,86 @@
                 <p class="section-subtitle">Piezas seleccionadas para transformar cualquier espacio. Enviamos a todo Peru.</p>
                 <div class="fundas-grid">
 
-                    <div class="funda-card" onclick="openWhatsApp('Fundas Felpa Jacquard Geometrico x4','S/59')">
+                    <div class="funda-card">
                         <div class="funda-img" style="background:url('https://img.kwcdn.com/product/open/b28c9931f93042fe916979227f72dff2-goods.jpeg') center/cover no-repeat;"></div>
                         <div class="funda-body">
                             <h3 class="funda-name">Felpa Jacquard Geometrico</h3>
                             <p class="funda-desc">Juego x4 · Felpa jacquard doble cara · Diseno geometrico 3D</p>
                             <div class="funda-footer">
                                 <span class="funda-price">S/59</span>
-                                <a class="funda-btn">Pedir</a>
+                                <button class="funda-btn" onclick="Cart.add({tipo:'funda',item_name:'Fundas Felpa Jacquard Geometrico x4',item_slug:'funda-felpa-jacquard',item_price:59,quantity:1,image_url:'https://img.kwcdn.com/product/open/b28c9931f93042fe916979227f72dff2-goods.jpeg'})">+ Carrito</button>
                             </div>
                         </div>
                     </div>
 
-                    <div class="funda-card" onclick="openWhatsApp('Fundas Lino Exterior x4','S/59')">
+                    <div class="funda-card">
                         <div class="funda-img" style="background:url('https://img.kwcdn.com/product/fancy/159f91ba-5ea5-4493-8446-c34df0b42025.jpg') center/cover no-repeat;"></div>
                         <div class="funda-body">
                             <h3 class="funda-name">Lino Natural Exterior</h3>
                             <p class="funda-desc">Juego x4 · Lino premium · 45x45cm y 50x50cm · Sin relleno</p>
                             <div class="funda-footer">
                                 <span class="funda-price">S/59</span>
-                                <a class="funda-btn">Pedir</a>
+                                <button class="funda-btn" onclick="Cart.add({tipo:'funda',item_name:'Fundas Lino Natural Exterior x4',item_slug:'funda-lino-natural',item_price:59,quantity:1,image_url:'https://img.kwcdn.com/product/fancy/159f91ba-5ea5-4493-8446-c34df0b42025.jpg'})">+ Carrito</button>
                             </div>
                         </div>
                     </div>
 
-                    <div class="funda-card" onclick="openWhatsApp('Fundas Chenilla Beige x2','S/43')">
+                    <div class="funda-card">
                         <div class="funda-img" style="background:url('https://img.kwcdn.com/product/fancy/5d28cdfe-90c5-4080-9979-6dfa9190b6c4.jpg') center/cover no-repeat;"></div>
                         <div class="funda-body">
                             <h3 class="funda-name">Chenilla Beige Clasico</h3>
                             <p class="funda-desc">Pack x2 · Chenilla suave · 44x44cm · Tono neutro ideal</p>
                             <div class="funda-footer">
                                 <span class="funda-price">S/43</span>
-                                <a class="funda-btn">Pedir</a>
+                                <button class="funda-btn" onclick="Cart.add({tipo:'funda',item_name:'Fundas Chenilla Beige Clasico x2',item_slug:'funda-chenilla-beige',item_price:43,quantity:1,image_url:'https://img.kwcdn.com/product/fancy/5d28cdfe-90c5-4080-9979-6dfa9190b6c4.jpg'})">+ Carrito</button>
                             </div>
                         </div>
                     </div>
 
-                    <div class="funda-card" onclick="openWhatsApp('Fundas Chenilla Texturizada Vintage x2','S/53')">
+                    <div class="funda-card">
                         <div class="funda-img" style="background:url('https://img.kwcdn.com/product/fancy/37da1f2a-6134-4100-80f9-fdc259601359.jpg') center/cover no-repeat;"></div>
                         <div class="funda-body">
                             <h3 class="funda-name">Chenilla Texturizada Vintage</h3>
                             <p class="funda-desc">Pack x2 · Textura artesanal · Estilo vintage · Lavable</p>
                             <div class="funda-footer">
                                 <span class="funda-price">S/53</span>
-                                <a class="funda-btn">Pedir</a>
+                                <button class="funda-btn" onclick="Cart.add({tipo:'funda',item_name:'Fundas Chenilla Texturizada Vintage x2',item_slug:'funda-chenilla-vintage',item_price:53,quantity:1,image_url:'https://img.kwcdn.com/product/fancy/37da1f2a-6134-4100-80f9-fdc259601359.jpg'})">+ Carrito</button>
                             </div>
                         </div>
                     </div>
 
-                    <div class="funda-card" onclick="openWhatsApp('Fundas Beige Marron Rayas Boho x4','S/71')">
+                    <div class="funda-card">
                         <div class="funda-img" style="background:url('https://img.kwcdn.com/product/fancy/3f95d9a4-7178-40b8-996b-af8fcce700d3.jpg') center/cover no-repeat;"></div>
                         <div class="funda-body">
                             <h3 class="funda-name">Beige & Marron Rayas Boho</h3>
                             <p class="funda-desc">Juego x4 · 40x40cm · Estilo bohemio granja · Cuadradas</p>
                             <div class="funda-footer">
                                 <span class="funda-price">S/71</span>
-                                <a class="funda-btn">Pedir</a>
+                                <button class="funda-btn" onclick="Cart.add({tipo:'funda',item_name:'Fundas Beige Marron Rayas Boho x4',item_slug:'funda-rayas-boho',item_price:71,quantity:1,image_url:'https://img.kwcdn.com/product/fancy/3f95d9a4-7178-40b8-996b-af8fcce700d3.jpg'})">+ Carrito</button>
                             </div>
                         </div>
                     </div>
 
-                    <div class="funda-card" onclick="openWhatsApp('Fundas Geometrico Diamantes x4','S/48')">
+                    <div class="funda-card">
                         <div class="funda-img" style="background:url('https://img.kwcdn.com/product/open/eebb680371b94bfaa6f229b6112c73eb-goods.jpeg') center/cover no-repeat;"></div>
                         <div class="funda-body">
                             <h3 class="funda-name">Patron Geometrico Diamantes</h3>
                             <p class="funda-desc">Juego x4 · 45x45cm · Patron diamante · Con cremallera</p>
                             <div class="funda-footer">
                                 <span class="funda-price">S/48</span>
-                                <a class="funda-btn">Pedir</a>
+                                <button class="funda-btn" onclick="Cart.add({tipo:'funda',item_name:'Fundas Patron Geometrico Diamantes x4',item_slug:'funda-geometrico-diamantes',item_price:48,quantity:1,image_url:'https://img.kwcdn.com/product/open/eebb680371b94bfaa6f229b6112c73eb-goods.jpeg'})">+ Carrito</button>
                             </div>
                         </div>
                     </div>
 
-                    <div class="funda-card" onclick="openWhatsApp('Fundas Abstracto Linea Boho Felpa x4','S/57')">
+                    <div class="funda-card">
                         <div class="funda-img" style="background:url('https://img.kwcdn.com/product/fancy/f654d006-7c93-47f7-bcf7-22edc80b78b5.jpg') center/cover no-repeat;"></div>
                         <div class="funda-body">
                             <h3 class="funda-name">Abstracto Linea Boho Felpa</h3>
                             <p class="funda-desc">Pack x4 · Felpa esponjosa · Diseno boho abstracto · Suave</p>
                             <div class="funda-footer">
                                 <span class="funda-price">S/57</span>
-                                <a class="funda-btn">Pedir</a>
+                                <button class="funda-btn" onclick="Cart.add({tipo:'funda',item_name:'Fundas Abstracto Linea Boho Felpa x4',item_slug:'funda-abstracto-boho',item_price:57,quantity:1,image_url:'https://img.kwcdn.com/product/fancy/f654d006-7c93-47f7-bcf7-22edc80b78b5.jpg'})">+ Carrito</button>
                             </div>
                         </div>
                     </div>
