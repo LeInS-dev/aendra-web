@@ -19,7 +19,7 @@
 
 *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
 
-html { scroll-behavior: auto; }
+html { scroll-behavior: auto; font-size: 18px; }
 
 body {
     font-family: var(--sans);
@@ -291,7 +291,7 @@ body {
 }
 
 /* ========== SECTIONS GENERAL ========== */
-.container { max-width: 1200px; margin: 0 auto; padding: 0 2rem; }
+.container { max-width: 1400px; margin: 0 auto; padding: 0 2rem; }
 section { padding: clamp(4rem, 8vw, 7rem) 0; }
 .section-label {
     font-size: 0.75rem;

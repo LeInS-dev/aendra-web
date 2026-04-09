@@ -120,28 +120,28 @@ gsap.to('.scroll-line', { scaleY: 0.5, duration: 1.2, repeat: -1, yoyo: true, ea
 /* ========== ABOUT ========== */
 gsap.from('.about-image-wrap', {
     x: -80, opacity: 0, duration: 1, ease: 'power3.out',
-    scrollTrigger: { trigger: '.about', start: 'top 70%' }
+    scrollTrigger: { once: true, trigger: '.about', start: 'top 70%' }
 });
 gsap.from('.about-image-accent', {
     scale: 0, opacity: 0, duration: 0.8, ease: 'power2.out',
-    scrollTrigger: { trigger: '.about', start: 'top 65%' }
+    scrollTrigger: { once: true, trigger: '.about', start: 'top 65%' }
 });
 gsap.from('.about-text h2, .about-text p, .about-text .founder-sig', {
     y: 30, opacity: 0, stagger: 0.12, duration: 0.7, ease: 'power2.out',
-    scrollTrigger: { trigger: '.about-text', start: 'top 75%' }
+    scrollTrigger: { once: true, trigger: '.about-text', start: 'top 75%' }
 });
 
 /* ========== GALLERY ========== */
 gsap.from('.gallery-item', {
     scale: 0.85, opacity: 0, duration: 0.6, ease: 'power2.out',
     stagger: { amount: 0.6, from: 'random' },
-    scrollTrigger: { trigger: '.gallery-grid', start: 'top 75%' }
+    scrollTrigger: { once: true, trigger: '.gallery-grid', start: 'top 75%' }
 });
 
 /* ========== KITS ========== */
 gsap.from('.kit-card', {
     y: 60, opacity: 0, stagger: 0.1, duration: 0.7, ease: 'power2.out',
-    scrollTrigger: { trigger: '.kits-grid', start: 'top 75%' }
+    scrollTrigger: { once: true, trigger: '.kits-grid', start: 'top 75%' }
 });
 
 /* Kit hover */
@@ -153,12 +153,6 @@ document.querySelectorAll('.kit-card').forEach(card => {
 });
 
 /* ========== PRODUCTS ========== */
-gsap.from('.product-card', {
-    y: 40, opacity: 0, stagger: { amount: 0.5, grid: [2,3], from: 'start' },
-    duration: 0.6, ease: 'power2.out',
-    scrollTrigger: { trigger: '.productos-grid', start: 'top 75%' }
-});
-
 document.querySelectorAll('.product-card').forEach(card => {
     const tl = gsap.timeline({ paused: true });
     tl.to(card, { y: -6, background: 'white', boxShadow: '0 12px 30px rgba(61,31,13,0.12)', duration: 0.3 });
@@ -169,7 +163,7 @@ document.querySelectorAll('.product-card').forEach(card => {
 /* ========== SERVICES ========== */
 gsap.from('.service-card', {
     y: 50, opacity: 0, stagger: 0.15, duration: 0.7, ease: 'power2.out',
-    scrollTrigger: { trigger: '.servicios-grid', start: 'top 75%' }
+    scrollTrigger: { once: true, trigger: '.servicios-grid', start: 'top 75%' }
 });
 
 /* Service icon pulse */
@@ -181,7 +175,7 @@ gsap.to('.service-icon', {
 /* ========== HOW IT WORKS ========== */
 gsap.from('.step', {
     y: 40, opacity: 0, stagger: 0.2, duration: 0.7, ease: 'power2.out',
-    scrollTrigger: { trigger: '.steps-container', start: 'top 75%' }
+    scrollTrigger: { once: true, trigger: '.steps-container', start: 'top 75%' }
 });
 
 /* Progress line */
@@ -193,21 +187,21 @@ gsap.to('.steps-line-fill', {
 /* ========== TESTIMONIALS ========== */
 gsap.from('.testimonial', {
     x: -50, opacity: 0, stagger: 0.15, duration: 0.8, ease: 'power3.out',
-    scrollTrigger: { trigger: '.testimonios-grid', start: 'top 75%' }
+    scrollTrigger: { once: true, trigger: '.testimonios-grid', start: 'top 75%' }
 });
 gsap.from('.testimonial-quote', {
     scale: 0, rotation: -20, opacity: 0, stagger: 0.15, duration: 0.6, ease: 'back.out(1.7)',
-    scrollTrigger: { trigger: '.testimonios-grid', start: 'top 75%' }
+    scrollTrigger: { once: true, trigger: '.testimonios-grid', start: 'top 75%' }
 });
 
 /* ========== CONTACT ========== */
 gsap.from('.contacto-heading', {
     y: 30, opacity: 0, duration: 0.8, ease: 'power2.out',
-    scrollTrigger: { trigger: '.contacto', start: 'top 70%' }
+    scrollTrigger: { once: true, trigger: '.contacto', start: 'top 70%' }
 });
 gsap.from('.contact-btn', {
     scale: 0.8, opacity: 0, stagger: 0.12, duration: 0.6, ease: 'back.out(1.7)',
-    scrollTrigger: { trigger: '.contact-btns', start: 'top 80%' }
+    scrollTrigger: { once: true, trigger: '.contact-btns', start: 'top 80%' }
 });
 
 /* WhatsApp button pulse */
@@ -227,14 +221,14 @@ ScrollTrigger.create({
 document.querySelectorAll('.section-label, .section-title, .section-subtitle, .divider').forEach(el => {
     gsap.from(el, {
         y: 20, opacity: 0, duration: 0.6, ease: 'power2.out',
-        scrollTrigger: { trigger: el, start: 'top 85%' }
+        scrollTrigger: { once: true, trigger: el, start: 'top 85%' }
     });
 });
 
 /* ========== FOOTER ========== */
 gsap.from('footer', {
     opacity: 0, duration: 0.6,
-    scrollTrigger: { trigger: 'footer', start: 'top 95%' }
+    scrollTrigger: { once: true, trigger: 'footer', start: 'top 95%' }
 });
 
 /* ========== ACTIVE NAV LINK ========== */
@@ -253,6 +247,9 @@ function setActiveNav(id) {
         a.classList.toggle('active', a.getAttribute('href') === '#' + id);
     });
 }
+
+/* Force-complete any scroll animations already past their trigger on load */
+window.addEventListener('load', () => ScrollTrigger.refresh());
 
 } /* end if !prefersReducedMotion */
 
