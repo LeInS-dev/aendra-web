@@ -35,6 +35,7 @@ Spanish-language interior design & home mood brand for **Peru**. All content is 
 - **GSAP 3.12.5** via CDN (cdnjs) with SRI hashes — gsap.min.js, ScrollTrigger.min.js, ScrollToPlugin.min.js
 - **Supabase JS v2.47.2** via CDN (jsdelivr, pinned exact version) with SRI hash
 - Script load order in index.html: Supabase CDN → supabase-client.js → GSAP CDNs → cart.js → auth.js → checkout.js → main.js
+- `js/waitlist.js` exists on disk but is **NOT loaded** — waitlist feature was removed
 
 ## File structure
 
@@ -247,13 +248,65 @@ Pattern for new Temu-sourced categories:
 5. Also add a category card in `#productos` section (with real carousel images, `onclick` navigates to section)
 6. Deploy + push (see Deployment section)
 
+## Pending: Domain Setup & SEO Activation
+
+**CRITICAL**: SEO implementation is complete but USELESS until domain is configured. Google does NOT index sites on raw IPs.
+
+### Current state:
+- Site: `http://167.71.127.223:8080` (raw IP — NOT indexed by Google)
+- SEO files (robots.txt, sitemap.xml, schema markup) all point to `https://aendra.com/` (does NOT exist yet)
+
+### User action required:
+1. **Purchase domain** (recommend aendra.pe for Peru SEO, or aendra.com)
+2. **Point DNS A record** to `167.71.127.223`
+3. **Provide Claude with**:
+   - Domain name purchased
+   - SSH access to VPS (root@167.71.127.223)
+   - Email for Let's Encrypt SSL certificate
+
+### Once domain is active, Claude will:
+1. Configure nginx for new domain (HTTP → HTTPS redirect)
+2. Install Let's Encrypt SSL certificate (free)
+3. Update ALL SEO files with real domain:
+   - `robots.txt` → `https://DOMAIN.COM/sitemap.xml`
+   - `sitemap.xml` → all URLs to `https://DOMAIN.COM/...`
+   - `index.html` → canonical tag, og:url, schema markup
+4. Deploy updated files to VPS
+5. Verify SSL and HTTPS redirect
+
+### After nginx + SSL setup:
+1. Submit sitemap to Google Search Console: `https://DOMAIN.COM/sitemap.xml`
+2. Request indexing for homepage
+3. Monitor with `site:DOMAIN.COM` search
+
+### Files created (awaiting domain):
+- `robots.txt` — crawler rules
+- `sitemap.xml` — 6 pages listed with priorities
+- `assets/images/favicon.svg` — brand icon
+- `assets/images/og-image.svg` — social media preview (placeholder)
+
+## Business model: reseller intermediaria
+
+Los productos son de Temu (u otras tiendas). AENDRA actúa como intermediaria:
+
+**Flujo operativo cuando entra un pedido:**
+1. Cliente llena checkout → pedido guardado en Supabase (`pedidos` + `pedido_items`)
+2. Alejandra recibe notificación (WhatsApp o email)
+3. Alejandra cobra al cliente (Yape / Plin / transferencia)
+4. Alejandra compra el producto en Temu **con la dirección del cliente** (dropshipping directo) o a su dirección propia y reempaca con branding AENDRA
+5. Temu / Alejandra envía al cliente
+6. Alejandra actualiza `status` del pedido en Supabase Dashboard
+
+**Precio AENDRA** = precio de venta Temu + S/15 de margen
+
 ## Pending integrations
 
-- **Culqi** payment gateway (Peru) — awaiting Alejandra's API keys
-  - Replace `processPayment()` body in checkout.js with real Culqi tokenization
-  - Re-enable card fields: remove `el.disabled = true` block in `init()`
-- **Supabase** dynamic product loading — DB exists but products are currently static HTML
-- **Instagram** page (@aendra_interiormood) — Alejandra creates content manually
+- **Cobro real**: integrar Culqi (Peru) o mostrar Yape/Plin al confirmar pedido
+  - Culqi: replace `processPayment()` en checkout.js + re-enable card fields en `init()`
+- **Notificación automática** al entrar un pedido: email a Alejandra vía Supabase Edge Function o webhook
+- **Panel de admin** simple para ver/gestionar pedidos sin entrar a Supabase Dashboard
+- **Supabase** dynamic product loading — DB existe pero productos son HTML estático
+- **Instagram** page (@aendra_interiormood) — Alejandra crea contenido manualmente
 
 ## Deployment
 
