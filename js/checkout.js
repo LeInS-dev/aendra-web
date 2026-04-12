@@ -10,12 +10,12 @@ const Checkout = (() => {
     const session = sb.auth.getSession ? null : null; // checked async below
     sb.auth.getSession().then(({ data: { session } }) => {
       if (!session) {
-        showToast('Inicia sesion para continuar con tu compra 🔐');
+        showToast('Inicia sesión para continuar con tu compra 🔐');
         Auth.open('login');
         return;
       }
       if (Cart.count() === 0) {
-        showToast('Tu carrito esta vacio');
+        showToast('Tu carrito está vacío');
         return;
       }
       document.getElementById('checkout-modal').classList.add('open');
@@ -127,6 +127,21 @@ const Checkout = (() => {
     document.getElementById('checkout-overlay')?.addEventListener('click', close);
     document.getElementById('checkout-close-btn')?.addEventListener('click', close);
 
+    // Inject demo notice above payment form fields
+    const payFields = document.getElementById('payment-form-fields');
+    if (payFields && !document.getElementById('payment-demo-notice')) {
+      const notice = document.createElement('div');
+      notice.id = 'payment-demo-notice';
+      notice.style.cssText = 'background:#fff8e1;border:1px solid #f0c040;border-radius:4px;padding:0.8rem 1rem;margin-bottom:1rem;font-size:0.85rem;color:#6b4f00;';
+      notice.innerHTML = '<strong>⚠ Modo Demo</strong> — El pago es simulado. No se realizará ningún cobro real. Culqi se activará próximamente.';
+      payFields.insertBefore(notice, payFields.firstChild);
+      // Disable card fields until Culqi is integrated
+      ['card-number', 'card-expiry', 'card-cvv', 'card-name'].forEach(id => {
+        const el = document.getElementById(id);
+        if (el) { el.disabled = true; el.placeholder = 'Demo — no requerido'; }
+      });
+    }
+
     // Card formatting
     document.getElementById('card-number')?.addEventListener('input', e => formatCard(e.target));
     document.getElementById('card-expiry')?.addEventListener('input', e => formatExpiry(e.target));
@@ -157,11 +172,11 @@ const Checkout = (() => {
       document.getElementById('payment-form-fields').style.display = 'none';
 
       const shipping = {
-        name:    document.getElementById('shipping-name').value,
-        phone:   document.getElementById('shipping-phone').value,
-        address: document.getElementById('shipping-address').value,
-        city:    document.getElementById('shipping-city').value,
-        district: document.getElementById('shipping-district').value
+        name:     document.getElementById('shipping-name').value.trim().substring(0, 100),
+        phone:    document.getElementById('shipping-phone').value.replace(/[^\d\s\+\-]/g, '').trim().substring(0, 20),
+        address:  document.getElementById('shipping-address').value.trim().substring(0, 200),
+        city:     document.getElementById('shipping-city').value.trim().substring(0, 50),
+        district: document.getElementById('shipping-district').value.trim().substring(0, 50)
       };
 
       const card = {
@@ -187,7 +202,7 @@ const Checkout = (() => {
     // Done button
     document.getElementById('btn-checkout-done')?.addEventListener('click', () => {
       close();
-      showToast('Pedido confirmado. Alejandra se contactara pronto 🤍');
+      showToast('Pedido confirmado. Alejandra se contactará pronto 🤍');
     });
   }
 

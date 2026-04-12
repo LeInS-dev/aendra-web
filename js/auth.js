@@ -117,9 +117,7 @@ const Auth = (() => {
         close();
         showToast('Bienvenida de vuelta 🤍');
       } catch (err) {
-        setError('login', err.message === 'Invalid login credentials'
-          ? 'Email o contraseña incorrectos.'
-          : err.message);
+        setError('login', 'Email o contraseña incorrectos. Intenta de nuevo.');
       } finally {
         setLoading(btn, false);
       }
@@ -134,8 +132,8 @@ const Auth = (() => {
       const pass  = e.target.password.value;
       const phone = e.target.phone.value.trim();
 
-      if (pass.length < 6) {
-        setError('register', 'La contraseña debe tener al menos 6 caracteres.');
+      if (pass.length < 8) {
+        setError('register', 'La contraseña debe tener al menos 8 caracteres.');
         return;
       }
       setLoading(btn, true);
@@ -144,7 +142,7 @@ const Auth = (() => {
         close();
         showToast('Cuenta creada. Revisa tu email para confirmar 📩');
       } catch (err) {
-        setError('register', err.message);
+        setError('register', 'No se pudo crear la cuenta. Verifica tus datos e intenta de nuevo.');
       } finally {
         setLoading(btn, false);
       }
@@ -153,7 +151,7 @@ const Auth = (() => {
     // logout btn
     document.getElementById('nav-logout-btn')?.addEventListener('click', async () => {
       await logout();
-      showToast('Sesion cerrada');
+      showToast('Sesión cerrada');
     });
 
     // Check session on load

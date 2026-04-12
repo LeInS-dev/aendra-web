@@ -27,30 +27,30 @@ Spanish-language interior design & home mood brand for **Peru**. All content is 
   - `pedido_items` — pedido_id FK, tipo, item_name, item_slug, item_price, quantity, image_url
   - `testimonios` (3 rows) — Lima, Arequipa, Cusco
 - RLS enabled: public read on active/approved rows, public insert on clientes/pedidos/pedido_items
+- Anon key in `js/supabase-client.js` is intentionally public (Supabase by design) — protection is via RLS
 
 ## Tech stack
 
 - **Pure HTML/CSS/JS** — no build step, no framework, no bundler
-- **GSAP 3.12.5** via CDN: `https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/`
-  - gsap.min.js, ScrollTrigger.min.js, ScrollToPlugin.min.js
-- **Supabase JS v2** via CDN: `https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2`
+- **GSAP 3.12.5** via CDN (cdnjs) with SRI hashes — gsap.min.js, ScrollTrigger.min.js, ScrollToPlugin.min.js
+- **Supabase JS v2.47.2** via CDN (jsdelivr, pinned exact version) with SRI hash
 - Script load order in index.html: Supabase CDN → supabase-client.js → GSAP CDNs → cart.js → auth.js → checkout.js → main.js
 
 ## File structure
 
 ```
 REINA/
-├── index.html              ← Main landing page (~1900+ lines)
+├── index.html              ← Main landing page (~2000+ lines)
 ├── css/
-│   └── styles.css          ← All styles (~950+ lines)
+│   └── styles.css          ← All styles (~1000+ lines)
 ├── js/
 │   ├── supabase-client.js  ← Supabase init, exports global `sb`
 │   ├── auth.js             ← Auth IIFE module (login/register/logout)
-│   ├── cart.js             ← Cart IIFE module (localStorage)
-│   ├── checkout.js         ← Checkout IIFE module (3-step, Culqi-ready)
+│   ├── cart.js             ← Cart IIFE module (localStorage, XSS-safe DOM methods)
+│   ├── checkout.js         ← Checkout IIFE module (3-step, Culqi-ready, demo mode)
 │   └── main.js             ← GSAP animations, cursor, particles
 ├── assets/                 ← Static assets
-├── AENDRA_Catalogo_Productos.html   ← Print-friendly catalog
+├── AENDRA_Catalogo_Productos.html
 ├── AENDRA_Estrategia_Crecimiento.html
 ├── AENDRA_Guion_Reels.html
 ├── AENDRA_Templates_Instagram.html
@@ -65,12 +65,12 @@ REINA/
 | Hero | `#inicio` | 100vh, custom gold cursor, floating particles, parallax glows |
 | About | `#nosotros` | Alejandra's story — Arquitecta de Interiores, Unsplash image |
 | Gallery Mood | `#galeria` | 7 Unsplash images, masonry-style pop-in |
-| Kits | `#kits` | 5 kits with S/ prices, Unsplash images, WhatsApp + Add to Cart CTAs |
-| Productos | `#productos` | 6 individual product categories with S/ prices |
-| Fundas | `#fundas` | 8 funda de cojín products — real Temu images (kwcdn.com) |
-| Alfombras | `#alfombras` | 5 alfombra products — real Temu images |
-| Velas | `#velas` | 6 vela products — real Temu images |
-| Adornos | `#adornos` | 2 adornos para sala — real Temu images |
+| Kits | `#kits` | 5 kits — **2×2 collage of real product photos** per kit, WhatsApp + Cart CTAs |
+| Productos | `#productos` | 6 category cards with **photo carousels** — click navigates to section or opens WA |
+| Fundas | `#fundas` | 8 funda de cojín products — real Temu images, 3-image carousel per card |
+| Alfombras | `#alfombras` | 5 alfombra products — real Temu images, 3-image carousel per card |
+| Velas | `#velas` | 6 vela products — real Temu images, 3-image carousel per card |
+| Adornos | `#adornos` | 2 adornos para sala — real Temu images, 3-image carousel per card |
 | Servicios | `#servicios` | 3 services: S/25, S/40, S/15 |
 | Cómo Funciona | `#como-funciona` | 3 steps + progress line scrub |
 | Testimonios | `#testimonios` | Lima, Arequipa, Cusco |
@@ -81,21 +81,21 @@ REINA/
 
 Temu-sourced products: AENDRA price = Temu sale price + S/15
 
-### Kits
-- Kit Mood Cozy — S/35
-- Kit Gift Mood — S/45
-- Kit Japandi Edit — S/75
-- Kit Sala Aesthetic — S/90
-- Kit Cuarto Dream — S/150 (badge: "Más Popular")
+### Kits (each has a 2×2 collage of 4 real product photos)
+- Kit Mood Cozy — S/35 (vela burbujas + funda chenilla beige + vela torsionada + funda lino)
+- Kit Gift Mood — S/45 (vela escultorica + funda felpa jacquard + vela esfericas + funda boho)
+- Kit Japandi Edit — S/75 (funda chenilla vintage + vela hexagonales + funda lino + vela ondas)
+- Kit Sala Aesthetic — S/90 (alfombra vintage + funda rayas boho + alfombra floral + funda diamantes)
+- Kit Cuarto Dream — S/150 (alfombra terciopelo + vela escultorica + funda felpa + adorno elefantes) — badge "Mas Popular"
 
-### Fundas de Cojín (8 products, S/28–S/56)
-Real Temu images from img.kwcdn.com
+### Fundas de Cojín (7 products, S/43–S/71)
+Real Temu images from img.kwcdn.com — 3-image carousel per card
 
 ### Alfombras (5 products, S/63–S/107)
-Real Temu images from img.kwcdn.com
+Real Temu images from img.kwcdn.com — 3-image carousel per card
 
 ### Velas (6 products, S/33–S/62)
-Real Temu images from img.kwcdn.com
+Real Temu images from img.kwcdn.com — 3-image carousel per card
 
 ### Adornos para la Sala (2 products)
 - Figuras Elefantes Minimalistas — S/101
@@ -111,10 +111,14 @@ Real Temu images from img.kwcdn.com
 - Cart stored in `localStorage` key `aendra_cart`
 - Item shape: `{ tipo, item_name, item_slug, item_price, quantity, image_url }`
 - Cart sidebar opens on add + nav cart button
+- **`renderSidebar()` uses DOM methods only** (createElement + textContent) — never innerHTML with user data
+- Image URLs validated with `new URL()` before setting as CSS background
+- Max quantity per item: 99
 - Checkout requires Supabase session (redirects to login if not authenticated)
-- 3-step checkout: Shipping info → Payment (simulated) → Confirmation
+- 3-step checkout: Shipping info → Payment (DEMO mode) → Confirmation
+- **Payment is fully simulated** — card fields are disabled with "Modo Demo" notice
 - On success: inserts into `pedidos` + `pedido_items` tables, clears cart
-- **Culqi activation**: replace only the `processPayment()` function body in checkout.js
+- **Culqi activation**: replace `processPayment()` body + re-enable card fields in `init()`
 
 ## Auth (js/auth.js)
 
@@ -122,6 +126,8 @@ Real Temu images from img.kwcdn.com
 - On register: creates auth user + inserts row into `clientes` table
 - Navbar shows user's first name when logged in (fetched from `clientes`)
 - `Auth.open('login')` / `Auth.open('register')` — call from anywhere
+- Password minimum: **8 characters**
+- Error messages are generic — never expose raw Supabase error text to users
 
 ## Brand design system
 
@@ -142,29 +148,85 @@ Typography:
 ## CSS conventions (css/styles.css)
 
 - Mobile-first, breakpoints: 480px, 768px, 1024px, 1440px
-- `.fundas-grid` — 4-col → 3 → 2 → 1 responsive (reused for all product grids)
-- `.funda-card`, `.funda-img`, `.funda-body`, `.funda-price`, `.funda-btn` — product card classes
+- `.container { max-width: 1600px; padding: 0 3rem; }` — full-width layout
+- `.fundas-grid` — **3-col** → 2 → 2 → 1 responsive (reused for ALL product grids including `#productos`)
+- `.funda-card` — product card with `.card-gallery` carousel on top + `.funda-body` below
+- `.card-gallery { height: 280px; }` — 3-image carousel with prev/next arrows + dot indicators
+- `.kit-collage` — 2×2 CSS grid of 4 real product photos (replaces single Unsplash image)
+- `.kit-collage-img` — individual cell, `background-size: cover`
 - `.catalogo-section` — generic section wrapper for product catalogs
 - `.bg-white` / `.bg-cream` — background helpers for alternating sections
-- `.btn-add-cart` — gold cart button used across all product sections
+- `.btn-add-cart` / `.funda-btn` — cart buttons
+
+## Carousel system (js/main.js → initGalleries())
+
+- Auto-advances every 4s, pauses on hover
+- Touch/swipe support
+- Arrow + dot navigation with `stopPropagation()` (prevents triggering card click)
+- Used in: `#fundas`, `#alfombras`, `#velas`, `#adornos`, `#productos` (category cards)
+
+## Kit collage pattern
+
+Each kit card uses `.kit-collage` instead of a single `.kit-image`:
+```html
+<div class="kit-collage">
+    <div class="kit-collage-img" style="background-image:url('img1')"></div>
+    <div class="kit-collage-img" style="background-image:url('img2')"></div>
+    <div class="kit-collage-img" style="background-image:url('img3')"></div>
+    <div class="kit-collage-img" style="background-image:url('img4')"></div>
+</div>
+```
 
 ## Animation conventions (GSAP)
 
 - Register plugins: `gsap.registerPlugin(ScrollTrigger, ScrollToPlugin)`
 - Load CDNs before `</body>` (no `defer` — scripts need DOM)
-- Use `gsap.from()` so elements are visible without JS
+- Use `gsap.from()` with `once: true` on ScrollTrigger so elements are visible without JS
 - `prefers-reduced-motion` check wraps all animations
 - Custom gold cursor (`.cursor-dot`, `.cursor-ring`) — desktop only
-- All scroll animations use `ScrollTrigger`
+- `window.addEventListener('load', () => ScrollTrigger.refresh())` ensures correct positions
+
+## Security implementation
+
+All the following are **already implemented** — do not revert:
+
+### nginx VPS (`/etc/nginx/sites-enabled/aendra`)
+```nginx
+add_header X-Content-Type-Options "nosniff" always;
+add_header X-Frame-Options "SAMEORIGIN" always;
+add_header Referrer-Policy "strict-origin-when-cross-origin" always;
+add_header Content-Security-Policy "default-src 'self'; script-src 'self' https://cdn.jsdelivr.net https://cdnjs.cloudflare.com 'unsafe-inline'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; img-src 'self' https: data:; font-src 'self' https://fonts.gstatic.com; connect-src 'self' https://ffwuvaifwqjpkntfrppm.supabase.co wss://ffwuvaifwqjpkntfrppm.supabase.co; frame-ancestors 'none';" always;
+```
+
+### index.html — CDN scripts with SRI (pinned versions)
+- Supabase `@2.47.2` with sha384 integrity hash
+- GSAP 3.12.5 (gsap, ScrollTrigger, ScrollToPlugin) with sha384 integrity hashes
+
+### js/cart.js — XSS-safe rendering
+- `renderSidebar()` uses `createElement` + `textContent` only
+- `image_url` validated with `new URL()` — `javascript:` protocol blocked
+- Quantity capped at 99
+
+### js/auth.js — Error hardening
+- Generic error messages only (no Supabase internals exposed)
+- Password minimum: 8 characters
+
+### js/checkout.js — Demo mode + input sanitization
+- Card fields disabled with "⚠ Modo Demo" banner
+- Shipping fields sanitized (trim, substring, phone regex) before Supabase insert
 
 ## Key selectors
 
 - `.kit-card` — 5 kit cards (data-kit, data-price attributes)
-- `.product-card` — all individual product cards (kits, fundas, alfombras, velas, adornos)
+- `.kit-collage` — 2×2 photo collage inside each kit card
+- `.funda-card` — all product cards (fundas, alfombras, velas, adornos, category cards)
+- `.card-gallery` — carousel container (height: 280px)
+- `.gallery-slides`, `.gallery-slide`, `.gallery-arrow`, `.gallery-dot` — carousel internals
 - `.gallery-item` — mood gallery items
 - `.floating-wa` — fixed WhatsApp button bottom-right
 - `#cart-badge` — cart item count bubble on nav
 - `#auth-modal`, `#cart-sidebar`, `#checkout-modal` — modal/sidebar overlays
+- `#payment-demo-notice` — injected by checkout.js init()
 
 ## WhatsApp integration
 
@@ -179,16 +241,17 @@ function openWhatsApp(product, price) {
 
 Pattern for new Temu-sourced categories:
 1. Navigate to each Temu URL in browser, extract `top_gallery_url` param for image
-2. Run JS in browser console to get sale price: `[...document.querySelectorAll('*')].filter(el => el.children.length === 0 && el.textContent.match(/S\/\s*\d+/)).map(el => el.textContent.trim()).slice(0,6)`
-3. AENDRA price = Temu sale price + S/15 (round to nearest integer)
-4. Add `<section class="catalogo-section [bg-white]" id="CATEGORY">` after last product section, before `#servicios`
-5. Add to navbar: desktop `<li><a href="#CATEGORY">...</a></li>` + mobile menu `<a href="#CATEGORY">...</a>`
-6. Deploy: `scp index.html root@167.71.127.223:/var/www/aendra/`
-7. Push: `git add index.html && git commit && git push origin master`
+2. AENDRA price = Temu sale price + S/15 (round to nearest integer)
+3. Add section using `.catalogo-section` + `.fundas-grid` + `.funda-card` pattern with `.card-gallery` carousels
+4. Add to navbar: desktop `<li><a href="#CATEGORY">...</a></li>` + mobile menu `<a href="#CATEGORY">...</a>`
+5. Also add a category card in `#productos` section (with real carousel images, `onclick` navigates to section)
+6. Deploy + push (see Deployment section)
 
 ## Pending integrations
 
-- **Culqi** payment gateway (Peru) — awaiting Alejandra's API keys; replace `processPayment()` in checkout.js
+- **Culqi** payment gateway (Peru) — awaiting Alejandra's API keys
+  - Replace `processPayment()` body in checkout.js with real Culqi tokenization
+  - Re-enable card fields: remove `el.disabled = true` block in `init()`
 - **Supabase** dynamic product loading — DB exists but products are currently static HTML
 - **Instagram** page (@aendra_interiormood) — Alejandra creates content manually
 
@@ -205,6 +268,14 @@ scp -o StrictHostKeyChecking=no js/*.js root@167.71.127.223:/var/www/aendra/js/
 # Push to GitHub
 git add . && git commit -m "message" && git push origin master
 ```
+
+## CSS cache busting
+
+CSS and JS links use `?v=N` query strings. Current versions:
+- `css/styles.css?v=4`
+- `js/main.js?v=2`
+
+Increment version number when deploying CSS/JS changes to bust browser cache.
 
 ## No build/test commands
 

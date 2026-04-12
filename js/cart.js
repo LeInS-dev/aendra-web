@@ -37,7 +37,7 @@ const Cart = (() => {
     const items = get();
     const item = items.find(i => i.item_slug === slug);
     if (item) {
-      item.quantity = Math.max(1, qty);
+      item.quantity = Math.min(Math.max(1, qty), 99);
       save(items);
     }
   }
@@ -76,28 +76,76 @@ const Cart = (() => {
     const emptyEl = document.getElementById('cart-empty');
     const actionsEl = document.getElementById('cart-actions');
 
+    list.innerHTML = '';
+
     if (items.length === 0) {
-      list.innerHTML = '';
       emptyEl.style.display = 'block';
       actionsEl.style.display = 'none';
     } else {
       emptyEl.style.display = 'none';
       actionsEl.style.display = 'flex';
-      list.innerHTML = items.map(item => `
-        <div class="cart-item" data-slug="${item.item_slug}">
-          <div class="cart-item-img" style="background:url('${item.image_url || ''}') center/cover no-repeat; background-color:var(--beige);"></div>
-          <div class="cart-item-info">
-            <p class="cart-item-name">${item.item_name}</p>
-            <p class="cart-item-price">S/${item.item_price}</p>
-            <div class="cart-item-qty">
-              <button onclick="Cart.updateQty('${item.item_slug}', ${item.quantity - 1})">−</button>
-              <span>${item.quantity}</span>
-              <button onclick="Cart.updateQty('${item.item_slug}', ${item.quantity + 1})">+</button>
-            </div>
-          </div>
-          <button class="cart-item-remove" onclick="Cart.remove('${item.item_slug}')">✕</button>
-        </div>
-      `).join('');
+
+      items.forEach(item => {
+        const div = document.createElement('div');
+        div.className = 'cart-item';
+        div.dataset.slug = item.item_slug;
+
+        // Image — validate URL before setting as background
+        const imgDiv = document.createElement('div');
+        imgDiv.className = 'cart-item-img';
+        imgDiv.style.backgroundColor = 'var(--beige)';
+        try {
+          const url = new URL(item.image_url || '');
+          if (['https:', 'http:'].includes(url.protocol)) {
+            imgDiv.style.backgroundImage = `url('${url.href}')`;
+            imgDiv.style.backgroundSize = 'cover';
+            imgDiv.style.backgroundPosition = 'center';
+            imgDiv.style.backgroundRepeat = 'no-repeat';
+          }
+        } catch { /* invalid URL — skip background image */ }
+
+        // Info block
+        const infoDiv = document.createElement('div');
+        infoDiv.className = 'cart-item-info';
+
+        const nameEl = document.createElement('p');
+        nameEl.className = 'cart-item-name';
+        nameEl.textContent = item.item_name;
+
+        const priceEl = document.createElement('p');
+        priceEl.className = 'cart-item-price';
+        priceEl.textContent = `S/${item.item_price}`;
+
+        // Quantity controls
+        const qtyDiv = document.createElement('div');
+        qtyDiv.className = 'cart-item-qty';
+
+        const minusBtn = document.createElement('button');
+        minusBtn.type = 'button';
+        minusBtn.textContent = '−';
+        minusBtn.addEventListener('click', () => Cart.updateQty(item.item_slug, item.quantity - 1));
+
+        const qtySpan = document.createElement('span');
+        qtySpan.textContent = item.quantity;
+
+        const plusBtn = document.createElement('button');
+        plusBtn.type = 'button';
+        plusBtn.textContent = '+';
+        plusBtn.addEventListener('click', () => Cart.updateQty(item.item_slug, item.quantity + 1));
+
+        qtyDiv.append(minusBtn, qtySpan, plusBtn);
+        infoDiv.append(nameEl, priceEl, qtyDiv);
+
+        // Remove button
+        const removeBtn = document.createElement('button');
+        removeBtn.className = 'cart-item-remove';
+        removeBtn.type = 'button';
+        removeBtn.textContent = '✕';
+        removeBtn.addEventListener('click', () => Cart.remove(item.item_slug));
+
+        div.append(imgDiv, infoDiv, removeBtn);
+        list.appendChild(div);
+      });
     }
 
     if (totalEl) totalEl.textContent = `S/${total().toFixed(2)}`;
