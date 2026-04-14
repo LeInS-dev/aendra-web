@@ -2,6 +2,6 @@ User-agent: *
 Allow: /
 Disallow: /pages/
 
-Sitemap: https://aendra.lat/sitemap.xml
+Sitemap: https://aendra-web.vercel.app/sitemap.xml
 
 Crawl-delay: 1
