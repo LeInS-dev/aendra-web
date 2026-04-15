@@ -24,9 +24,10 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="css/styles.css?v=8">
+    <link rel="stylesheet" href="css/styles.css?v=9">
 
-    <!-- Google Analytics 4 -->
+    <!-- TODO: Google Analytics 4 — Reemplazar G-XXXXXXXXXX con ID real -->
+    <!--
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
     <script>
         window.dataLayer = window.dataLayer || [];
@@ -37,8 +38,10 @@
             'cookie_flags': 'SameSite=Lax;Secure'
         });
     </script>
+    -->
 
-    <!-- Meta Pixel -->
+    <!-- TODO: Meta Pixel — Reemplazar YOUR_PIXEL_ID con ID real -->
+    <!--
     <script>
         !function(f,b,e,v,n,t,s)
         {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
@@ -55,6 +58,7 @@
         <img height="1" width="1" style="display:none"
         src="https://www.facebook.com/tr?id=YOUR_PIXEL_ID&ev=PageView&noscript=1"/>
     </noscript>
+    -->
 
     <!-- Schema Markup JSON-LD -->
     <script type="application/ld+json">
@@ -382,9 +386,9 @@
     <div class="hero-overlay"></div>
     <div class="hero-content">
         <span class="hero-tag">Interior Mood · Perú</span>
-        <h1 class="hero-title">AENDRA<span class="visually-hidden"> — Decoración de Interiores Lima, Perú</span></h1>
+        <h1 class="hero-title">Decoración de Interiores<span class="hero-brand">AENDRA</span></h1>
         <p class="hero-tagline">Transforma Tu Espacio</p>
-        <p class="hero-sub">Decoración de interiores accesible con imagen premium.</p>
+        <p class="hero-sub">Kits curados · Premium accesible · Envíos a todo Perú</p>
         <div class="hero-btns">
             <a href="#kits" class="btn-primary">Ver Kits</a>
 <a href="#services" class="btn-outline">Agendar Consulta</a>
@@ -424,11 +428,12 @@
             <p class="about-sign">— Alejandra Vasquez, Fundadora</p>
         </div>
         <div class="about-visual reveal reveal-delay-2">
+            <!-- TODO: Reemplazar URLs Unsplash con fotos reales de Alejandra -->
             <div class="about-img-main">
-                <img src="https://images.unsplash.com/photo-1616486338812-3dadae4b4ace?w=600&h=500&fit=crop" alt="Interior design" style="width:100%;height:100%;object-fit:cover;">
+                <img src="https://images.unsplash.com/photo-1616486338812-3dadae4b4ace?w=600&h=500&fit=crop" alt="Sala decorada con texturas cálidas y tonos neutros — estilo AENDRA">
             </div>
             <div class="about-img-accent">
-                <img src="https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?w=400&h=250&fit=crop" alt="AENDRA mood" style="width:100%;height:100%;object-fit:cover;">
+                <img src="https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?w=400&h=250&fit=crop" alt="Ambiente de decoración interior con cojines y velas en tonos tierra">
             </div>
             <div class="about-stat">
                 <div class="stat-num">100+</div>
@@ -440,32 +445,33 @@
 
 <!-- Mood Gallery -->
 <section id="mood">
-    <div class="mood-header reveal" style="padding:0 60px;margin-bottom:50px;">
+    <div class="mood-header reveal" style="padding:0 8vw;margin-bottom:50px;">
         <p class="section-label">Inspiración</p>
         <h2 class="section-title">Nuestro <em>Mood</em></h2>
     </div>
-    <div class="mood-grid" style="padding:0 60px;">
-        <div class="mood-card reveal">
+    <!-- TODO: Reemplazar URLs Unsplash de galería con fotos reales de ambientes AENDRA -->
+    <div class="mood-grid" style="padding:0 8vw;">
+        <div class="mood-card reveal" role="img" aria-label="Ambiente con texturas cálidas y decoración neutral">
             <div class="mood-bg" style="background:url('https://images.unsplash.com/photo-1616486338812-3dadae4b4ace?w=800&h=600&fit=crop') center/cover;"></div>
             <div class="mood-overlay"></div>
             <div class="mood-label"><small>Ambiente</small>Texturas Cálidas</div>
         </div>
-        <div class="mood-card reveal reveal-delay-1">
+        <div class="mood-card reveal reveal-delay-1" role="img" aria-label="Espacio decorado con paleta de neutrales cozy">
             <div class="mood-bg" style="background:url('https://images.unsplash.com/photo-1586023492125-27b2c045efd7?w=600&h=400&fit=crop') center/cover;"></div>
             <div class="mood-overlay"></div>
             <div class="mood-label"><small>Estilo</small>Neutrales Cozy</div>
         </div>
-        <div class="mood-card reveal reveal-delay-2">
+        <div class="mood-card reveal reveal-delay-2" role="img" aria-label="Interior minimalista con elementos naturales">
             <div class="mood-bg" style="background:url('https://images.unsplash.com/photo-1615529151169-7b1ff50dc7f2?w=600&h=400&fit=crop') center/cover;"></div>
             <div class="mood-overlay"></div>
             <div class="mood-label"><small>Tendencia</small>Japandi Mood</div>
         </div>
-        <div class="mood-card reveal reveal-delay-3">
+        <div class="mood-card reveal reveal-delay-3" role="img" aria-label="Decoración en tonos tierra cálidos">
             <div class="mood-bg" style="background:url('https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?w=600&h=400&fit=crop') center/cover;"></div>
             <div class="mood-overlay"></div>
             <div class="mood-label"><small>Color</small>Tonos Tierra</div>
         </div>
-        <div class="mood-card reveal reveal-delay-4">
+        <div class="mood-card reveal reveal-delay-4" role="img" aria-label="Estilo de vida minimalista en decoración">
             <div class="mood-bg" style="background:url('https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=600&h=400&fit=crop') center/cover;"></div>
             <div class="mood-overlay"></div>
             <div class="mood-label"><small>Lifestyle</small>Minimalismo</div>
@@ -1340,11 +1346,11 @@
 
 <!-- Services -->
 <section id="services">
-    <div style="max-width:1200px;margin:0 auto;padding:100px 60px;">
+    <div class="container">
         <p class="section-label reveal">Servicios</p>
         <h2 class="section-title reveal">Asesoría <em>Personalizada</em></h2>
         <p class="section-sub reveal">Transforma tu espacio con la guía experta de Alejandra.</p>
-        <div class="kits-grid" style="margin-top:50px;">
+        <div class="services-grid">
             <div class="kit-card reveal">
                 <span class="kit-badge">Express</span>
                 <div class="kit-name">Mini Asesoría Express</div>
@@ -1390,90 +1396,88 @@
 
 <!-- Process -->
 <section id="process">
-    <div style="max-width:1200px;margin:0 auto;padding:100px 60px;">
+    <div class="container">
         <p class="section-label reveal">Proceso</p>
         <h2 class="section-title reveal">Cómo <em>Funciona</em></h2>
-        <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:40px;margin-top:60px;">
-            <div class="reveal" style="text-align:center;">
-                <div style="font-size:3rem;font-weight:300;color:var(--gold);margin-bottom:20px;font-family:'Cormorant Garamond',serif;">01</div>
-                <h3 style="font-size:1.3rem;margin-bottom:10px;color:var(--brown-dark);">Elige tu kit</h3>
-                <p style="color:var(--brown-medium);font-size:0.95rem;line-height:1.6;">Explora nuestros kits curados o arma tu selección personalizada con productos individuales.</p>
+        <div class="process-steps">
+            <div class="process-step reveal">
+                <div class="step-num">01</div>
+                <h3 class="step-title">Elige tu kit</h3>
+                <p class="step-desc">Explora nuestros kits curados o arma tu selección personalizada con productos individuales.</p>
             </div>
-            <div class="reveal reveal-delay-1" style="text-align:center;">
-                <div style="font-size:3rem;font-weight:300;color:var(--gold);margin-bottom:20px;font-family:'Cormorant Garamond',serif;">02</div>
-                <h3 style="font-size:1.3rem;margin-bottom:10px;color:var(--brown-dark);">Lo recibís en tu puerta</h3>
-                <p style="color:var(--brown-medium);font-size:0.95rem;line-height:1.6;">Enviamos a todo Perú con empaque premium. Tu pedido llega listo para transformar tu espacio.</p>
+            <div class="process-step reveal reveal-delay-1">
+                <div class="step-num">02</div>
+                <h3 class="step-title">Lo recibís en tu puerta</h3>
+                <p class="step-desc">Enviamos a todo Perú con empaque premium. Tu pedido llega listo para transformar tu espacio.</p>
             </div>
-            <div class="reveal reveal-delay-2" style="text-align:center;">
-                <div style="font-size:3rem;font-weight:300;color:var(--gold);margin-bottom:20px;font-family:'Cormorant Garamond',serif;">03</div>
-                <h3 style="font-size:1.3rem;margin-bottom:10px;color:var(--brown-dark);">Transforma tu espacio</h3>
-                <p style="color:var(--brown-medium);font-size:0.95rem;line-height:1.6;">Con nuestra guía de decoración incluida, convierte cada rincón en un reflejo de tu estilo personal.</p>
+            <div class="process-step reveal reveal-delay-2">
+                <div class="step-num">03</div>
+                <h3 class="step-title">Transforma tu espacio</h3>
+                <p class="step-desc">Con nuestra guía de decoración incluida, convierte cada rincón en un reflejo de tu estilo personal.</p>
             </div>
         </div>
+        <div class="progress-line"><div class="progress-fill"></div></div>
     </div>
 </section>
 
 <!-- Testimonials -->
 <section id="testimonials">
-    <div style="max-width:1200px;margin:0 auto;padding:100px 60px;">
+    <div class="container">
         <p class="section-label reveal">Testimonios</p>
         <h2 class="section-title reveal">Lo que dicen nuestras <em>clientas</em></h2>
-        <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:30px;margin-top:60px;">
-            <div class="reveal" style="background:var(--white);padding:40px;border-radius:16px;border:1px solid var(--beige);">
-                <div style="color:var(--gold);font-size:1.2rem;margin-bottom:15px;">★★★★★</div>
-                <p style="color:var(--brown-medium);font-size:0.95rem;line-height:1.7;margin-bottom:20px;">El Kit Cuarto Dream transformó completamente mi habitación. La calidad de cada pieza es increíble y la asesoría de Alejandra fue perfecta para elegir los colores correctos.</p>
-                <div>
-                    <strong style="color:var(--brown-dark);">Maria Fernandez</strong>
-                    <p style="color:var(--brown-medium);font-size:0.85rem;">Lima, Perú</p>
-                </div>
+        <div class="testimonials-grid">
+            <div class="testimonial-card reveal">
+                <div class="testimonial-quote">"</div>
+                <div class="stars">★★★★★</div>
+                <p class="testimonial-text">El Kit Cuarto Dream transformó completamente mi habitación. La calidad de cada pieza es increíble y la asesoría de Alejandra fue perfecta para elegir los colores correctos.</p>
+                <div class="testimonial-author">Maria Fernandez</div>
+                <div class="testimonial-location">Lima, Perú</div>
             </div>
-            <div class="reveal reveal-delay-1" style="background:var(--white);padding:40px;border-radius:16px;border:1px solid var(--beige);">
-                <div style="color:var(--gold);font-size:1.2rem;margin-bottom:15px;">★★★★★</div>
-                <p style="color:var(--brown-medium);font-size:0.95rem;line-height:1.7;margin-bottom:20px;">Compré el kit de S/90 y quedé encantada. Mi sala se ve completamente diferente. El empaque llegó impecable y cada detalle está cuidado. Súper recomendado.</p>
-                <div>
-                    <strong style="color:var(--brown-dark);">Sofia Rodriguez</strong>
-                    <p style="color:var(--brown-medium);font-size:0.85rem;">Arequipa, Perú</p>
-                </div>
+            <div class="testimonial-card reveal reveal-delay-1">
+                <div class="testimonial-quote">"</div>
+                <div class="stars">★★★★★</div>
+                <p class="testimonial-text">Compré el kit de S/90 y quedé encantada. Mi sala se ve completamente diferente. El empaque llegó impecable y cada detalle está cuidado.</p>
+                <div class="testimonial-author">Sofia Rodriguez</div>
+                <div class="testimonial-location">Arequipa, Perú</div>
             </div>
-            <div class="reveal reveal-delay-2" style="background:var(--white);padding:40px;border-radius:16px;border:1px solid var(--beige);">
-                <div style="color:var(--gold);font-size:1.2rem;margin-bottom:15px;">★★★★★</div>
-                <p style="color:var(--brown-medium);font-size:0.95rem;line-height:1.7;margin-bottom:20px;">Las velas y fundas que pedí son hermosas. La atención de Alejandra es 10/10 — me ayudó a elegir todo por WhatsApp. Llegó perfecto hasta Cusco.</p>
-                <div>
-                    <strong style="color:var(--brown-dark);">Lucia Martinez</strong>
-                    <p style="color:var(--brown-medium);font-size:0.85rem;">Cusco, Perú</p>
-                </div>
+            <div class="testimonial-card reveal reveal-delay-2">
+                <div class="testimonial-quote">"</div>
+                <div class="stars">★★★★★</div>
+                <p class="testimonial-text">Las velas y fundas que pedí son hermosas. La atención de Alejandra es 10/10 — me ayudó a elegir todo por WhatsApp. Llegó perfecto hasta Cusco.</p>
+                <div class="testimonial-author">Lucia Martinez</div>
+                <div class="testimonial-location">Cusco, Perú</div>
             </div>
         </div>
     </div>
 </section>
 
 <!-- Contact -->
-<section id="contact" style="background:var(--brown-dark);color:var(--cream);padding:100px 60px;">
-    <div style="max-width:1200px;margin:0 auto;text-align:center;">
-        <p class="section-label reveal" style="color:var(--gold);">Contacto</p>
-        <h2 class="section-title reveal" style="color:var(--white);">Hablemos de tu <em style="color:var(--gold);">espacio</em></h2>
+<section id="contacto">
+    <div class="container" style="text-align:center;">
+        <p class="section-label reveal">Contacto</p>
+        <h2 class="section-title reveal">Hablemos de tu <em>espacio</em></h2>
         <p class="section-sub reveal" style="color:rgba(255,255,255,0.7);max-width:600px;margin:0 auto 50px;">Estamos listas para ayudarte a transformar tu hogar. Escogemos el canal que prefieras.</p>
-        <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:30px;margin-bottom:50px;">
-            <div class="reveal" style="background:rgba(255,255,255,0.05);padding:40px 30px;border-radius:16px;border:1px solid rgba(255,255,255,0.1);">
-                <div style="font-size:2rem;margin-bottom:15px;">💬</div>
-                <h3 style="color:var(--white);margin-bottom:8px;">WhatsApp</h3>
-                <p style="color:rgba(255,255,255,0.6);font-size:0.9rem;">+51 965 104 352</p>
-                <a href="https://wa.me/51965104352" target="_blank" style="display:inline-block;margin-top:15px;color:var(--gold);text-decoration:none;font-size:0.9rem;">Enviar mensaje &rarr;</a>
+        <div class="contact-channels">
+            <div class="contact-channel reveal">
+                <div class="channel-icon">💬</div>
+                <div class="channel-name">WhatsApp</div>
+                <div class="channel-value"><a href="https://wa.me/51965104352" target="_blank">+51 965 104 352</a></div>
+                <a href="https://wa.me/51965104352" target="_blank" class="product-link" style="margin-top:15px;display:inline-block;">Enviar mensaje &rarr;</a>
             </div>
-            <div class="reveal reveal-delay-1" style="background:rgba(255,255,255,0.05);padding:40px 30px;border-radius:16px;border:1px solid rgba(255,255,255,0.1);">
-                <div style="font-size:2rem;margin-bottom:15px;">📸</div>
-                <h3 style="color:var(--white);margin-bottom:8px;">Instagram</h3>
-                <p style="color:rgba(255,255,255,0.6);font-size:0.9rem;">@aendra_interiormood</p>
-                <a href="https://instagram.com/aendra_interiormood" target="_blank" style="display:inline-block;margin-top:15px;color:var(--gold);text-decoration:none;font-size:0.9rem;">Seguirnos &rarr;</a>
+            <div class="contact-channel reveal reveal-delay-1">
+                <div class="channel-icon">📸</div>
+                <div class="channel-name">Instagram</div>
+                <div class="channel-value"><a href="https://instagram.com/aendra_interiormood" target="_blank">@aendra_interiormood</a></div>
+                <a href="https://instagram.com/aendra_interiormood" target="_blank" class="product-link" style="margin-top:15px;display:inline-block;">Seguirnos &rarr;</a>
             </div>
-            <div class="reveal reveal-delay-2" style="background:rgba(255,255,255,0.05);padding:40px 30px;border-radius:16px;border:1px solid rgba(255,255,255,0.1);">
-                <div style="font-size:2rem;margin-bottom:15px;">✉️</div>
-                <h3 style="color:var(--white);margin-bottom:8px;">Email</h3>
-                <p style="color:rgba(255,255,255,0.6);font-size:0.9rem;">hola@aendra.com</p>
-                <a href="mailto:hola@aendra.com" style="display:inline-block;margin-top:15px;color:var(--gold);text-decoration:none;font-size:0.9rem;">Escribirnos &rarr;</a>
+            <div class="contact-channel reveal reveal-delay-2">
+                <div class="channel-icon">✉️</div>
+                <div class="channel-name">Email</div>
+                <div class="channel-value"><a href="mailto:hola@aendra.com">hola@aendra.com</a></div>
+                <a href="mailto:hola@aendra.com" class="product-link" style="margin-top:15px;display:inline-block;">Escribirnos &rarr;</a>
             </div>
         </div>
-        <a href="https://wa.me/51965104352" target="_blank" class="btn-primary reveal" style="font-size:1.1rem;padding:18px 50px;">Agendar Consulta Gratis</a>
+        <a href="https://wa.me/51965104352" target="_blank" class="btn-primary reveal" style="margin-top:50px;">Agendar Consulta Gratis</a>
     </div>
 </section>
 
@@ -1648,11 +1652,12 @@ function orderKit(btn) {
 <script src="js/cart.js"></script>
 <script src="js/auth.js"></script>
 <script src="js/checkout.js"></script>
-<script src="js/main.js?v=3"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js" crossorigin="anonymous"></script>
+<script src="js/main.js?v=4"></script>
 <script>
 Auth.init();
 Cart.init();
-Waitlist.init();
 Checkout.init();
 </script>
 
