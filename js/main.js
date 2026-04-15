@@ -1,6 +1,6 @@
 /* ========================================
    AENDRA — Interior Mood by Alejandra Vasquez
-   Main JS v3.0 — GSAP ScrollTrigger + Premium Motion
+   Main JS — Vanilla (no GSAP) v2.0
    ======================================== */
 
 /* ========== WHATSAPP FUNCTIONS ========== */
@@ -15,26 +15,15 @@ function orderKit(btn) {
     openWhatsApp(name, price);
 }
 
-/* ========== REDUCED MOTION — DYNAMIC LISTENER ========== */
-const motionQuery = window.matchMedia('(prefers-reduced-motion: reduce)');
-let prefersReducedMotion = motionQuery.matches;
-motionQuery.addEventListener('change', () => {
-    prefersReducedMotion = motionQuery.matches;
-    if (prefersReducedMotion && animId) {
-        cancelAnimationFrame(animId);
-        animId = null;
-    }
-});
+/* ========== REDUCED MOTION CHECK ========== */
+const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
 /* ========== NAVBAR SCROLL BEHAVIOR ========== */
 const navbar = document.getElementById('navbar') || document.querySelector('nav');
 if (navbar) {
-    let lastScrollY = 0;
     window.addEventListener('scroll', () => {
-        const sy = window.scrollY;
-        navbar.classList.toggle('scrolled', sy > 80);
-        lastScrollY = sy;
-    }, { passive: true });
+        navbar.classList.toggle('scrolled', window.scrollY > 80);
+    });
 }
 
 /* ========== SMOOTH ANCHOR SCROLL ========== */
@@ -47,6 +36,7 @@ document.querySelectorAll('a[href^="#"]').forEach(link => {
             e.preventDefault();
             target.scrollIntoView({ behavior: 'smooth', block: 'start' });
 
+            // Close mobile menu if open
             const mm = document.querySelector('.mobile-menu');
             const hb = document.querySelector('.hamburger');
             if (mm && mm.classList.contains('open')) {
@@ -71,16 +61,11 @@ if (hamburger) {
     });
 }
 
-/* ========== HERO CANVAS ANIMATION — FPS CAPPED ========== */
+/* ========== HERO CANVAS ANIMATION ========== */
 const canvas = document.getElementById('heroCanvas');
-let animId = null;
-
 if (canvas && !prefersReducedMotion) {
     const ctx = canvas.getContext('2d');
-    let W, H, lines = [];
-    const TARGET_FPS = 30;
-    const FRAME_MS = 1000 / TARGET_FPS;
-    let lastFrame = 0;
+    let W, H, lines = [], animId;
 
     function initCanvas() {
         W = canvas.width = canvas.offsetWidth;
@@ -96,12 +81,7 @@ if (canvas && !prefersReducedMotion) {
         }
     }
 
-    function drawLines(timestamp) {
-        if (prefersReducedMotion) return;
-        animId = requestAnimationFrame(drawLines);
-        if (timestamp - lastFrame < FRAME_MS) return;
-        lastFrame = timestamp;
-
+    function drawLines() {
         ctx.clearRect(0, 0, W, H);
         lines.forEach(l => {
             l.x += l.vx; l.y += l.vy;
@@ -120,20 +100,20 @@ if (canvas && !prefersReducedMotion) {
             ctx.lineWidth = 1;
             ctx.stroke();
         });
+        animId = requestAnimationFrame(drawLines);
     }
 
     window.addEventListener('resize', () => {
-        if (animId) cancelAnimationFrame(animId);
+        cancelAnimationFrame(animId);
         initCanvas();
-        drawLines(0);
+        drawLines();
     });
     initCanvas();
-    drawLines(0);
+    drawLines();
 }
 
-/* ========== CUSTOM GOLD CURSOR (desktop + hover device only) ========== */
-const canHover = window.matchMedia('(hover: hover)').matches;
-if (window.innerWidth > 768 && !prefersReducedMotion && canHover) {
+/* ========== CUSTOM GOLD CURSOR (desktop only) ========== */
+if (window.innerWidth > 768 && !prefersReducedMotion) {
     const dot = document.querySelector('.cursor-dot');
     const ring = document.querySelector('.cursor-ring');
     if (dot && ring) {
@@ -143,15 +123,15 @@ if (window.innerWidth > 768 && !prefersReducedMotion && canHover) {
         window.addEventListener('mousemove', e => {
             mouseX = e.clientX;
             mouseY = e.clientY;
-        }, { passive: true });
+        });
 
+        // Fade in cursor elements after a brief delay
         setTimeout(() => {
             dot.style.opacity = '1';
             ring.style.opacity = '1';
         }, 500);
 
         function updateCursor() {
-            if (prefersReducedMotion) return;
             dotX += (mouseX - dotX) * 0.2;
             dotY += (mouseY - dotY) * 0.2;
             ringX += (mouseX - ringX) * 0.1;
@@ -162,6 +142,7 @@ if (window.innerWidth > 768 && !prefersReducedMotion && canHover) {
         }
         updateCursor();
 
+        // Scale ring on interactive elements
         document.querySelectorAll('a, button, .kit-card, .funda-card, .product-card, .mood-card').forEach(el => {
             el.addEventListener('mouseenter', () => {
                 ring.style.width = '60px';
@@ -193,7 +174,7 @@ const floatingWa = document.querySelector('.floating-wa');
 if (floatingWa) {
     window.addEventListener('scroll', () => {
         floatingWa.classList.toggle('visible', window.scrollY > window.innerHeight * 0.8);
-    }, { passive: true });
+    });
 }
 
 /* ========== ACTIVE NAV LINK HIGHLIGHT ========== */
@@ -213,105 +194,8 @@ if (navSections.length > 0) {
 }
 
 /* ========================================
-   GSAP SCROLL TRIGGERS — Premium Motion
-   ======================================== */
-if (typeof gsap !== 'undefined' && typeof ScrollTrigger !== 'undefined' && !prefersReducedMotion) {
-    gsap.registerPlugin(ScrollTrigger);
-
-    /* Parallax orbs on scroll */
-    document.querySelectorAll('.orb').forEach((orb, i) => {
-        const speed = [0.15, 0.1, 0.2][i] || 0.1;
-        gsap.to(orb, {
-            yPercent: -30 * speed * 100,
-            scrollTrigger: {
-                trigger: '#hero',
-                start: 'top top',
-                end: 'bottom top',
-                scrub: 1.5
-            }
-        });
-    });
-
-    /* Hero content parallax fade */
-    const heroContent = document.querySelector('.hero-content');
-    if (heroContent) {
-        gsap.to(heroContent, {
-            y: -60,
-            opacity: 0.3,
-            scrollTrigger: {
-                trigger: '#hero',
-                start: 'top top',
-                end: '80% top',
-                scrub: 1
-            }
-        });
-    }
-
-    /* Progress line scrub in "Como Funciona" */
-    const progressFill = document.querySelector('.progress-fill');
-    if (progressFill) {
-        gsap.to(progressFill, {
-            width: '100%',
-            scrollTrigger: {
-                trigger: '.progress-line',
-                start: 'top 80%',
-                end: 'top 30%',
-                scrub: 0.5
-            }
-        });
-    }
-
-    /* Staggered reveals for kit cards */
-    gsap.utils.toArray('.kit-card').forEach((card, i) => {
-        gsap.from(card, {
-            y: 40,
-            opacity: 0,
-            duration: 0.8,
-            delay: i * 0.1,
-            scrollTrigger: {
-                trigger: card,
-                start: 'top 85%',
-                toggleActions: 'play none none none'
-            }
-        });
-    });
-
-    /* Staggered reveals for product cards */
-    gsap.utils.toArray('.funda-card').forEach((card, i) => {
-        gsap.from(card, {
-            y: 30,
-            opacity: 0,
-            duration: 0.7,
-            delay: (i % 3) * 0.12,
-            scrollTrigger: {
-                trigger: card,
-                start: 'top 88%',
-                toggleActions: 'play none none none'
-            }
-        });
-    });
-
-    /* Marquee speed boost on scroll velocity */
-    const marqueeTrack = document.getElementById('marquee');
-    if (marqueeTrack) {
-        ScrollTrigger.create({
-            trigger: '.marquee-section',
-            start: 'top bottom',
-            end: 'bottom top',
-            onUpdate: (self) => {
-                const velocity = Math.abs(self.getVelocity()) / 1000;
-                const speed = Math.min(velocity * 0.5, 3);
-                marqueeTrack.style.animationDuration = Math.max(8, 20 - speed * 4) + 's';
-            }
-        });
-    }
-}
-
-/* ========================================
    PRODUCT IMAGE GALLERY / CAROUSEL
    ======================================== */
-const CAROUSEL_INTERVAL = 3800;
-
 function initGalleries() {
     document.querySelectorAll('.card-gallery').forEach(gallery => {
         const slides = gallery.querySelectorAll('.gallery-slide');
@@ -329,7 +213,7 @@ function initGalleries() {
         }
 
         function startAuto() {
-            timer = setInterval(() => goTo(current + 1), CAROUSEL_INTERVAL);
+            timer = setInterval(() => goTo(current + 1), 3800);
         }
         function stopAuto() {
             clearInterval(timer);
@@ -342,6 +226,7 @@ function initGalleries() {
         dots.forEach((dot, i) =>
             dot.addEventListener('click', e => { e.stopPropagation(); stopAuto(); goTo(i); startAuto(); }));
 
+        // Touch / swipe support
         let touchStartX = 0;
         gallery.addEventListener('touchstart', e => { touchStartX = e.touches[0].clientX; }, { passive: true });
         gallery.addEventListener('touchend', e => {
