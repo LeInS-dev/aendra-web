@@ -112,61 +112,26 @@ if (canvas && !prefersReducedMotion) {
     drawLines();
 }
 
-/* ========== CUSTOM GOLD CURSOR (desktop only) ========== */
-if (window.innerWidth > 768 && !prefersReducedMotion) {
-    const dot = document.querySelector('.cursor-dot');
-    const ring = document.querySelector('.cursor-ring');
-    if (dot && ring) {
-        let mouseX = 0, mouseY = 0;
-        let dotX = 0, dotY = 0, ringX = 0, ringY = 0;
-
-        window.addEventListener('mousemove', e => {
-            mouseX = e.clientX;
-            mouseY = e.clientY;
-        });
-
-        // Fade in cursor elements after a brief delay
-        setTimeout(() => {
-            dot.style.opacity = '1';
-            ring.style.opacity = '1';
-        }, 500);
-
-        function updateCursor() {
-            dotX += (mouseX - dotX) * 0.2;
-            dotY += (mouseY - dotY) * 0.2;
-            ringX += (mouseX - ringX) * 0.1;
-            ringY += (mouseY - ringY) * 0.1;
-            dot.style.transform = `translate(${dotX - 4}px, ${dotY - 4}px)`;
-            ring.style.transform = `translate(${ringX - 20}px, ${ringY - 20}px)`;
-            requestAnimationFrame(updateCursor);
-        }
-        updateCursor();
-
-        // Scale ring on interactive elements
-        document.querySelectorAll('a, button, .kit-card, .funda-card, .product-card, .mood-card').forEach(el => {
-            el.addEventListener('mouseenter', () => {
-                ring.style.width = '60px';
-                ring.style.height = '60px';
-                ring.style.opacity = '0.5';
-            });
-            el.addEventListener('mouseleave', () => {
-                ring.style.width = '40px';
-                ring.style.height = '40px';
-                ring.style.opacity = '1';
-            });
-        });
-    }
-}
+/* ========== CUSTOM CURSOR — REMOVED ==========
+   Removed per accessibility/performance guidelines.
+   Custom cursors degrade UX on touch devices and
+   interfere with system accessibility settings.
+   =============================================== */
 
 /* ========== INTERSECTION OBSERVER — .reveal ELEMENTS ========== */
 if (!prefersReducedMotion) {
     const reveals = document.querySelectorAll('.reveal');
     const revealObserver = new IntersectionObserver(entries => {
         entries.forEach(e => {
-            if (e.isIntersecting) e.target.classList.add('visible');
+            if (e.isIntersecting) {
+                e.target.classList.add('visible');
+                revealObserver.unobserve(e.target);
+            }
         });
-    }, { threshold: 0.1 });
+    }, { threshold: 0.08, rootMargin: '0px 0px -40px 0px' });
     reveals.forEach(r => revealObserver.observe(r));
+} else {
+    document.querySelectorAll('.reveal').forEach(r => r.classList.add('visible'));
 }
 
 /* ========== FLOATING WHATSAPP BUTTON ========== */

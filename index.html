@@ -24,7 +24,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="css/styles.css?v=8">
+    <link rel="stylesheet" href="css/styles.css?v=9">
 
     <!-- Google Analytics 4 -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
@@ -316,16 +316,11 @@
       ]
     }
     </script>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="css/styles.css?v=7">
 </head>
 <body>
 
-<!-- Custom Cursor -->
-<div class="cursor-dot"></div>
-<div class="cursor-ring"></div>
+<!-- Skip to content (accessibility) -->
+<a href="#main-content" class="skip-link">Saltar al contenido</a>
 
 <!-- Navbar -->
 <nav id="navbar">
@@ -342,7 +337,7 @@
         <li><a href="#services">Servicios</a></li>
     </ul>
     <div class="nav-auth-group">
-        <button id="nav-cart-btn" aria-label="Carrito">🛒<span id="cart-badge"></span></button>
+        <button id="nav-cart-btn" aria-label="Carrito"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/></svg><span id="cart-badge"></span></button>
         <button id="nav-login-btn" onclick="Auth.open('login')">Ingresar</button>
         <div class="user-dropdown">
             <button id="nav-user-btn"><span id="nav-user-name"></span> ▾</button>
@@ -371,6 +366,8 @@
     <a href="#services">Servicios</a>
     <a href="#contact">Contacto</a>
 </div>
+
+<main id="main-content">
 
 <!-- Hero -->
 <section id="hero" class="hero">
@@ -425,10 +422,10 @@
         </div>
         <div class="about-visual reveal reveal-delay-2">
             <div class="about-img-main">
-                <img src="https://images.unsplash.com/photo-1616486338812-3dadae4b4ace?w=600&h=500&fit=crop" alt="Interior design" style="width:100%;height:100%;object-fit:cover;">
+                <img src="https://picsum.photos/seed/aendra-interior1/600/500" alt="Interior design" style="width:100%;height:100%;object-fit:cover;">
             </div>
             <div class="about-img-accent">
-                <img src="https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?w=400&h=250&fit=crop" alt="AENDRA mood" style="width:100%;height:100%;object-fit:cover;">
+                <img src="https://picsum.photos/seed/aendra-mood1/400/250" alt="AENDRA mood" style="width:100%;height:100%;object-fit:cover;">
             </div>
             <div class="about-stat">
                 <div class="stat-num">100+</div>
@@ -440,33 +437,33 @@
 
 <!-- Mood Gallery -->
 <section id="mood">
-    <div class="mood-header reveal" style="padding:0 60px;margin-bottom:50px;">
-        <p class="section-label">Inspiración</p>
+    <div class="mood-header reveal">
+        <p class="section-label">Inspiracion</p>
         <h2 class="section-title">Nuestro <em>Mood</em></h2>
     </div>
-    <div class="mood-grid" style="padding:0 60px;">
+    <div class="mood-grid">
         <div class="mood-card reveal">
-            <div class="mood-bg" style="background:url('https://images.unsplash.com/photo-1616486338812-3dadae4b4ace?w=800&h=600&fit=crop') center/cover;"></div>
+            <div class="mood-bg" style="background:url('https://picsum.photos/seed/aendra-texture/800/600') center/cover;"></div>
             <div class="mood-overlay"></div>
             <div class="mood-label"><small>Ambiente</small>Texturas Cálidas</div>
         </div>
         <div class="mood-card reveal reveal-delay-1">
-            <div class="mood-bg" style="background:url('https://images.unsplash.com/photo-1586023492125-27b2c045efd7?w=600&h=400&fit=crop') center/cover;"></div>
+            <div class="mood-bg" style="background:url('https://picsum.photos/seed/aendra-neutral/600/400') center/cover;"></div>
             <div class="mood-overlay"></div>
             <div class="mood-label"><small>Estilo</small>Neutrales Cozy</div>
         </div>
         <div class="mood-card reveal reveal-delay-2">
-            <div class="mood-bg" style="background:url('https://images.unsplash.com/photo-1615529151169-7b1ff50dc7f2?w=600&h=400&fit=crop') center/cover;"></div>
+            <div class="mood-bg" style="background:url('https://picsum.photos/seed/aendra-japandi/600/400') center/cover;"></div>
             <div class="mood-overlay"></div>
             <div class="mood-label"><small>Tendencia</small>Japandi Mood</div>
         </div>
         <div class="mood-card reveal reveal-delay-3">
-            <div class="mood-bg" style="background:url('https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?w=600&h=400&fit=crop') center/cover;"></div>
+            <div class="mood-bg" style="background:url('https://picsum.photos/seed/aendra-earth/600/400') center/cover;"></div>
             <div class="mood-overlay"></div>
             <div class="mood-label"><small>Color</small>Tonos Tierra</div>
         </div>
         <div class="mood-card reveal reveal-delay-4">
-            <div class="mood-bg" style="background:url('https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=600&h=400&fit=crop') center/cover;"></div>
+            <div class="mood-bg" style="background:url('https://picsum.photos/seed/aendra-minimal/600/400') center/cover;"></div>
             <div class="mood-overlay"></div>
             <div class="mood-label"><small>Lifestyle</small>Minimalismo</div>
         </div>
@@ -476,7 +473,7 @@
 <!-- Kits -->
 <section id="kits" class="kits">
     <p class="section-label reveal">Colección</p>
-    <h2 class="section-title reveal" style="color:var(--white)">Nuestros <em style="color:var(--gold)">Kits</em></h2>
+    <h2 class="section-title reveal">Nuestros <em>Kits</em></h2>
     <div class="kits-grid">
 
         <!-- Kit 1: Mood Cozy -->
@@ -592,7 +589,7 @@
                 <div class="kit-collage-img" style="background-image:url('https://img.kwcdn.com/product/open/b28c9931f93042fe916979227f72dff2-goods.jpeg')"></div>
                 <div class="kit-collage-img" style="background-image:url('https://img.kwcdn.com/product/fancy/7592c7f2-beb2-45be-b526-552e9989e505.jpg')"></div>
             </div>
-            <span class="kit-badge">⭐ Mas Popular</span>
+            <span class="kit-badge">Mas Popular</span>
             <div class="kit-name">Cuarto Dream</div>
             <ul class="kit-items">
                 <li>Todo del Kit Cozy incluido</li>
@@ -727,9 +724,9 @@
         <div class="funda-card reveal" onclick="openWhatsApp('Cuadros Abstractos', 'desde S/18')">
             <div class="card-gallery">
                 <div class="gallery-slides">
-                    <div class="gallery-slide" style="background-image:url('https://images.unsplash.com/photo-1579783900882-c0d3dad7b119?w=600&h=450&fit=crop')"></div>
-                    <div class="gallery-slide" style="background-image:url('https://images.unsplash.com/photo-1541961017774-22349e4a1262?w=600&h=450&fit=crop')"></div>
-                    <div class="gallery-slide" style="background-image:url('https://images.unsplash.com/photo-1615529151169-7b1ff50dc7f2?w=600&h=450&fit=crop')"></div>
+                    <div class="gallery-slide" style="background-image:url('https://picsum.photos/seed/aendra-art1/600/450')"></div>
+                    <div class="gallery-slide" style="background-image:url('https://picsum.photos/seed/aendra-art2/600/450')"></div>
+                    <div class="gallery-slide" style="background-image:url('https://picsum.photos/seed/aendra-art3/600/450')"></div>
                 </div>
                 <button class="gallery-arrow prev">&#8249;</button>
                 <button class="gallery-arrow next">&#8250;</button>
@@ -753,9 +750,9 @@
         <div class="funda-card reveal" onclick="openWhatsApp('Lamparas de Ambiente', 'desde S/35')">
             <div class="card-gallery">
                 <div class="gallery-slides">
-                    <div class="gallery-slide" style="background-image:url('https://images.unsplash.com/photo-1524484485831-a92ffc0de03f?w=600&h=450&fit=crop')"></div>
-                    <div class="gallery-slide" style="background-image:url('https://images.unsplash.com/photo-1507473885765-e6ed057f782c?w=600&h=450&fit=crop')"></div>
-                    <div class="gallery-slide" style="background-image:url('https://images.unsplash.com/photo-1513506003901-1e6a35f5b2e1?w=600&h=450&fit=crop')"></div>
+                    <div class="gallery-slide" style="background-image:url('https://picsum.photos/seed/aendra-lamp1/600/450')"></div>
+                    <div class="gallery-slide" style="background-image:url('https://picsum.photos/seed/aendra-lamp2/600/450')"></div>
+                    <div class="gallery-slide" style="background-image:url('https://picsum.photos/seed/aendra-lamp3/600/450')"></div>
                 </div>
                 <button class="gallery-arrow prev">&#8249;</button>
                 <button class="gallery-arrow next">&#8250;</button>
@@ -1304,7 +1301,7 @@
                 <p class="funda-price">S/101</p>
                 <div style="display:flex;gap:0.5rem;flex-wrap:wrap;">
                     <button class="funda-btn btn-add-cart" onclick="Cart.add({tipo:'adorno',item_name:'Figuras Elefantes Minimalistas',item_slug:'figuras-elefantes-minimalistas',item_price:101,quantity:1,image_url:'https://img.kwcdn.com/product/fancy/7592c7f2-beb2-45be-b526-552e9989e505.jpg'})">Agregar al carrito</button>
-                    <button class="funda-btn" style="background:transparent;border:1px solid var(--gold);color:var(--brown-dark);" onclick="openWhatsApp('Figuras Elefantes Minimalistas','S/101')">WhatsApp</button>
+                    <button class="funda-btn" style="background:transparent;border:1px solid var(--accent);color:var(--text-primary);" onclick="openWhatsApp('Figuras Elefantes Minimalistas','S/101')">WhatsApp</button>
                 </div>
             </div>
         </div>
@@ -1330,7 +1327,7 @@
                 <p class="funda-price">S/77</p>
                 <div style="display:flex;gap:0.5rem;flex-wrap:wrap;">
                     <button class="funda-btn btn-add-cart" onclick="Cart.add({tipo:'adorno',item_name:'Jarron de Cerámica Rústica',item_slug:'jarron-ceramica-rustica',item_price:77,quantity:1,image_url:'https://img.kwcdn.com/product/fancyalgo/toaster-api/toaster-processor-image-cm2in/48ef4ffe-6d0c-11ef-a40f-0a580a665804.jpg'})">Agregar al carrito</button>
-                    <button class="funda-btn" style="background:transparent;border:1px solid var(--gold);color:var(--brown-dark);" onclick="openWhatsApp('Jarron de Cerámica Rústica','S/77')">WhatsApp</button>
+                    <button class="funda-btn" style="background:transparent;border:1px solid var(--accent);color:var(--text-primary);" onclick="openWhatsApp('Jarron de Cerámica Rústica','S/77')">WhatsApp</button>
                 </div>
             </div>
         </div>
@@ -1340,11 +1337,11 @@
 
 <!-- Services -->
 <section id="services">
-    <div style="max-width:1200px;margin:0 auto;padding:100px 60px;">
+    <div class="container">
         <p class="section-label reveal">Servicios</p>
-        <h2 class="section-title reveal">Asesoría <em>Personalizada</em></h2>
-        <p class="section-sub reveal">Transforma tu espacio con la guía experta de Alejandra.</p>
-        <div class="kits-grid" style="margin-top:50px;">
+        <h2 class="section-title reveal">Asesoria <em>personalizada</em></h2>
+        <p class="section-sub reveal">Transforma tu espacio con la guia experta de Alejandra.</p>
+        <div class="kits-grid">
             <div class="kit-card reveal">
                 <span class="kit-badge">Express</span>
                 <div class="kit-name">Mini Asesoría Express</div>
@@ -1390,24 +1387,24 @@
 
 <!-- Process -->
 <section id="process">
-    <div style="max-width:1200px;margin:0 auto;padding:100px 60px;">
+    <div class="container">
         <p class="section-label reveal">Proceso</p>
-        <h2 class="section-title reveal">Cómo <em>Funciona</em></h2>
-        <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:40px;margin-top:60px;">
-            <div class="reveal" style="text-align:center;">
-                <div style="font-size:3rem;font-weight:300;color:var(--gold);margin-bottom:20px;font-family:'Cormorant Garamond',serif;">01</div>
-                <h3 style="font-size:1.3rem;margin-bottom:10px;color:var(--brown-dark);">Elige tu kit</h3>
-                <p style="color:var(--brown-medium);font-size:0.95rem;line-height:1.6;">Explora nuestros kits curados o arma tu selección personalizada con productos individuales.</p>
+        <h2 class="section-title reveal">Cómo <em>funciona</em></h2>
+        <div class="process-grid">
+            <div class="process-card reveal">
+                <div class="process-num">01</div>
+                <h3 class="process-name">Elige tu kit</h3>
+                <p class="process-desc">Explora nuestros kits curados o arma tu selección personalizada con productos individuales.</p>
             </div>
-            <div class="reveal reveal-delay-1" style="text-align:center;">
-                <div style="font-size:3rem;font-weight:300;color:var(--gold);margin-bottom:20px;font-family:'Cormorant Garamond',serif;">02</div>
-                <h3 style="font-size:1.3rem;margin-bottom:10px;color:var(--brown-dark);">Lo recibís en tu puerta</h3>
-                <p style="color:var(--brown-medium);font-size:0.95rem;line-height:1.6;">Enviamos a todo Perú con empaque premium. Tu pedido llega listo para transformar tu espacio.</p>
+            <div class="process-card reveal reveal-delay-1">
+                <div class="process-num">02</div>
+                <h3 class="process-name">Lo recibís en tu puerta</h3>
+                <p class="process-desc">Enviamos a todo Perú con empaque premium. Tu pedido llega listo para transformar tu espacio.</p>
             </div>
-            <div class="reveal reveal-delay-2" style="text-align:center;">
-                <div style="font-size:3rem;font-weight:300;color:var(--gold);margin-bottom:20px;font-family:'Cormorant Garamond',serif;">03</div>
-                <h3 style="font-size:1.3rem;margin-bottom:10px;color:var(--brown-dark);">Transforma tu espacio</h3>
-                <p style="color:var(--brown-medium);font-size:0.95rem;line-height:1.6;">Con nuestra guía de decoración incluida, convierte cada rincón en un reflejo de tu estilo personal.</p>
+            <div class="process-card reveal reveal-delay-2">
+                <div class="process-num">03</div>
+                <h3 class="process-name">Transforma tu espacio</h3>
+                <p class="process-desc">Con nuestra guía de decoración incluida, convierte cada rincón en un reflejo de tu estilo personal.</p>
             </div>
         </div>
     </div>
@@ -1415,32 +1412,32 @@
 
 <!-- Testimonials -->
 <section id="testimonials">
-    <div style="max-width:1200px;margin:0 auto;padding:100px 60px;">
+    <div class="container">
         <p class="section-label reveal">Testimonios</p>
         <h2 class="section-title reveal">Lo que dicen nuestras <em>clientas</em></h2>
-        <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:30px;margin-top:60px;">
-            <div class="reveal" style="background:var(--white);padding:40px;border-radius:16px;border:1px solid var(--beige);">
-                <div style="color:var(--gold);font-size:1.2rem;margin-bottom:15px;">★★★★★</div>
-                <p style="color:var(--brown-medium);font-size:0.95rem;line-height:1.7;margin-bottom:20px;">El Kit Cuarto Dream transformó completamente mi habitación. La calidad de cada pieza es increíble y la asesoría de Alejandra fue perfecta para elegir los colores correctos.</p>
+        <div class="testimonials-grid-new">
+            <div class="testimonial-card-new reveal">
+                <div class="testimonial-stars" aria-label="5 estrellas">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+                <p class="testimonial-body">El Kit Cuarto Dream transformo completamente mi habitacion. La calidad de cada pieza es increible y la asesoria de Alejandra fue perfecta para elegir los colores correctos.</p>
                 <div>
-                    <strong style="color:var(--brown-dark);">Maria Fernandez</strong>
-                    <p style="color:var(--brown-medium);font-size:0.85rem;">Lima, Perú</p>
+                    <p class="testimonial-name">Camila Ochoa</p>
+                    <p class="testimonial-city">Miraflores, Lima</p>
                 </div>
             </div>
-            <div class="reveal reveal-delay-1" style="background:var(--white);padding:40px;border-radius:16px;border:1px solid var(--beige);">
-                <div style="color:var(--gold);font-size:1.2rem;margin-bottom:15px;">★★★★★</div>
-                <p style="color:var(--brown-medium);font-size:0.95rem;line-height:1.7;margin-bottom:20px;">Compré el kit de S/90 y quedé encantada. Mi sala se ve completamente diferente. El empaque llegó impecable y cada detalle está cuidado. Súper recomendado.</p>
+            <div class="testimonial-card-new reveal reveal-delay-1">
+                <div class="testimonial-stars" aria-label="5 estrellas">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+                <p class="testimonial-body">Compre el kit de S/90 y quede encantada. Mi sala se ve completamente diferente. El empaque llego impecable.</p>
                 <div>
-                    <strong style="color:var(--brown-dark);">Sofia Rodriguez</strong>
-                    <p style="color:var(--brown-medium);font-size:0.85rem;">Arequipa, Perú</p>
+                    <p class="testimonial-name">Valeria Paredes</p>
+                    <p class="testimonial-city">Cayma, Arequipa</p>
                 </div>
             </div>
-            <div class="reveal reveal-delay-2" style="background:var(--white);padding:40px;border-radius:16px;border:1px solid var(--beige);">
-                <div style="color:var(--gold);font-size:1.2rem;margin-bottom:15px;">★★★★★</div>
-                <p style="color:var(--brown-medium);font-size:0.95rem;line-height:1.7;margin-bottom:20px;">Las velas y fundas que pedí son hermosas. La atención de Alejandra es 10/10 — me ayudó a elegir todo por WhatsApp. Llegó perfecto hasta Cusco.</p>
+            <div class="testimonial-card-new reveal reveal-delay-2">
+                <div class="testimonial-stars" aria-label="5 estrellas">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+                <p class="testimonial-body">Las velas y fundas que pedi son hermosas. La atencion de Alejandra es 10/10 — me ayudo a elegir todo por WhatsApp. Llego perfecto hasta Cusco.</p>
                 <div>
-                    <strong style="color:var(--brown-dark);">Lucia Martinez</strong>
-                    <p style="color:var(--brown-medium);font-size:0.85rem;">Cusco, Perú</p>
+                    <p class="testimonial-name">Antonella Quispe</p>
+                    <p class="testimonial-city">Wanchaq, Cusco</p>
                 </div>
             </div>
         </div>
@@ -1448,34 +1445,36 @@
 </section>
 
 <!-- Contact -->
-<section id="contact" style="background:var(--brown-dark);color:var(--cream);padding:100px 60px;">
-    <div style="max-width:1200px;margin:0 auto;text-align:center;">
-        <p class="section-label reveal" style="color:var(--gold);">Contacto</p>
-        <h2 class="section-title reveal" style="color:var(--white);">Hablemos de tu <em style="color:var(--gold);">espacio</em></h2>
-        <p class="section-sub reveal" style="color:rgba(255,255,255,0.7);max-width:600px;margin:0 auto 50px;">Estamos listas para ayudarte a transformar tu hogar. Escogemos el canal que prefieras.</p>
-        <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:30px;margin-bottom:50px;">
-            <div class="reveal" style="background:rgba(255,255,255,0.05);padding:40px 30px;border-radius:16px;border:1px solid rgba(255,255,255,0.1);">
-                <div style="font-size:2rem;margin-bottom:15px;">💬</div>
-                <h3 style="color:var(--white);margin-bottom:8px;">WhatsApp</h3>
-                <p style="color:rgba(255,255,255,0.6);font-size:0.9rem;">+51 965 104 352</p>
-                <a href="https://wa.me/51965104352" target="_blank" style="display:inline-block;margin-top:15px;color:var(--gold);text-decoration:none;font-size:0.9rem;">Enviar mensaje &rarr;</a>
+<section id="contact" class="contact-section">
+    <div class="contact-inner">
+        <p class="section-label reveal">Contacto</p>
+        <h2 class="section-title reveal">Hablemos de tu <em>espacio</em></h2>
+        <p class="section-sub reveal">Estamos listas para ayudarte a transformar tu hogar.</p>
+        <div class="contact-grid">
+            <div class="contact-card reveal">
+                <svg class="contact-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg>
+                <h3>WhatsApp</h3>
+                <p>+51 965 104 352</p>
+                <a href="https://wa.me/51965104352" target="_blank" class="contact-link">Enviar mensaje &rarr;</a>
             </div>
-            <div class="reveal reveal-delay-1" style="background:rgba(255,255,255,0.05);padding:40px 30px;border-radius:16px;border:1px solid rgba(255,255,255,0.1);">
-                <div style="font-size:2rem;margin-bottom:15px;">📸</div>
-                <h3 style="color:var(--white);margin-bottom:8px;">Instagram</h3>
-                <p style="color:rgba(255,255,255,0.6);font-size:0.9rem;">@aendra_interiormood</p>
-                <a href="https://instagram.com/aendra_interiormood" target="_blank" style="display:inline-block;margin-top:15px;color:var(--gold);text-decoration:none;font-size:0.9rem;">Seguirnos &rarr;</a>
+            <div class="contact-card reveal reveal-delay-1">
+                <svg class="contact-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="5"/><circle cx="17.5" cy="6.5" r="1.5"/></svg>
+                <h3>Instagram</h3>
+                <p>@aendra_interiormood</p>
+                <a href="https://instagram.com/aendra_interiormood" target="_blank" class="contact-link">Seguirnos &rarr;</a>
             </div>
-            <div class="reveal reveal-delay-2" style="background:rgba(255,255,255,0.05);padding:40px 30px;border-radius:16px;border:1px solid rgba(255,255,255,0.1);">
-                <div style="font-size:2rem;margin-bottom:15px;">✉️</div>
-                <h3 style="color:var(--white);margin-bottom:8px;">Email</h3>
-                <p style="color:rgba(255,255,255,0.6);font-size:0.9rem;">hola@aendra.com</p>
-                <a href="mailto:hola@aendra.com" style="display:inline-block;margin-top:15px;color:var(--gold);text-decoration:none;font-size:0.9rem;">Escribirnos &rarr;</a>
+            <div class="contact-card reveal reveal-delay-2">
+                <svg class="contact-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+                <h3>Email</h3>
+                <p>hola@aendra.com</p>
+                <a href="mailto:hola@aendra.com" class="contact-link">Escribirnos &rarr;</a>
             </div>
         </div>
-        <a href="https://wa.me/51965104352" target="_blank" class="btn-primary reveal" style="font-size:1.1rem;padding:18px 50px;">Agendar Consulta Gratis</a>
+        <a href="https://wa.me/51965104352" target="_blank" class="btn-primary reveal">Agendar consulta gratis</a>
     </div>
 </section>
+
+</main>
 
 <!-- Toast -->
 <div class="toast" id="toast"></div>
@@ -1511,7 +1510,7 @@
 <div class="cart-sidebar" id="cart-sidebar">
     <div class="cart-header"><h3>Tu Carrito</h3><button id="cart-close-btn">✕</button></div>
     <div id="cart-items-list"></div>
-    <div id="cart-empty">Tu carrito está vacío 🛒</div>
+    <div id="cart-empty">Tu carrito esta vacio</div>
     <div class="cart-footer">
         <div class="cart-total"><span>Total</span><span id="cart-total-amount">S/0.00</span></div>
         <div id="cart-actions"><button id="cart-checkout-btn">Proceder al pago</button></div>
@@ -1590,7 +1589,7 @@
                 <p>Procesando pago...</p>
             </div>
             <div style="display:flex;gap:10px;">
-                <button type="button" id="btn-back-shipping" style="flex:1;background:transparent;border:1px solid var(--beige);color:var(--brown-dark);">Volver</button>
+                <button type="button" id="btn-back-shipping" style="flex:1;background:transparent;border:1px solid var(--border);color:var(--text-secondary);">Volver</button>
                 <button type="submit" id="btn-confirm-payment" style="flex:2;">Confirmar Pago</button>
             </div>
         </form>
@@ -1603,14 +1602,14 @@
             <h3>Pedido Confirmado</h3>
             <p style="margin:10px 0;">Tu pedido <strong id="confirm-order-id"></strong> ha sido registrado.</p>
             <p style="margin:10px 0;">Total: <strong id="confirm-total"></strong></p>
-            <p style="color:var(--brown-medium);font-size:0.9rem;margin:20px 0;">Te contactaremos por WhatsApp para coordinar el envío y confirmar los detalles.</p>
+            <p style="color:var(--text-muted);font-size:0.85rem;margin:1.2rem 0;">Te contactaremos por WhatsApp para coordinar el envio y confirmar los detalles.</p>
             <button id="btn-checkout-done" style="margin-top:20px;">Volver a la tienda</button>
         </div>
     </div>
 </div>
 
 <!-- Floating WhatsApp -->
-<a href="https://wa.me/51965104352" target="_blank" class="floating-wa" aria-label="WhatsApp">💬</a>
+<a href="https://wa.me/51965104352" target="_blank" class="floating-wa" aria-label="WhatsApp"><svg width="24" height="24" viewBox="0 0 24 24" fill="#fff"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg></a>
 
 <!-- Footer -->
 <footer>
@@ -1634,16 +1633,6 @@ function showToast(msg) {
     toastTimer = setTimeout(() => t.classList.remove('show'), 3000);
 }
 function addToCart(item) { Cart.add(item); }
-function openWhatsApp(product, price) {
-    const msg = 'Hola Alejandra, me interesa ' + product + ' (' + price + '). Quisiera más información.';
-    window.open('https://wa.me/51965104352?text=' + encodeURIComponent(msg), '_blank');
-}
-function orderKit(btn) {
-    const card = btn.closest('.kit-card');
-    const kit = card.getAttribute('data-kit');
-    const price = card.getAttribute('data-price');
-    openWhatsApp(kit, price);
-}
 </script>
 <script src="js/cart.js"></script>
 <script src="js/auth.js"></script>
