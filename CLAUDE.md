@@ -10,7 +10,7 @@ Spanish-language interior design & home mood brand for **Peru**. All content is 
 **Currency**: Peruvian Soles (S/)  
 **WhatsApp**: +51 965 104 352  
 **Instagram**: @aendra_interiormood  
-**Email**: hola@aendra.com  
+**Email**: vasquezalejandra669@gmail.com (confirmado por Alejandra 2026-10-21; antes la web decía hola@aendra.com, que no existe)  
 **Domain**: www.aendra.lat (hosted on Vercel)  
 **Vercel project**: leins-devs-projects/aendra-web  
 **GitHub**: https://github.com/LeInS-dev/aendra-web (private)  
@@ -110,7 +110,7 @@ REINA/
 | Sección | Producto (nombre en carrito) | slug | Precio web | Costo Temu |
 |---|---|---|---|---|
 | Fundas | Fundas Felpa Jacquard Geométrico x4 | `funda-felpa-jacquard` | S/59 | S/44 |
-| Fundas | Fundas Lino Natural Exterior x4 | `funda-lino-natural` | S/59 | S/44 |
+| Fundas | Fundas Lino Natural Exterior x4 | `funda-lino-natural` | S/45 | S/29.68 |
 | Fundas | Fundas Chenilla Beige Clásico x2 | `funda-chenilla-beige` | S/43 | S/28 |
 | Fundas | Fundas Chenilla Texturizada Vintage x2 | `funda-chenilla-vintage` | S/53 | S/38 |
 | Fundas | Fundas Beige Marron Rayas Boho x4 | `funda-rayas-boho` | S/71 | S/56 |
@@ -121,11 +121,11 @@ REINA/
 | Alfombras | Alfombra Beige Pelo Largo Nórdica | `alfombra-beige-pelo-largo` | S/95 | S/80 |
 | Alfombras | Alfombra Vintage Floral | `alfombra-vintage-floral` | S/63 | S/48 |
 | Alfombras | Alfombra Bohemia Marroquí Terciopelo | `alfombra-bohemia-terciopelo` | S/66 | S/51 |
-| Velas | Velas Escultorica Blancas Estriadas x2 | `velas-escultorica-blanca` | S/62 | S/47 |
+| Velas | Velas Escultorica Blancas Estriadas x2 | `velas-escultorica-blanca` | S/63 | S/48.04 |
 | Velas | Vela Esfera de Burbujas | `velas-esfera-burbujas` | S/33 | S/18 |
 | Velas | Vela Bola Torsionada | `vela-bola-torsionada` | S/34 | S/19 |
 | Velas | Velas Esféricas Aromáticas | `velas-esfericas-aromaticas` | S/33 | S/18 |
-| Velas | Velas Artísticas Diseño Ondas | `velas-artisticas-ondas` | S/41 | S/26 |
+| Velas | Velas Artísticas Diseño Ondas | `velas-artisticas-ondas` | S/29 | S/14.01 |
 | Velas | Velas Aromáticas Hexagonales x2 | `velas-aromaticas-hexagonales` | S/43 | S/28 |
 | Adornos | Figuras Elefantes Minimalistas | `figuras-elefantes-minimalistas` | S/101 | S/86 |
 | Adornos | Jarron de Cerámica Rústica | `jarron-ceramica-rustica` | S/77 | S/62 |
@@ -329,7 +329,7 @@ Reglas: mostrar cambios y esperar OK antes de tocar la web o Supabase. No deploy
 ### Pendientes detectados (octubre 2026)
 - **Deploy**: merge de `kits-reales-oct2026` a master (la web en vivo sigue con kits viejos y `kits` de Supabase ya tiene los nuevos).
 - **Bug en vivo**: `Waitlist.init()` al final de index.html lanza `ReferenceError` (waitlist.js no se carga) y corta la ejecución → `Checkout.init()` nunca corre (no aparece el aviso "Modo Demo"). Arreglo: quitar esa línea.
-- **Catálogo**: 11 productos de `#fundas/#alfombras/#velas/#adornos` ya no se pueden comprar en Temu (`estado = 'no_disponible' and en_web`), 6 sin verificar, y Lino/Ondas/Escultóricas tienen precio web viejo (S/59/41/62 vs regla S/45/29/63). Los 11 reemplazos nuevos no tienen tarjeta propia.
+- **Catálogo**: 11 productos de `#fundas/#alfombras/#velas/#adornos` ya no se pueden comprar en Temu (`estado = 'no_disponible' and en_web`), 6 sin verificar, Lino/Ondas/Escultóricas ya actualizados a S/45/29/63 (2026-10-21). Los 11 reemplazos nuevos no tienen tarjeta propia.
 - **Testimonio** "Compre el kit de S/90" (Valeria Paredes): ya no existe kit de S/90. No se cambió porque falta confirmar si es una cita real.
 - Unificar slugs de `kits` (`mood-cozy`) con los del carrito (`kit-mood-cozy`) si se quieren cruzar pedidos con kits.
 
