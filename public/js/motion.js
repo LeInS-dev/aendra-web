@@ -4,6 +4,7 @@
    [data-reveal-hijos]      sus hijos aparecen escalonados
    [data-parallax="0.15"]   la imagen se desplaza más lento que el scroll */
 (function () {
+  window.__aendraMotion = true;
   const reducir = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   const raiz = document.documentElement;
   if (reducir || !('IntersectionObserver' in window)) {

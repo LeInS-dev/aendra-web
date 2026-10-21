@@ -28,7 +28,11 @@ document.addEventListener('click', e => {
   const agregar = e.target.closest('[data-agregar]');
   if (agregar) {
     e.preventDefault();
-    try { Cart.add(JSON.parse(agregar.dataset.agregar)); } catch (err) { console.error('No se pudo agregar al carrito', err); }
+    try {
+      const item = JSON.parse(agregar.dataset.agregar);
+      item.image_url = AendraCarrito.absoluta(item.image_url, location.origin);
+      Cart.add(item);
+    } catch (err) { console.error('No se pudo agregar al carrito', err); }
     return;
   }
   const wa = e.target.closest('[data-whatsapp]');

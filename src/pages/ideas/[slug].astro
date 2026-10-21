@@ -55,9 +55,10 @@ const otras = ideas.filter(x => x.slug !== i.slug).slice(0, 2);
 
   <script>
     declare const Cart: { add(item: object): void }; // global de public/js/cart.js
+    declare const AendraCarrito: { absoluta(url: string, origen: string): string };
     document.getElementById('agregar-todo')?.addEventListener('click', e => {
       const items = JSON.parse((e.currentTarget as HTMLElement).dataset.items!);
-      items.forEach((it: object) => { try { Cart.add(it); } catch (err) { console.error('No se pudo agregar', err); } });
+      items.forEach((it: { image_url: string }) => { try { Cart.add({ ...it, image_url: AendraCarrito.absoluta(it.image_url, location.origin) }); } catch (err) { console.error('No se pudo agregar', err); } });
     });
   </script>
 </Base>

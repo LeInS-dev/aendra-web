@@ -8,7 +8,7 @@ Tienda peruana de diseño de interiores (todo el contenido en español). Fundado
 
 **Moneda**: soles (S/) · **WhatsApp**: +51 965 104 352 · **Instagram**: @aendra_interiormood · **Email**: vasquezalejandra669@gmail.com
 **Dominio**: www.aendra.lat (Vercel, proyecto `leins-devs-projects/aendra-web`, team `team_DRvXiIWNW9k0pN8RHqD4CGIS`, project `prj_fbvARHgDCkOwqAi66AoKQuVpsdjv`)
-**GitHub**: https://github.com/LeInS-dev/aendra-web (privado). Vercel despliega solo desde GitHub: `master` → producción; cualquier otra rama → preview.
+**GitHub**: https://github.com/LeInS-dev/aendra-web — ⚠ **PÚBLICO** (verificado 2026-10-21). Contiene costos y fuentes del proveedor en `supabase/migrations/` y `datos-privados/`: pendiente que Alejandra decida hacerlo privado. Vercel despliega solo desde GitHub: `master` → producción; cualquier otra rama → preview.
 
 ## Estado (2026-10-21)
 

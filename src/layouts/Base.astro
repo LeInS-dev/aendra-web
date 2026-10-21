@@ -6,6 +6,8 @@ import '../styles/componentes.css';
 import Nav from '../components/Nav.astro';
 import Footer from '../components/Footer.astro';
 import Overlays from '../components/Overlays.astro';
+import productos from '../data/productos.json';
+import kits from '../data/kits.json';
 
 interface Props {
   title: string;
@@ -19,6 +21,8 @@ const { title, description, path, ogImage = '/assets/images/og-image.svg', schem
 const sitio = 'https://www.aendra.lat';
 const canonical = sitio + (path === '/' ? '/' : path);
 const og = ogImage.startsWith('http') ? ogImage : sitio + ogImage;
+// Productos y kits que se pueden comprar hoy, con su foto propia (limpia carritos viejos)
+const validos = Object.fromEntries([...productos.map(p => [p.slug, p.galeria[0]]), ...kits.map(k => [k.slug, k.imagenes[0]])]);
 const schemas = schema ? (Array.isArray(schema) ? schema : [schema]) : [];
 ---
 <!doctype html>
@@ -44,7 +48,11 @@ const schemas = schema ? (Array.isArray(schema) ? schema : [schema]) : [];
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400;1,500&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
   {schemas.map(s => <script type="application/ld+json" set:html={JSON.stringify(s)} />)}
-  <script is:inline>document.documentElement.classList.add('js-motion');</script>
+  <script is:inline>
+    // Oculta lo animable solo si motion.js llega a ejecutarse; si no carga en 2.5 s, todo vuelve a verse
+    document.documentElement.classList.add('js-motion');
+    setTimeout(function () { if (!window.__aendraMotion) document.documentElement.classList.remove('js-motion'); }, 2500);
+  </script>
 </head>
 <body>
   <Nav sobreFoto={sobreFoto} actual={path} />
@@ -57,6 +65,8 @@ const schemas = schema ? (Array.isArray(schema) ? schema : [schema]) : [];
   <script is:inline src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.47.2/dist/umd/supabase.min.js" integrity="sha384-m2m34D9XY1LA/zjjscXeJ1CKlZ3o7vDfmdDdPVACmRgHv9sQEDFYH5A/RQ9oYjkw" crossorigin="anonymous"></script>
   <script is:inline src="/js/supabase-client.js"></script>
   <script is:inline src="/js/site.js"></script>
+  <script is:inline define:vars={{ validos }}>window.AENDRA_VALIDOS = validos;</script>
+  <script is:inline src="/js/limpiar-carrito.js"></script>
   <script is:inline src="/js/cart.js"></script>
   <script is:inline src="/js/auth.js"></script>
   <script is:inline src="/js/checkout.js"></script>
