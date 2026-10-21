@@ -62,7 +62,7 @@
 .kit--destacado { background: var(--cafe); color: var(--crema); }
 .kit--destacado .texto, .kit--destacado .label { color: rgba(245, 239, 230, .75); }
 .abanico { position: relative; aspect-ratio: 1 / 1; margin-bottom: 1.2rem; cursor: pointer; }
-.abanico img { position: absolute; width: 62%; aspect-ratio: 4 / 5; object-fit: cover; border-radius: var(--radio-sm); left: 19%; top: 6%; box-shadow: var(--sombra); transition: transform .7s var(--rebote); border: 4px solid var(--hueso); }
+.abanico img { position: absolute; width: 62%; height: auto; aspect-ratio: 4 / 5; object-fit: cover; border-radius: var(--radio-sm); left: 19%; top: 6%; box-shadow: var(--sombra); transition: transform .7s var(--rebote); border: 4px solid var(--hueso); }
 .kit--destacado .abanico img { border-color: var(--cafe); }
 .abanico img:nth-child(1) { transform: rotate(-4deg); z-index: 4; }
 .abanico img:nth-child(2) { transform: rotate(3deg) translate(4%, 2%); z-index: 3; }

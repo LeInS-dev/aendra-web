@@ -77,7 +77,7 @@ import quiz from '../data/quiz.json';
       const paleta = paletas.find(p => p.slug === r.paleta)!;
       const rec = recomendar(r, productos, kits);
       elegidos = rec.productos.map(p => p.slug);
-      document.getElementById('r-titulo')!.innerHTML = `${estilo.nombre} <em>en ${paleta.nombre}</em>`;
+      document.getElementById('r-titulo')!.innerHTML = `${estilo.nombre} <em>· paleta ${paleta.nombre}</em>`;
       document.getElementById('r-frase')!.textContent = `${estilo.frase} ${paleta.frase}`;
       const m = document.getElementById('r-muestras')!; m.replaceChildren(...paleta.colores.map(c => { const s = document.createElement('span'); s.style.background = c.hex; return s; }));
       document.getElementById('r-productos')!.replaceChildren(...rec.productos.map(tarjeta));

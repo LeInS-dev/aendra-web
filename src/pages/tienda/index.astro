@@ -5,6 +5,10 @@ import productos from '../../data/productos.json';
 import tax from '../../data/taxonomias.json';
 import paletas from '../../data/paletas.json';
 
+// Orden de vitrina: primero textiles (lo más fotogénico), luego el resto según taxonomías
+const ordenCategoria = tax.categorias.map(c => c.slug);
+const vitrina = [...productos].sort((a, b) => ordenCategoria.indexOf(a.categoria) - ordenCategoria.indexOf(b.categoria));
+
 const grupos = [
   { clave: 'categoria', titulo: 'Qué buscas', opciones: tax.categorias.filter(c => productos.some(p => p.categoria === c.slug)) },
   { clave: 'ambiente', titulo: 'Para dónde', opciones: tax.ambientes },
@@ -38,7 +42,7 @@ const grupos = [
     </div>
     <p class="contador" id="contador" aria-live="polite">{productos.length} piezas</p>
     <div class="grilla grilla--productos" id="grilla" style="margin-top:1.2rem">
-      {productos.map(p => (
+      {vitrina.map(p => (
         <div data-item data-categoria={p.categoria} data-ambientes={p.ambientes.join(' ')} data-paletas={p.paletas.join(' ')} data-estilos={p.estilos.join(' ')}>
           <ProductoCard producto={p} />
         </div>
