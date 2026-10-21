@@ -1,0 +1,60 @@
+/* AENDRA — tokens de diseño (Fase 1, estilo suave y acogedor) */
+:root {
+  /* Marca */
+  --cafe: #3D1F0D;
+  --dorado: #B89A6A;
+  --crema: #F5EFE6;
+  --beige: #E8DDD0;
+  --cafe-medio: #8B5E3C;
+  --arena: #EFE6D8;
+  --hueso: #FBF8F3;
+  --tinta: #2A1B12;
+  --tinta-suave: #6E5A4C;
+  --tinta-tenue: #A08E80;
+
+  /* Tipografía */
+  --serif: 'Cormorant Garamond', Georgia, serif;
+  --sans: 'Jost', 'Helvetica Neue', system-ui, sans-serif;
+  --t-display: clamp(3rem, 9vw, 7.5rem);
+  --t-h1: clamp(2.6rem, 6.5vw, 5.2rem);
+  --t-h2: clamp(2rem, 4.6vw, 3.6rem);
+  --t-h3: clamp(1.4rem, 2.4vw, 1.9rem);
+  --t-frase: clamp(1.9rem, 4.2vw, 3.4rem);
+  --t-body: 1.02rem;
+  --t-small: 0.82rem;
+  --t-label: 0.7rem;
+
+  /* Forma y espacio */
+  --radio: 18px;
+  --radio-sm: 10px;
+  --radio-pill: 999px;
+  --gutter: clamp(1.1rem, 4vw, 3rem);
+  --seccion: clamp(4.5rem, 11vw, 9rem);
+  --ancho: 1320px;
+  --sombra: 0 18px 50px -28px rgba(61, 31, 13, 0.35);
+  --sombra-sm: 0 8px 24px -16px rgba(61, 31, 13, 0.3);
+
+  /* Movimiento */
+  --ease: cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-out: cubic-bezier(0.22, 1, 0.36, 1);
+  --rebote: cubic-bezier(0.34, 1.56, 0.64, 1);
+  --duration: 0.7s;
+  --duration-fast: 0.25s;
+
+  /* Compatibilidad con overlays.css (carrito, login, checkout) */
+  --canvas: var(--crema);
+  --surface: var(--hueso);
+  --elevated: #FFFFFF;
+  --dark: var(--cafe);
+  --dark-surface: #4A2A16;
+  --dark-elevated: #5A3620;
+  --text-primary: var(--tinta);
+  --text-secondary: var(--tinta-suave);
+  --text-muted: var(--tinta-tenue);
+  --text-inverse: var(--hueso);
+  --accent: var(--cafe-medio);
+  --accent-hover: var(--cafe);
+  --accent-subtle: rgba(139, 94, 60, 0.08);
+  --border: rgba(61, 31, 13, 0.08);
+  --border-hover: rgba(61, 31, 13, 0.18);
+}

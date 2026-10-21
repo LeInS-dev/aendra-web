@@ -1,0 +1,134 @@
+---
+// Markup de carrito, login, checkout, toast y WhatsApp flotante: copiado del sitio anterior.
+// Los IDs los usan public/js/{cart,auth,checkout}.js; no renombrarlos.
+---
+<div class="toast" id="toast"></div>
+<div class="auth-overlay" id="auth-overlay"></div>
+<div class="auth-modal" id="auth-modal">
+    <button class="auth-modal-close" onclick="Auth.close()">✕</button>
+    <h2>AENDRA</h2>
+    <p class="auth-sub">Tu cuenta para gestionar pedidos</p>
+    <div class="auth-tabs">
+        <button class="auth-tab active" data-tab="login">Ingresar</button>
+        <button class="auth-tab" data-tab="register">Crear cuenta</button>
+    </div>
+    <form class="auth-form active" id="form-login">
+        <div class="field"><label>Email</label><input type="email" name="email" placeholder="tu@email.com" required></div>
+        <div class="field"><label>Contraseña</label><input type="password" name="password" placeholder="••••••••" required></div>
+        <p class="auth-error"></p>
+        <button type="submit" data-label="Ingresar">Ingresar</button>
+    </form>
+    <form class="auth-form" id="form-register">
+        <div class="field"><label>Nombre completo</label><input type="text" name="fullname" placeholder="Tu nombre" required></div>
+        <div class="field"><label>Email</label><input type="email" name="email" placeholder="tu@email.com" required></div>
+        <div class="field"><label>Contraseña</label><input type="password" name="password" placeholder="Mín. 8 caracteres" required></div>
+        <div class="field"><label>Celular (opcional)</label><input type="tel" name="phone" placeholder="+51 9XX XXX XXX"></div>
+        <p class="auth-error"></p>
+        <button type="submit" data-label="Crear cuenta">Crear cuenta</button>
+    </form>
+</div>
+
+<!-- Cart Sidebar -->
+<div class="cart-overlay" id="cart-overlay"></div>
+<div class="cart-sidebar" id="cart-sidebar">
+    <div class="cart-header"><h3>Tu Carrito</h3><button id="cart-close-btn">✕</button></div>
+    <div id="cart-items-list"></div>
+    <div id="cart-empty">Tu carrito esta vacio</div>
+    <div class="cart-footer">
+        <div class="cart-total"><span>Total</span><span id="cart-total-amount">S/0.00</span></div>
+        <div id="cart-actions"><button id="cart-checkout-btn">Proceder al pago</button></div>
+    </div>
+</div>
+
+<!-- Checkout Modal -->
+<div class="checkout-overlay" id="checkout-overlay"></div>
+<div class="checkout-modal" id="checkout-modal">
+    <button class="checkout-close" id="checkout-close-btn">✕</button>
+    <div class="checkout-steps">
+        <div class="checkout-step active" data-step="1">
+            <span class="step-num">1</span><span class="step-label">Envio</span>
+        </div>
+        <div class="checkout-step" data-step="2">
+            <span class="step-num">2</span><span class="step-label">Pago</span>
+        </div>
+        <div class="checkout-step" data-step="3">
+            <span class="step-num">3</span><span class="step-label">Confirmación</span>
+        </div>
+    </div>
+
+    <!-- Step 1: Shipping -->
+    <div class="checkout-panel active" id="step-shipping">
+        <h3>Información de envío</h3>
+        <form id="shipping-form">
+            <div class="field">
+                <label for="shipping-name">Nombre completo</label>
+                <input type="text" id="shipping-name" required placeholder="Tu nombre completo">
+            </div>
+            <div class="field">
+                <label for="shipping-phone">Celular</label>
+                <input type="tel" id="shipping-phone" required placeholder="+51 9XX XXX XXX">
+            </div>
+            <div class="field">
+                <label for="shipping-address">Dirección</label>
+                <input type="text" id="shipping-address" required placeholder="Calle, número, referencia">
+            </div>
+            <div class="field-row">
+                <div class="field">
+                    <label for="shipping-city">Ciudad</label>
+                    <input type="text" id="shipping-city" required placeholder="Lima">
+                </div>
+                <div class="field">
+                    <label for="shipping-district">Distrito</label>
+                    <input type="text" id="shipping-district" required placeholder="Miraflores">
+                </div>
+            </div>
+            <button type="submit" id="btn-to-payment">Continuar al pago</button>
+        </form>
+    </div>
+
+    <!-- Step 2: Payment -->
+    <div class="checkout-panel" id="step-payment">
+        <h3>Método de pago</h3>
+        <form id="payment-form">
+            <div id="payment-form-fields">
+                <div class="field">
+                    <label for="card-number">Número de tarjeta</label>
+                    <input type="text" id="card-number" placeholder="4111 1111 1111 1111" maxlength="19">
+                </div>
+                <div class="field-row">
+                    <div class="field">
+                        <label for="card-expiry">Vencimiento</label>
+                        <input type="text" id="card-expiry" placeholder="MM/AA" maxlength="5">
+                    </div>
+                    <div class="field">
+                        <label for="card-cvv">CVV</label>
+                        <input type="text" id="card-cvv" placeholder="123" maxlength="4">
+                    </div>
+                </div>
+            </div>
+            <p id="payment-error" class="auth-error"></p>
+            <div id="payment-processing" style="display:none;text-align:center;padding:20px;">
+                <p>Procesando pago...</p>
+            </div>
+            <div style="display:flex;gap:10px;">
+                <button type="button" id="btn-back-shipping" style="flex:1;background:transparent;border:1px solid var(--border);color:var(--text-secondary);">Volver</button>
+                <button type="submit" id="btn-confirm-payment" style="flex:2;">Confirmar Pago</button>
+            </div>
+        </form>
+    </div>
+
+    <!-- Step 3: Confirmation -->
+    <div class="checkout-panel" id="step-confirmation">
+        <div style="text-align:center;padding:30px 0;">
+            <div style="font-size:3rem;margin-bottom:15px;">✓</div>
+            <h3>Pedido Confirmado</h3>
+            <p style="margin:10px 0;">Tu pedido <strong id="confirm-order-id"></strong> ha sido registrado.</p>
+            <p style="margin:10px 0;">Total: <strong id="confirm-total"></strong></p>
+            <p style="color:var(--text-muted);font-size:0.85rem;margin:1.2rem 0;">Te contactaremos por WhatsApp para coordinar el envio y confirmar los detalles.</p>
+            <button id="btn-checkout-done" style="margin-top:20px;">Volver a la tienda</button>
+        </div>
+    </div>
+</div>
+
+<!-- Floating WhatsApp -->
+<a href="https://wa.me/51965104352" target="_blank" class="floating-wa" aria-label="WhatsApp"><svg width="24" height="24" viewBox="0 0 24 24" fill="#fff"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg></a>

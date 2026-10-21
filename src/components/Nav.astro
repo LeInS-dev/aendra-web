@@ -1,0 +1,44 @@
+---
+interface Props { sobreFoto?: boolean; actual?: string }
+const { sobreFoto = false, actual = '' } = Astro.props;
+const enlaces = [
+  { href: '/tienda', texto: 'Tienda' },
+  { href: '/ideas', texto: 'Ideas' },
+  { href: '/paletas', texto: 'Paletas' },
+  { href: '/kits', texto: 'Kits' },
+  { href: '/tu-estilo', texto: 'Tu estilo' },
+  { href: '/servicios', texto: 'Servicios' },
+];
+---
+<header class:list={['nav', { 'nav--sobre-foto': sobreFoto, 'nav--solida': !sobreFoto }]} id="navbar" data-sobre-foto={sobreFoto ? 'true' : undefined}>
+  <div class="contenedor nav__fila">
+    <a href="/" class="nav__logo" aria-label="AENDRA, inicio">Aendra</a>
+    <nav aria-label="Principal">
+      <ul class="nav__links">
+        {enlaces.map(e => <li><a href={e.href} aria-current={actual === e.href ? 'page' : undefined}>{e.texto}</a></li>)}
+      </ul>
+    </nav>
+    <div class="nav__acciones">
+      <a href="/mi-moodboard" class="nav__icono" aria-label="Mi moodboard">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M12 20.5s-7.5-4.6-9.3-9.2C1.4 7.9 3.6 4.5 7 4.5c2 0 3.6 1.1 5 3 1.4-1.9 3-3 5-3 3.4 0 5.6 3.4 4.3 6.8-1.8 4.6-9.3 9.2-9.3 9.2z"/></svg>
+        <span class="nav__contador" id="moodboard-contador"></span>
+      </a>
+      <button id="nav-cart-btn" class="nav__icono" aria-label="Carrito">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M5 8h14l-1.2 11.2a1 1 0 0 1-1 .8H7.2a1 1 0 0 1-1-.8L5 8z"/><path d="M9 8V6.5a3 3 0 0 1 6 0V8"/></svg>
+        <span id="cart-badge"></span>
+      </button>
+      <button id="nav-login-btn" onclick="Auth.open('login')">Ingresar</button>
+      <div class="user-dropdown">
+        <button id="nav-user-btn"><span id="nav-user-name"></span> ▾</button>
+        <div class="user-dropdown-menu"><button id="nav-logout-btn">Cerrar sesión</button></div>
+      </div>
+      <button class="nav__hamburguesa" aria-label="Abrir menú" aria-expanded="false" id="nav-hamburguesa"><span></span><span></span><span></span></button>
+    </div>
+  </div>
+</header>
+<div class="menu-movil" id="menu-movil" aria-hidden="true">
+  <a href="/">Inicio</a>
+  {enlaces.map(e => <a href={e.href}>{e.texto}</a>)}
+  <a href="/mi-moodboard">Mi moodboard</a>
+  <a href="#" class="menu-movil__login" onclick="Auth.open('login'); return false;">Ingresar a mi cuenta</a>
+</div>
