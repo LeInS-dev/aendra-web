@@ -12,8 +12,8 @@ Tienda peruana de diseño de interiores (todo el contenido en español). Fundado
 
 ## Estado (2026-10-21)
 
-- **En vivo (master)**: sitio anterior de una sola página (`index.html` estático) con los kits nuevos, checkout arreglado, precios y correo actualizados.
-- **Rama `fase1-tienda`** (preview en Vercel): la nueva tienda multipágina en Astro. Lista para que Alejandra la revise; **no hacer merge a master sin su OK**.
+- **En vivo (master, desde 2026-10-21)**: la tienda multipágina en Astro (antes era `index.html` de una sola página). Fondo "marca de agua" de sombras de enredadera (`public/img/fondos/enredadera.webp`, generado con `node scripts/generar-fondo.mjs`).
+- **Rama `fase1-tienda`**: igual a master; seguir trabajando aquí (preview) y pasar a master solo con OK de Alejandra.
 - Diseño aprobado: `docs/superpowers/specs/2026-10-21-aendra-tienda-design.md` · Plan: `docs/superpowers/plans/2026-10-21-aendra-fase1-tienda.md`.
 - Informe de proveedores: `docs/proveedores-2026-10.md` (conclusión: ningún proveedor le gana a Temu en pedidos de 1 unidad).
 
@@ -111,7 +111,8 @@ Referencia: plantilla **Pietra** (Godly) — suave, acogedora, editorial. Tokens
 
 ## Pendientes
 
-- Merge de `fase1-tienda` a `master` tras la revisión de Alejandra.
+- Checkout: cambiar los campos de tarjeta (Modo Demo) por Yape/Plin/transferencia con pedido "pendiente de pago".
+- Libro de Reclamaciones y políticas de envío/cambios (necesita RUC de Alejandra).
 - Testimonio "Compre el kit de S/90" (Valeria Paredes): sin confirmar si es cita real; se mantiene el texto original.
 - Biografía: el sitio antiguo decía "Arquitecta egresada de la U. de Lima"; la nueva web dice estudiante (según esta guía). Confirmar.
 - Unificar slugs de la tabla `kits` (`mood-cozy`) con los del carrito (`kit-mood-cozy`).
