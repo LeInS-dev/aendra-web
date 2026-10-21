@@ -1,0 +1,23 @@
+---
+import Base from '../layouts/Base.astro';
+import KitCard from '../components/KitCard.astro';
+import kits from '../data/kits.json';
+const desde = Math.min(...kits.map(k => k.precio));
+const schema = kits.map(k => ({
+  '@context': 'https://schema.org', '@type': 'Product', name: `Kit ${k.nombre}`, description: `${k.frase} Incluye: ${k.items.join(', ')}.`,
+  image: k.imagenes.map(src => 'https://www.aendra.lat' + src), brand: { '@type': 'Brand', name: 'AENDRA' },
+  offers: { '@type': 'Offer', price: String(k.precio), priceCurrency: 'PEN', availability: 'https://schema.org/InStock', url: `https://www.aendra.lat/kits#${k.slug}` },
+}));
+---
+<Base title={`Kits de decoración desde S/${desde} — AENDRA`} description={`Looks completos con piezas que combinan entre sí. 5 kits desde S/${desde}, más baratos que comprar cada pieza por separado.`} path="/kits" ogImage={kits[4].imagenes[0]} schema={schema}>
+  <header class="cabeza">
+    <div class="contenedor">
+      <p class="label" data-reveal>Kits</p>
+      <h1 data-reveal>Looks completos, <em>listos para ti</em></h1>
+      <p class="texto" data-reveal>Piezas que ya combinan entre sí, a un precio menor que comprarlas por separado. Toca un kit para abrirlo.</p>
+    </div>
+  </header>
+  <section class="contenedor" style="padding-bottom:var(--seccion)">
+    <div class="kits">{kits.map(k => <KitCard kit={k} />)}</div>
+  </section>
+</Base>

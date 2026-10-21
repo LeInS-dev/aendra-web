@@ -1,0 +1,68 @@
+---
+import Base from '../layouts/Base.astro';
+---
+<Base title="Mi moodboard — AENDRA" description="Las piezas que guardaste con ♡. Envíaselas a Alejandra por WhatsApp para armar tu espacio." path="/mi-moodboard">
+  <header class="cabeza">
+    <div class="contenedor">
+      <p class="label">Mi moodboard</p>
+      <h1>Lo que <em>te enamoró</em></h1>
+      <p class="texto">Guarda piezas con el ♡ mientras recorres la tienda. Cuando estés lista, envíaselas a Alejandra y te ayuda a combinarlas.</p>
+      <div style="display:flex;gap:.7rem;flex-wrap:wrap;margin-top:2rem">
+        <button class="btn btn--solido" id="enviar" disabled>Enviar a Alejandra por WhatsApp</button>
+        <a class="btn btn--linea" href="/servicios">Pedir un moodboard personalizado (S/40)</a>
+      </div>
+    </div>
+  </header>
+  <section class="contenedor" style="padding-bottom:var(--seccion)">
+    <p class="contador" id="mb-contador"></p>
+    <div class="tablero" id="tablero" style="margin-top:1.5rem"></div>
+    <div class="tablero__vacio" id="mb-vacio" hidden>
+      <p class="frase" style="margin:0 auto 1.5rem;font-size:2rem">Tu moodboard está vacío</p>
+      <div style="display:flex;gap:.7rem;justify-content:center;flex-wrap:wrap">
+        <a class="btn btn--solido" href="/tienda">Ir a la tienda</a>
+        <a class="btn btn--linea" href="/tu-estilo">Hacer el test de mood</a>
+      </div>
+    </div>
+  </section>
+
+  <script>
+    import productos from '../data/productos.json';
+    import { CLAVE, mensajeWhatsApp } from '../lib/moodboard.js';
+
+    const porSlug = new Map(productos.map(p => [p.slug, p]));
+    const tablero = document.getElementById('tablero')!;
+    const enviar = document.getElementById('enviar') as HTMLButtonElement;
+
+    function leer(): string[] { try { const v = JSON.parse(localStorage.getItem(CLAVE) || '[]'); return Array.isArray(v) ? v : []; } catch { return []; } }
+
+    function tarjeta(p: any) {
+      const art = document.createElement('article'); art.className = 'producto';
+      const a = document.createElement('a'); a.href = `/producto/${p.slug}`; a.className = 'producto__foto';
+      a.style.aspectRatio = 'auto';
+      const img = document.createElement('img'); img.src = p.galeria[0]; img.alt = p.nombre; img.style.position = 'static'; img.loading = 'lazy';
+      a.appendChild(img);
+      const acc = document.createElement('div'); acc.className = 'producto__acciones';
+      const quitar = document.createElement('button'); quitar.className = 'boton-redondo corazon'; quitar.dataset.moodboard = p.slug;
+      quitar.setAttribute('aria-pressed', 'true'); quitar.setAttribute('aria-label', `Quitar ${p.nombre}`); quitar.textContent = '♥';
+      acc.appendChild(quitar);
+      const info = document.createElement('div'); info.className = 'producto__info';
+      const n = document.createElement('a'); n.href = a.href; n.className = 'producto__nombre'; n.textContent = p.nombre;
+      const pr = document.createElement('span'); pr.className = 'producto__precio'; pr.textContent = `S/${p.precio}`;
+      info.append(n, pr); art.append(a, acc, info);
+      return art;
+    }
+
+    function pintar() {
+      // Slugs guardados de productos que ya no se venden se ignoran en silencio
+      const lista = leer().map(s => porSlug.get(s)).filter(Boolean);
+      tablero.replaceChildren(...lista.map(tarjeta));
+      document.getElementById('mb-vacio')!.hidden = lista.length > 0;
+      const total = lista.reduce((s, p: any) => s + p.precio, 0);
+      document.getElementById('mb-contador')!.textContent = lista.length ? `${lista.length} piezas · S/${total}` : '';
+      enviar.disabled = lista.length === 0;
+      enviar.onclick = () => window.open('https://wa.me/51965104352?text=' + encodeURIComponent(mensajeWhatsApp(lista, location.origin)), '_blank', 'noopener');
+    }
+    document.addEventListener('moodboard:cambio', () => setTimeout(pintar, 0));
+    pintar();
+  </script>
+</Base>

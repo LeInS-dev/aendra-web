@@ -1,0 +1,79 @@
+---
+import Base from '../../layouts/Base.astro';
+import ProductoCard from '../../components/ProductoCard.astro';
+import paletas from '../../data/paletas.json';
+import productos from '../../data/productos.json';
+import ideas from '../../data/ideas.json';
+import { filtrarProductos } from '../../lib/filtros.js';
+
+export function getStaticPaths() {
+  return paletas.map(p => ({ params: { slug: p.slug }, props: { paleta: p } }));
+}
+const { paleta: p } = Astro.props;
+const piezas = filtrarProductos(productos, { paleta: p.slug });
+const idea = ideas.find(i => i.slug === p.idea);
+const otras = paletas.filter(x => x.slug !== p.slug);
+---
+<Base title={`Paleta ${p.nombre} — colores y piezas | AENDRA`} description={`${p.frase} ${p.descripcion}`} path={`/paletas/${p.slug}`} ogImage={p.imagenes[0]} sobreFoto>
+  <section class="portada portada--media">
+    <div class="portada__foto" data-parallax="0.1"><img src={p.imagenes[0]} alt={`Ambiente en paleta ${p.nombre}`} fetchpriority="high"></div>
+    <div class="contenedor portada__contenido">
+      <p class="label" style="color:inherit;opacity:.85" data-reveal>Paleta</p>
+      <h1 class="portada__titulo" style="max-width:none" data-reveal>{p.nombre}</h1>
+      <p class="portada__bajada" style="margin-top:1rem" data-reveal>{p.frase}</p>
+    </div>
+  </section>
+
+  <section class="seccion">
+    <div class="contenedor">
+      <div class="dos-col" data-reveal>
+        <p class="label">Los colores</p>
+        <p class="texto" style="font-size:1.1rem">{p.descripcion} Toca un color para copiar su código.</p>
+      </div>
+      <div class="muestras muestras--grande" style="margin-top:2.5rem" data-reveal>
+        {p.colores.map((c, i) => (
+          <button class="muestra-boton" style={`background:${c.hex};color:${i < 2 ? '#2A1B12' : '#FBF8F3'}`} data-copiar={c.hex} aria-label={`Copiar ${c.nombre} ${c.hex}`}>
+            <b>{c.nombre}</b><span>{c.hex}</span>
+          </button>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="seccion" style="padding-top:0">
+    <div class="contenedor">
+      <div class="cabecera" data-reveal><h2>Piezas que <em>combinan</em></h2><a href={`/tienda?paleta=${p.slug}`} class="link-flecha">Ver en la tienda →</a></div>
+      <div class="grilla grilla--productos" data-reveal-hijos>{piezas.map(x => <ProductoCard producto={x} />)}</div>
+    </div>
+  </section>
+
+  {idea && (
+    <section class="seccion seccion--arena">
+      <a href={`/ideas/${idea.slug}`} class="contenedor idea-tarjeta" data-reveal>
+        <div class="idea-tarjeta__foto"><img src={p.imagenes[1] || idea.imagen} alt="" loading="lazy"></div>
+        <div><p class="label">Una idea con esta paleta</p><h2 style="margin:.6rem 0 1rem">{idea.titulo}</h2><p class="texto">{idea.bajada}</p><span class="link-flecha" style="display:inline-block;margin-top:1.5rem">Leer la idea →</span></div>
+      </a>
+    </section>
+  )}
+
+  <section class="seccion">
+    <div class="contenedor">
+      <p class="label" data-reveal>Otras paletas</p>
+      <div class="grilla" style="margin-top:1.5rem" data-reveal-hijos>
+        {otras.map(o => (
+          <a class="paleta-tarjeta" href={`/paletas/${o.slug}`}>
+            <div class="paleta-tarjeta__foto"><img src={o.imagenes[0]} alt="" loading="lazy"></div>
+            <div class="muestras">{o.colores.map(c => <span style={`background:${c.hex}`}></span>)}</div>
+            <h3>{o.nombre}</h3>
+          </a>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <script>
+    document.querySelectorAll<HTMLButtonElement>('[data-copiar]').forEach(b => b.addEventListener('click', async () => {
+      try { await navigator.clipboard.writeText(b.dataset.copiar!); (window as any).showToast?.(`Copiado ${b.dataset.copiar}`); } catch { /* sin portapapeles: el código queda visible */ }
+    }));
+  </script>
+</Base>

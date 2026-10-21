@@ -1,0 +1,28 @@
+---
+import Base from '../../layouts/Base.astro';
+import ideas from '../../data/ideas.json';
+import paletas from '../../data/paletas.json';
+const paleta = (slug: string) => paletas.find(p => p.slug === slug)!;
+---
+<Base title="Ideas de decoración para copiar — AENDRA" description="Ambientes reales con la lista exacta de piezas para lograrlos: dormitorio verde salvia, sala terracota, rincón japandi y más." path="/ideas" ogImage="/img/ambientes/verde-salvia-2.webp">
+  <header class="cabeza">
+    <div class="contenedor">
+      <p class="label" data-reveal>Ideas</p>
+      <h1 data-reveal>Ambientes para <em>copiar</em> tal cual</h1>
+      <p class="texto" data-reveal>Cada idea trae los consejos de Alejandra y la lista de piezas para lograr el look en tu casa.</p>
+    </div>
+  </header>
+  <section class="contenedor lista-ideas" style="padding-bottom:var(--seccion)">
+    {ideas.map(i => (
+      <a href={`/ideas/${i.slug}`} class="idea-tarjeta" data-reveal>
+        <div class="idea-tarjeta__foto"><img src={i.imagen} alt={i.titulo} loading="lazy"></div>
+        <div>
+          <p class="label">{paleta(i.paleta).nombre} · {i.productos.length} piezas</p>
+          <h2 style="margin:.6rem 0 1rem">{i.titulo}</h2>
+          <p class="texto">{i.bajada}</p>
+          <span class="link-flecha" style="display:inline-block;margin-top:1.5rem">Ver la idea →</span>
+        </div>
+      </a>
+    ))}
+  </section>
+</Base>

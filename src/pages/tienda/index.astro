@@ -1,0 +1,85 @@
+---
+import Base from '../../layouts/Base.astro';
+import ProductoCard from '../../components/ProductoCard.astro';
+import productos from '../../data/productos.json';
+import tax from '../../data/taxonomias.json';
+import paletas from '../../data/paletas.json';
+
+const grupos = [
+  { clave: 'categoria', titulo: 'Qué buscas', opciones: tax.categorias.filter(c => productos.some(p => p.categoria === c.slug)) },
+  { clave: 'ambiente', titulo: 'Para dónde', opciones: tax.ambientes },
+  { clave: 'paleta', titulo: 'Paleta', opciones: paletas.map(p => ({ slug: p.slug, nombre: p.nombre, color: p.colores[2].hex })) },
+  { clave: 'estilo', titulo: 'Estilo', opciones: tax.estilos },
+];
+---
+<Base title="Tienda — AENDRA | Fundas, velas, alfombras y mantas" description="Todas las piezas de AENDRA: fundas de cojín, velas, alfombras, mantas, jarrones y accesorios. Filtra por ambiente, paleta y estilo. Envíos a todo Perú." path="/tienda">
+  <header class="cabeza">
+    <div class="contenedor">
+      <p class="label" data-reveal>Tienda</p>
+      <h1 data-reveal>Todo para que tu casa se sienta <em>como tú</em></h1>
+      <p class="texto" data-reveal>Piezas elegidas una por una. Filtra por el espacio que quieres transformar, la paleta que te calma o tu estilo.</p>
+    </div>
+  </header>
+
+  <section class="contenedor" style="padding-bottom:var(--seccion)">
+    <div class="filtros" id="filtros">
+      {grupos.map(g => (
+        <div class="filtro">
+          <span class="label">{g.titulo}</span>
+          <div class="chips">
+            {g.opciones.map(o => (
+              <button class="chip" data-filtro={g.clave} data-valor={o.slug} aria-pressed="false">
+                {'color' in o && <span class="chip__punto" style={`background:${o.color}`}></span>}{o.nombre}
+              </button>
+            ))}
+          </div>
+        </div>
+      ))}
+    </div>
+    <p class="contador" id="contador" aria-live="polite">{productos.length} piezas</p>
+    <div class="grilla grilla--productos" id="grilla" style="margin-top:1.2rem">
+      {productos.map(p => (
+        <div data-item data-categoria={p.categoria} data-ambientes={p.ambientes.join(' ')} data-paletas={p.paletas.join(' ')} data-estilos={p.estilos.join(' ')}>
+          <ProductoCard producto={p} />
+        </div>
+      ))}
+    </div>
+    <div class="vacio" id="vacio" hidden>
+      <p class="frase" style="margin:0 auto 1.5rem;font-size:2rem">No encontramos piezas con esos filtros</p>
+      <button class="btn btn--linea" id="limpiar">Limpiar filtros</button>
+    </div>
+  </section>
+
+  <script>
+    import productos from '../../data/productos.json';
+    import { filtrarProductos } from '../../lib/filtros.js';
+
+    const estado: Record<string, string> = {};
+    const url = new URL(location.href);
+    for (const k of ['categoria', 'ambiente', 'paleta', 'estilo']) { const v = url.searchParams.get(k); if (v) estado[k] = v; }
+
+    const items = Array.from(document.querySelectorAll<HTMLElement>('[data-item]'));
+    const chips = Array.from(document.querySelectorAll<HTMLButtonElement>('[data-filtro]'));
+    const contador = document.getElementById('contador')!;
+    const vacio = document.getElementById('vacio')!;
+
+    function aplicar() {
+      const visibles = new Set(filtrarProductos(productos, estado).map(p => p.slug));
+      items.forEach(el => { el.hidden = !visibles.has(el.querySelector<HTMLElement>('[data-producto]')!.dataset.producto!); });
+      chips.forEach(c => c.setAttribute('aria-pressed', String(estado[c.dataset.filtro!] === c.dataset.valor)));
+      contador.textContent = `${visibles.size} ${visibles.size === 1 ? 'pieza' : 'piezas'}`;
+      vacio.hidden = visibles.size > 0;
+      const u = new URL(location.href);
+      ['categoria', 'ambiente', 'paleta', 'estilo'].forEach(k => estado[k] ? u.searchParams.set(k, estado[k]) : u.searchParams.delete(k));
+      history.replaceState(null, '', u);
+    }
+
+    chips.forEach(c => c.addEventListener('click', () => {
+      const k = c.dataset.filtro!, v = c.dataset.valor!;
+      if (estado[k] === v) delete estado[k]; else estado[k] = v;
+      aplicar();
+    }));
+    document.getElementById('limpiar')!.addEventListener('click', () => { Object.keys(estado).forEach(k => delete estado[k]); aplicar(); });
+    aplicar();
+  </script>
+</Base>

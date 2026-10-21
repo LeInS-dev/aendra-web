@@ -1,6 +1,146 @@
 ---
 import Base from '../layouts/Base.astro';
+import ProductoCard from '../components/ProductoCard.astro';
+import KitCard from '../components/KitCard.astro';
+import productos from '../data/productos.json';
+import kits from '../data/kits.json';
+import paletas from '../data/paletas.json';
+
+const destacados = ['manta-ondulada-salvia', 'fundas-pana-terracota', 'jarron-negro-mate', 'velas-cubo-burbujas', 'funda-lino-natural', 'alfombra-yute-redonda-60', 'vela-esferica-onda', 'candelabros-negros-3']
+  .map(s => productos.find(p => p.slug === s)).filter(Boolean);
+const desde = Math.min(...kits.map(k => k.precio));
+const schema = [
+  {
+    '@context': 'https://schema.org', '@type': 'Store', name: 'AENDRA', url: 'https://www.aendra.lat/',
+    description: 'Tienda de decoración de interiores en Lima: fundas, velas, alfombras, mantas, kits y asesoría de diseño.',
+    image: 'https://www.aendra.lat/img/ambientes/portada-sala-calida.webp',
+    telephone: '+51965104352', email: 'vasquezalejandra669@gmail.com', priceRange: 'S/20 - S/209',
+    address: { '@type': 'PostalAddress', addressLocality: 'Lima', addressCountry: 'PE' },
+    areaServed: { '@type': 'Country', name: 'Perú' },
+    sameAs: ['https://www.instagram.com/aendra_interiormood'],
+  },
+];
 ---
-<Base title="AENDRA" description="AENDRA — decoración de interiores" path="/">
-  <section class="seccion"><div class="contenedor"><h1>Hola</h1></div></section>
+<Base title="AENDRA — Decoración de interiores en Lima | Ideas, paletas y kits" description={`Fundas, velas, alfombras y mantas elegidas por una estudiante de arquitectura de interiores. Ideas, paletas y kits desde S/${desde}. Envíos a todo Perú.`} path="/" ogImage="/img/ambientes/portada-sala-calida.webp" schema={schema} sobreFoto>
+
+  <section class="portada">
+    <div class="portada__foto" data-parallax="0.12"><img src="/img/ambientes/portada-sala-calida.webp" alt="Sala cálida con sofá verde, mesa de madera y una vela encendida" fetchpriority="high" width="1800" height="1200"></div>
+    <div class="contenedor portada__contenido">
+      <p class="label" style="color:inherit;opacity:.85" data-reveal>Interior mood · Lima, Perú</p>
+      <h1 class="portada__titulo" data-reveal>Transforma <em>tu</em> espacio</h1>
+      <div class="portada__pie" data-reveal>
+        <p class="portada__bajada">Piezas suaves, paletas que calman e ideas reales para que tu casa se sienta como tú.</p>
+        <div style="display:flex;gap:.6rem;flex-wrap:wrap">
+          <a href="/tienda" class="btn btn--claro">Ver la tienda</a>
+          <a href="/tu-estilo" class="btn btn--linea">Descubre tu mood</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="seccion manifiesto">
+    <div class="contenedor">
+      <p class="frase" data-reveal>Diseñamos rincones <em>tranquilos</em>, hechos para vivirse, que se ven lindos con la luz de la mañana y con la de una vela.</p>
+      <div class="dos-col manifiesto__cuerpo" data-reveal>
+        <p class="label">Del moodboard<br>a tu puerta</p>
+        <p class="texto">AENDRA nace de Alejandra Vásquez, estudiante de Arquitectura de Interiores en Lima. Cada pieza pasa por su ojo: textura, color y proporción. Las combinamos en paletas, ideas y kits para que decorar sea fácil, cálido y a tu alcance.</p>
+      </div>
+      <div class="cifras" data-reveal-hijos>
+        <div><b>{productos.length}</b><span>piezas elegidas a mano</span></div>
+        <div><b>4</b><span>paletas para inspirarte</span></div>
+        <div><b>{kits.length}</b><span>kits listos desde S/{desde}</span></div>
+        <div><b>6–19</b><span>días hábiles de entrega a todo Perú</span></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="seccion seccion--hueso" style="padding-top:0;background:transparent">
+    <div class="contenedor">
+      <div class="accesos" data-reveal-hijos>
+        <a class="acceso" href="/tienda"><img src="/img/ambientes/arena-y-lino-1.webp" alt="" loading="lazy"><div><h3>Tienda</h3><small>Fundas, velas, alfombras y más</small></div></a>
+        <a class="acceso" href="/ideas"><img src="/img/ambientes/verde-salvia-2.webp" alt="" loading="lazy"><div><h3>Ideas</h3><small>Ambientes para copiar</small></div></a>
+        <a class="acceso" href="/paletas"><img src="/img/ambientes/terracota-andina-1.webp" alt="" loading="lazy"><div><h3>Paletas</h3><small>Colores que combinan</small></div></a>
+        <a class="acceso" href="/kits"><img src="/img/ambientes/noche-japandi-2.webp" alt="" loading="lazy"><div><h3>Kits</h3><small>Looks completos, listos</small></div></a>
+      </div>
+    </div>
+  </section>
+
+  <section class="seccion">
+    <div class="contenedor">
+      <div class="cabecera" data-reveal>
+        <h2>Lo más <em>querido</em></h2>
+        <a href="/tienda" class="link-flecha">Ver toda la tienda →</a>
+      </div>
+      <div class="grilla grilla--productos" data-reveal-hijos>
+        {destacados.map(p => <ProductoCard producto={p} />)}
+      </div>
+    </div>
+  </section>
+
+  <section class="seccion seccion--arena">
+    <div class="contenedor">
+      <div class="cabecera" data-reveal>
+        <div><p class="label">Paletas</p><h2>Elige los colores <em>que te calman</em></h2></div>
+        <a href="/paletas" class="link-flecha">Ver paletas →</a>
+      </div>
+      <div class="grilla" style="grid-template-columns:repeat(auto-fill,minmax(min(100%,260px),1fr))" data-reveal-hijos>
+        {paletas.map(p => (
+          <a class="paleta-tarjeta" href={`/paletas/${p.slug}`}>
+            <div class="paleta-tarjeta__foto"><img src={p.imagenes[0]} alt={`Ambiente ${p.nombre}`} loading="lazy"></div>
+            <div class="muestras">{p.colores.map(c => <span style={`background:${c.hex}`}></span>)}</div>
+            <h3>{p.nombre}</h3>
+            <p class="texto" style="font-size:.92rem">{p.frase}</p>
+          </a>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="seccion">
+    <div class="contenedor">
+      <div class="cabecera" data-reveal>
+        <div><p class="label">Kits</p><h2>Looks completos, <em>listos para ti</em></h2></div>
+        <a href="/kits" class="link-flecha">Ver los 5 kits →</a>
+      </div>
+      <div class="kits">
+        {kits.filter(k => ['kit-mood-cozy', 'kit-japandi-edit', 'kit-cuarto-dream'].includes(k.slug)).map(k => <KitCard kit={k} />)}
+      </div>
+    </div>
+  </section>
+
+  <section class="seccion seccion--hueso">
+    <div class="contenedor historia">
+      <div class="historia__foto" data-reveal><img src="/img/ambientes/detalle-lectura.webp" alt="Mujer leyendo en un sillón junto a una lámpara de pie" loading="lazy"></div>
+      <div data-reveal>
+        <p class="label">¿No sabes por dónde empezar?</p>
+        <h2 style="margin:.6rem 0 1.2rem">Responde 4 preguntas y descubre <em>tu mood</em></h2>
+        <p class="texto">Te decimos tu estilo, tu paleta y las piezas que mejor van con tu espacio. Guarda lo que te guste en tu moodboard y envíaselo a Alejandra por WhatsApp.</p>
+        <div style="display:flex;gap:.6rem;flex-wrap:wrap;margin-top:1.8rem">
+          <a href="/tu-estilo" class="btn btn--solido">Hacer el test</a>
+          <a href="/servicios" class="btn btn--linea">Asesoría desde S/25</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="seccion">
+    <div class="contenedor">
+      <p class="label" data-reveal>Lo que dicen nuestras clientas</p>
+      <div class="testimonios" style="margin-top:2rem" data-reveal-hijos>
+        <blockquote class="testimonio"><p>“El Kit Cuarto Dream transformo completamente mi habitacion. La calidad de cada pieza es increible y la asesoria de Alejandra fue perfecta para elegir los colores correctos.”</p><footer>Camila Ochoa · Miraflores, Lima</footer></blockquote>
+        <blockquote class="testimonio"><p>“Compre el kit de S/90 y quede encantada. Mi sala se ve completamente diferente. El empaque llego impecable.”</p><footer>Valeria Paredes · Cayma, Arequipa</footer></blockquote>
+        <blockquote class="testimonio"><p>“Las velas y fundas que pedi son hermosas. La atencion de Alejandra es 10/10 — me ayudo a elegir todo por WhatsApp. Llego perfecto hasta Cusco.”</p><footer>Antonella Quispe · Wanchaq, Cusco</footer></blockquote>
+      </div>
+    </div>
+  </section>
+
+  <section class="seccion seccion--arena cierre">
+    <div class="contenedor" data-reveal>
+      <p class="frase">Tu casa, <em>pero más tú.</em></p>
+      <div class="acciones">
+        <a href="/tienda" class="btn btn--solido">Empezar a explorar</a>
+        <a href="https://wa.me/51965104352" target="_blank" rel="noopener" class="btn btn--linea">Escribir a Alejandra</a>
+      </div>
+    </div>
+  </section>
 </Base>

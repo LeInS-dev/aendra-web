@@ -1,0 +1,105 @@
+---
+import Base from '../layouts/Base.astro';
+import quiz from '../data/quiz.json';
+---
+<Base title="¿Cuál es tu mood? Test de estilo de decoración — AENDRA" description="Responde 4 preguntas y descubre tu estilo, tu paleta y las piezas que mejor van con tu espacio." path="/tu-estilo" ogImage="/img/ambientes/estilo-japandi.webp">
+  <section class="cabeza" style="padding-bottom:var(--seccion)">
+    <div class="contenedor quiz" id="quiz">
+      <div class="quiz__progreso"><span id="progreso" style="width:0%"></span></div>
+      {quiz.preguntas.map((q, n) => (
+        <div class="quiz__paso" data-paso={n} hidden={n > 0}>
+          <p class="label">Pregunta {n + 1} de {quiz.preguntas.length}</p>
+          <h1 style="font-size:var(--t-h2);margin-top:.6rem">{q.texto}</h1>
+          <div class="quiz__opciones">
+            {q.opciones.map(o => (
+              <button class:list={['opcion', { 'opcion--texto': !('imagen' in o) }]} data-pregunta={q.id} data-opcion={o.id}>
+                {'imagen' in o && <img src={o.imagen} alt="" loading={n === 0 ? 'eager' : 'lazy'}>}
+                <span>{o.texto}</span>
+              </button>
+            ))}
+          </div>
+        </div>
+      ))}
+      <div class="resultado" id="resultado" hidden>
+        <p class="label">Tu mood es</p>
+        <h1 id="r-titulo" style="font-size:var(--t-h1);margin:.4rem 0 1rem"></h1>
+        <p class="texto" id="r-frase" style="font-size:1.1rem"></p>
+        <div class="muestras" id="r-muestras" style="height:56px;border-radius:999px;margin:2rem 0;max-width:520px"></div>
+        <div class="grilla grilla--productos" id="r-productos" style="margin-top:2rem"></div>
+        <div style="display:flex;gap:.7rem;flex-wrap:wrap;margin-top:2.5rem">
+          <button class="btn btn--solido" id="r-guardar">Guardar todo en mi moodboard</button>
+          <a class="btn btn--linea" id="r-paleta" href="/paletas">Ver mi paleta</a>
+          <a class="btn btn--linea" id="r-kit" href="/kits">Ver el kit ideal</a>
+          <button class="btn btn--linea" id="r-repetir">Repetir el test</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <script>
+    import quiz from '../data/quiz.json';
+    import tax from '../data/taxonomias.json';
+    import productos from '../data/productos.json';
+    import kits from '../data/kits.json';
+    import paletas from '../data/paletas.json';
+    import { puntuarQuiz, recomendar } from '../lib/quiz.js';
+    import { CLAVE } from '../lib/moodboard.js';
+
+    const respuestas: Record<string, string> = {};
+    const pasos = Array.from(document.querySelectorAll<HTMLElement>('[data-paso]'));
+    const progreso = document.getElementById('progreso')!;
+    const res = document.getElementById('resultado')!;
+    let elegidos: string[] = [];
+
+    function mostrar(n: number) {
+      pasos.forEach((p, i) => (p.hidden = i !== n));
+      res.hidden = n < pasos.length;
+      progreso.style.width = `${(Math.min(n, pasos.length) / pasos.length) * 100}%`;
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+
+    function tarjeta(p: any) {
+      const a = document.createElement('a');
+      a.href = `/producto/${p.slug}`; a.className = 'producto';
+      const foto = document.createElement('span'); foto.className = 'producto__foto';
+      const img = document.createElement('img'); img.src = p.galeria[0]; img.alt = p.nombre; img.loading = 'lazy';
+      foto.appendChild(img);
+      const info = document.createElement('span'); info.className = 'producto__info';
+      const n = document.createElement('span'); n.className = 'producto__nombre'; n.textContent = p.nombre;
+      const pr = document.createElement('span'); pr.className = 'producto__precio'; pr.textContent = `S/${p.precio}`;
+      info.append(n, pr); a.append(foto, info);
+      return a;
+    }
+
+    function resultado() {
+      const r = puntuarQuiz(quiz, respuestas, tax);
+      const estilo = tax.estilos.find(e => e.slug === r.estilo)!;
+      const paleta = paletas.find(p => p.slug === r.paleta)!;
+      const rec = recomendar(r, productos, kits);
+      elegidos = rec.productos.map(p => p.slug);
+      document.getElementById('r-titulo')!.innerHTML = `${estilo.nombre} <em>en ${paleta.nombre}</em>`;
+      document.getElementById('r-frase')!.textContent = `${estilo.frase} ${paleta.frase}`;
+      const m = document.getElementById('r-muestras')!; m.replaceChildren(...paleta.colores.map(c => { const s = document.createElement('span'); s.style.background = c.hex; return s; }));
+      document.getElementById('r-productos')!.replaceChildren(...rec.productos.map(tarjeta));
+      (document.getElementById('r-paleta') as HTMLAnchorElement).href = `/paletas/${paleta.slug}`;
+      (document.getElementById('r-kit') as HTMLAnchorElement).href = rec.kit ? `/kits#${rec.kit.slug}` : '/kits';
+      mostrar(pasos.length);
+    }
+
+    document.querySelectorAll<HTMLButtonElement>('[data-opcion]').forEach(b => b.addEventListener('click', () => {
+      respuestas[b.dataset.pregunta!] = b.dataset.opcion!;
+      const actual = pasos.findIndex(p => !p.hidden);
+      if (actual < pasos.length - 1) mostrar(actual + 1); else resultado();
+    }));
+    document.getElementById('r-repetir')!.addEventListener('click', () => { Object.keys(respuestas).forEach(k => delete respuestas[k]); mostrar(0); });
+    document.getElementById('r-guardar')!.addEventListener('click', () => {
+      let lista: string[] = [];
+      try { lista = JSON.parse(localStorage.getItem(CLAVE) || '[]'); } catch { lista = []; }
+      const nueva = [...new Set([...lista, ...elegidos])];
+      try { localStorage.setItem(CLAVE, JSON.stringify(nueva)); } catch { /* sin almacenamiento */ }
+      document.dispatchEvent(new CustomEvent('moodboard:cambio', { detail: nueva }));
+      (window as any).showToast?.('Guardado en tu moodboard ♡');
+      setTimeout(() => (location.href = '/mi-moodboard'), 700);
+    });
+  </script>
+</Base>

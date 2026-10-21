@@ -1,0 +1,63 @@
+---
+import Base from '../../layouts/Base.astro';
+import ProductoCard from '../../components/ProductoCard.astro';
+import ideas from '../../data/ideas.json';
+import productos from '../../data/productos.json';
+import paletas from '../../data/paletas.json';
+
+export function getStaticPaths() {
+  return ideas.map(i => ({ params: { slug: i.slug }, props: { idea: i } }));
+}
+const { idea: i } = Astro.props;
+const piezas = i.productos.map(s => productos.find(p => p.slug === s)).filter(Boolean);
+const total = piezas.reduce((s, p) => s + p!.precio, 0);
+const paleta = paletas.find(p => p.slug === i.paleta)!;
+const carrito = JSON.stringify(piezas.map(p => ({ tipo: 'producto', item_name: p!.nombre, item_slug: p!.slug, item_price: p!.precio, quantity: 1, image_url: p!.galeria[0] })));
+const otras = ideas.filter(x => x.slug !== i.slug).slice(0, 2);
+---
+<Base title={`${i.titulo} | Ideas AENDRA`} description={i.bajada} path={`/ideas/${i.slug}`} ogImage={i.imagen} sobreFoto>
+  <section class="portada portada--media">
+    <div class="portada__foto" data-parallax="0.1"><img src={i.imagen} alt={i.titulo} fetchpriority="high"></div>
+    <div class="contenedor portada__contenido">
+      <p class="label" style="color:inherit;opacity:.85" data-reveal>Idea · <a href={`/paletas/${paleta.slug}`}>Paleta {paleta.nombre}</a></p>
+      <h1 style="font-size:var(--t-h1);max-width:18ch" data-reveal>{i.titulo}</h1>
+    </div>
+  </section>
+
+  <section class="seccion">
+    <div class="contenedor">
+      <p class="frase" style="margin-bottom:clamp(2.5rem,6vw,4rem);max-width:28ch;font-size:clamp(1.6rem,3.2vw,2.5rem)" data-reveal>{i.bajada}</p>
+      <div class="articulo" data-reveal>{i.texto.map(t => <p>{t}</p>)}</div>
+    </div>
+  </section>
+
+  <section class="seccion seccion--hueso">
+    <div class="contenedor">
+      <div class="cabecera" data-reveal>
+        <div><p class="label">Para lograr este look</p><h2>{piezas.length} piezas · <em>S/{total}</em></h2></div>
+        <button class="btn btn--solido" id="agregar-todo" data-items={carrito}>Agregar todo al carrito</button>
+      </div>
+      <div class="grilla grilla--productos" data-reveal-hijos>{piezas.map(p => <ProductoCard producto={p!} />)}</div>
+      <p class="texto" style="margin-top:2rem;font-size:.85rem">La foto del ambiente es de referencia: muestra el estilo, no las piezas exactas. Las fotos de cada pieza sí son del producto que recibes.</p>
+    </div>
+  </section>
+
+  <section class="seccion">
+    <div class="contenedor">
+      <p class="label" data-reveal>Más ideas</p>
+      <div class="grilla" style="margin-top:1.5rem;grid-template-columns:repeat(auto-fill,minmax(min(100%,360px),1fr))" data-reveal-hijos>
+        {otras.map(o => (
+          <a href={`/ideas/${o.slug}`} class="paleta-tarjeta"><div class="paleta-tarjeta__foto"><img src={o.imagen} alt="" loading="lazy"></div><h3>{o.titulo}</h3></a>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <script>
+    declare const Cart: { add(item: object): void }; // global de public/js/cart.js
+    document.getElementById('agregar-todo')?.addEventListener('click', e => {
+      const items = JSON.parse((e.currentTarget as HTMLElement).dataset.items!);
+      items.forEach((it: object) => { try { Cart.add(it); } catch (err) { console.error('No se pudo agregar', err); } });
+    });
+  </script>
+</Base>

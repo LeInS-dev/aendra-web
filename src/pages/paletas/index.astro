@@ -1,0 +1,28 @@
+---
+import Base from '../../layouts/Base.astro';
+import paletas from '../../data/paletas.json';
+import productos from '../../data/productos.json';
+---
+<Base title="Paletas de color para decorar — AENDRA" description="Cuatro paletas para decorar tu casa: Arena y Lino, Verde Salvia, Terracota Andina y Noche Japandi. Colores, ambientes y piezas que combinan." path="/paletas" ogImage="/img/ambientes/terracota-andina-1.webp">
+  <header class="cabeza">
+    <div class="contenedor">
+      <p class="label" data-reveal>Paletas</p>
+      <h1 data-reveal>Empieza por los colores <em>que te calman</em></h1>
+      <p class="texto" data-reveal>Una paleta es el atajo para que todo combine. Elige una y te mostramos ambientes, ideas y las piezas que la completan.</p>
+    </div>
+  </header>
+  <section class="contenedor" style="padding-bottom:var(--seccion);display:grid;gap:clamp(3.5rem,8vw,6rem)">
+    {paletas.map(p => (
+      <a href={`/paletas/${p.slug}`} class="idea-tarjeta" data-reveal>
+        <div class="idea-tarjeta__foto"><img src={p.imagenes[0]} alt={`Ambiente en paleta ${p.nombre}`} loading="lazy"></div>
+        <div>
+          <p class="label">{productos.filter(x => x.paletas.includes(p.slug)).length} piezas</p>
+          <h2 style="margin:.6rem 0 1rem">{p.nombre}</h2>
+          <p class="texto" style="margin-bottom:1.5rem">{p.frase}</p>
+          <div class="muestras" style="height:56px;border-radius:999px">{p.colores.map(c => <span style={`background:${c.hex}`} title={c.nombre}></span>)}</div>
+          <span class="link-flecha" style="display:inline-block;margin-top:1.5rem">Ver la paleta →</span>
+        </div>
+      </a>
+    ))}
+  </section>
+</Base>

@@ -1,0 +1,50 @@
+---
+import Base from '../layouts/Base.astro';
+const servicios = [
+  { nombre: 'Mini Asesoría Express', precio: 25, badge: 'Express', texto: '30 minutos por videollamada con recomendaciones personalizadas y tips de decoración para tu espacio.', wa: 'Mini Asesoría Express' },
+  { nombre: 'Moodboard Digital', precio: 40, badge: 'Digital', texto: 'Paleta de colores personalizada y selección de muebles y accesorios. Lo recibes en 5 a 7 días, en digital.', wa: 'Moodboard Digital Personalizado' },
+  { nombre: 'Lista de Compras', precio: 15, badge: 'Rápido', texto: 'Una lista ajustada a tu presupuesto, con links directos de compra. Entrega inmediata.', wa: 'Lista de Compras con Links' },
+];
+---
+<Base title="Asesoría y moodboards de decoración — AENDRA" description="Asesoría express S/25, moodboard digital S/40 y lista de compras S/15 con Alejandra Vásquez, estudiante de Arquitectura de Interiores." path="/servicios" ogImage="/img/ambientes/detalle-lectura.webp">
+  <header class="cabeza">
+    <div class="contenedor">
+      <p class="label" data-reveal>Servicios</p>
+      <h1 data-reveal>Diseñemos tu espacio <em>juntas</em></h1>
+      <p class="texto" data-reveal>Alejandra Vásquez estudia Arquitectura de Interiores y te acompaña a elegir colores, piezas y distribución, todo por WhatsApp.</p>
+    </div>
+  </header>
+  <section class="contenedor" style="padding-bottom:var(--seccion)">
+    <div class="servicios" data-reveal-hijos>
+      {servicios.map(s => (
+        <article class="servicio">
+          <span class="label">{s.badge}</span>
+          <h2 style="font-size:var(--t-h3)">{s.nombre}</h2>
+          <p class="texto">{s.texto}</p>
+          <p class="servicio__precio"><small style="font-size:1rem">S/</small>{s.precio}</p>
+          <button class="btn btn--solido" data-whatsapp={s.wa} data-precio={`S/${s.precio}`}>Agendar</button>
+        </article>
+      ))}
+    </div>
+  </section>
+  <section class="seccion seccion--arena">
+    <div class="contenedor">
+      <h2 data-reveal style="margin-bottom:2.5rem">Cómo <em>funciona</em></h2>
+      <ol class="pasos" data-reveal-hijos>
+        <li><h3>Elige</h3><p class="texto">Arma tu carrito o guarda piezas en tu moodboard. Si dudas, haz el test de mood.</p></li>
+        <li><h3>Confirma</h3><p class="texto">Escríbenos por WhatsApp o completa el pedido. Pagas por Yape, Plin o transferencia.</p></li>
+        <li><h3>Recibe</h3><p class="texto">Tus piezas llegan a tu casa en todo Perú en 6 a 19 días hábiles.</p></li>
+      </ol>
+    </div>
+  </section>
+  <section class="seccion cierre" id="contacto">
+    <div class="contenedor" data-reveal>
+      <p class="frase">¿Hablamos de <em>tu espacio</em>?</p>
+      <div class="acciones">
+        <a href="https://wa.me/51965104352" target="_blank" rel="noopener" class="btn btn--solido">WhatsApp +51 965 104 352</a>
+        <a href="https://www.instagram.com/aendra_interiormood" target="_blank" rel="noopener" class="btn btn--linea">Instagram</a>
+        <a href="mailto:vasquezalejandra669@gmail.com" class="btn btn--linea">Correo</a>
+      </div>
+    </div>
+  </section>
+</Base>

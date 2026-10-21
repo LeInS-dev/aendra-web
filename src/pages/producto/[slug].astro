@@ -1,0 +1,81 @@
+---
+import Base from '../../layouts/Base.astro';
+import ProductoCard from '../../components/ProductoCard.astro';
+import productos from '../../data/productos.json';
+import kits from '../../data/kits.json';
+import paletas from '../../data/paletas.json';
+import tax from '../../data/taxonomias.json';
+import { relacionados } from '../../lib/relacionados.js';
+
+export function getStaticPaths() {
+  return productos.map(p => ({ params: { slug: p.slug }, props: { producto: p } }));
+}
+const { producto: p } = Astro.props;
+const sitio = 'https://www.aendra.lat';
+const combina = relacionados(p, productos, 4);
+const enKits = kits.filter(k => k.productos.includes(p.slug));
+const nombre = (lista: { slug: string; nombre: string }[], slug: string) => lista.find(x => x.slug === slug)?.nombre || slug;
+const categoria = nombre(tax.categorias, p.categoria);
+const carrito = JSON.stringify({ tipo: 'producto', item_name: p.nombre, item_slug: p.slug, item_price: p.precio, quantity: 1, image_url: p.galeria[0] });
+const schema = {
+  '@context': 'https://schema.org', '@type': 'Product', name: p.nombre, description: p.descripcion,
+  image: p.galeria.map(src => sitio + src), brand: { '@type': 'Brand', name: 'AENDRA' }, category: categoria,
+  offers: {
+    '@type': 'Offer', price: String(p.precio), priceCurrency: 'PEN', availability: 'https://schema.org/InStock',
+    url: `${sitio}/producto/${p.slug}`, seller: { '@type': 'Organization', name: 'AENDRA' },
+  },
+};
+---
+<Base title={`${p.nombre} — S/${p.precio} | AENDRA`} description={`${p.descripcion} Envío a todo Perú en ${p.entrega} días hábiles.`} path={`/producto/${p.slug}`} ogImage={p.galeria[0]} schema={schema}>
+  <section class="contenedor ficha">
+    <div class="galeria" data-galeria>
+      <div class="galeria__principal"><img src={p.galeria[0]} alt={p.nombre} id="foto-principal" width="1000" height="1250" fetchpriority="high"></div>
+      {p.galeria.length > 1 && (
+        <div class="galeria__miniaturas">
+          {p.galeria.map((src, i) => <button data-foto={src} aria-current={i === 0 ? 'true' : 'false'} aria-label={`Ver foto ${i + 1}`}><img src={src} alt="" loading="lazy"></button>)}
+        </div>
+      )}
+    </div>
+    <div class="ficha__info" data-producto={p.slug}>
+      <p class="label"><a href={`/tienda?categoria=${p.categoria}`}>{categoria}</a></p>
+      <h1 style="font-size:var(--t-h2);margin-top:.6rem">{p.nombre}</h1>
+      <p class="ficha__precio">S/{p.precio}</p>
+      <p class="texto" style="font-size:1.05rem">{p.descripcion}</p>
+      <div class="ficha__acciones">
+        <button class="btn btn--solido" data-agregar={carrito}>Agregar al carrito</button>
+        <button class="btn btn--linea" data-whatsapp={p.nombre} data-precio={`S/${p.precio}`}>Pedir por WhatsApp</button>
+        <button class="boton-redondo corazon" data-moodboard={p.slug} aria-pressed="false" aria-label="Guardar en mi moodboard" style="width:50px;height:50px">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 20.5s-7.5-4.6-9.3-9.2C1.4 7.9 3.6 4.5 7 4.5c2 0 3.6 1.1 5 3 1.4-1.9 3-3 5-3 3.4 0 5.6 3.4 4.3 6.8-1.8 4.6-9.3 9.2-9.3 9.2z"/></svg>
+        </button>
+      </div>
+      <div class="ficha__datos">
+        <div><span>Entrega</span><span>{p.entrega} días hábiles a todo Perú</span></div>
+        <div><span>Pago</span><span>Yape, Plin o transferencia</span></div>
+        <div><span>Ambientes</span><span class="etiquetas">{p.ambientes.map(a => <a href={`/tienda?ambiente=${a}`}>{nombre(tax.ambientes, a)}</a>)}</span></div>
+        <div><span>Paletas</span><span class="etiquetas">{p.paletas.map(x => <a href={`/paletas/${x}`}>{nombre(paletas, x)}</a>)}</span></div>
+        <div><span>Estilo</span><span class="etiquetas">{p.estilos.map(e => <a href={`/tienda?estilo=${e}`}>{nombre(tax.estilos, e)}</a>)}</span></div>
+      </div>
+      {enKits.length > 0 && (
+        <p class="texto" style="margin-top:1.4rem;font-size:.92rem">También viene en {enKits.map((k, i) => <>{i > 0 && ' y '}<a href={`/kits#${k.slug}`} style="border-bottom:1px solid currentColor">Kit {k.nombre}</a></>)}.</p>
+      )}
+    </div>
+  </section>
+
+  {combina.length > 0 && (
+    <section class="seccion">
+      <div class="contenedor">
+        <div class="cabecera" data-reveal><h2>Combina <em>con</em></h2><a href={`/tienda?paleta=${p.paletas[0]}`} class="link-flecha">Ver más de esta paleta →</a></div>
+        <div class="grilla grilla--productos" data-reveal-hijos>{combina.map(c => <ProductoCard producto={c} />)}</div>
+      </div>
+    </section>
+  )}
+
+  <script>
+    const principal = document.getElementById('foto-principal') as HTMLImageElement | null;
+    document.querySelectorAll<HTMLButtonElement>('[data-foto]').forEach(b => b.addEventListener('click', () => {
+      if (!principal) return;
+      principal.src = b.dataset.foto!;
+      document.querySelectorAll('[data-foto]').forEach(x => x.setAttribute('aria-current', String(x === b)));
+    }));
+  </script>
+</Base>

@@ -1,0 +1,26 @@
+---
+import productos from '../data/productos.json';
+interface Kit { slug: string; nombre: string; badge: string; precio: number; destacado: boolean; frase: string; items: string[]; productos: string[]; imagenes: string[] }
+interface Props { kit: Kit }
+const { kit } = Astro.props;
+const precioDe = Object.fromEntries(productos.map(p => [p.slug, p.precio]));
+const suelto = kit.productos.reduce((s, sl) => s + (precioDe[sl] || 0), 0) + (kit.items.some(i => /moodboard/i.test(i)) ? 40 : 0);
+const ahorro = suelto - kit.precio;
+const carrito = JSON.stringify({ tipo: 'kit', item_name: `Kit ${kit.nombre}`, item_slug: kit.slug, item_price: kit.precio, quantity: 1, image_url: kit.imagenes[0] });
+---
+<article class:list={['kit', { 'kit--destacado': kit.destacado }]} id={kit.slug} data-reveal>
+  <div class="abanico" data-abanico aria-hidden="true">
+    {kit.imagenes.map(src => <img src={src} alt="" loading="lazy" decoding="async" width="400" height="500">)}
+  </div>
+  <span class="label">{kit.badge}</span>
+  <h3 class="kit__nombre">{kit.nombre}</h3>
+  <p class="texto">{kit.frase}</p>
+  <ul>{kit.items.map(i => <li>{i}</li>)}</ul>
+  <div class="kit__pie">
+    <div class="kit__precio"><small>S/</small>{kit.precio}<span class="kit__ahorro">Ahorras S/{ahorro} vs. por separado</span></div>
+    <div style="display:flex;gap:.5rem">
+      <button class="btn btn--linea btn--chico" data-whatsapp={`Kit ${kit.nombre}`} data-precio={`S/${kit.precio}`}>WhatsApp</button>
+      <button class="btn btn--solido btn--chico" data-agregar={carrito}>+ Carrito</button>
+    </div>
+  </div>
+</article>

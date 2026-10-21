@@ -1,0 +1,24 @@
+---
+interface Producto { slug: string; nombre: string; precio: number; galeria: string[]; categoria: string }
+interface Props { producto: Producto; cargaPerezosa?: boolean }
+const { producto: p, cargaPerezosa = true } = Astro.props;
+const carrito = JSON.stringify({ tipo: 'producto', item_name: p.nombre, item_slug: p.slug, item_price: p.precio, quantity: 1, image_url: p.galeria[0] });
+---
+<article class="producto" data-producto={p.slug}>
+  <a href={`/producto/${p.slug}`} class="producto__foto" aria-label={p.nombre}>
+    <img src={p.galeria[0]} alt={p.nombre} loading={cargaPerezosa ? 'lazy' : 'eager'} decoding="async" width="600" height="750">
+    {p.galeria[1] && <img src={p.galeria[1]} alt="" loading="lazy" decoding="async" width="600" height="750">}
+  </a>
+  <div class="producto__acciones">
+    <button class="boton-redondo corazon" data-moodboard={p.slug} aria-pressed="false" aria-label={`Guardar ${p.nombre} en mi moodboard`}>
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 20.5s-7.5-4.6-9.3-9.2C1.4 7.9 3.6 4.5 7 4.5c2 0 3.6 1.1 5 3 1.4-1.9 3-3 5-3 3.4 0 5.6 3.4 4.3 6.8-1.8 4.6-9.3 9.2-9.3 9.2z"/></svg>
+    </button>
+    <button class="boton-redondo" data-agregar={carrito} aria-label={`Agregar ${p.nombre} al carrito`}>
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M12 5v14M5 12h14"/></svg>
+    </button>
+  </div>
+  <div class="producto__info">
+    <a href={`/producto/${p.slug}`} class="producto__nombre">{p.nombre}</a>
+    <span class="producto__precio">S/{p.precio}</span>
+  </div>
+</article>
