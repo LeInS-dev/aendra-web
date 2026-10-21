@@ -1,7 +1,5 @@
 User-agent: *
 Allow: /
-Disallow: /pages/
+Disallow: /mi-moodboard
 
-Sitemap: https://www.aendra.lat/sitemap.xml
-
-Crawl-delay: 1
+Sitemap: https://www.aendra.lat/sitemap-index.xml
