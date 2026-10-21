@@ -11,22 +11,40 @@ Spanish-language interior design & home mood brand for **Peru**. All content is 
 **WhatsApp**: +51 965 104 352  
 **Instagram**: @aendra_interiormood  
 **Email**: hola@aendra.com  
-**VPS**: 167.71.127.223 — served on port 8080 via nginx (port 80 is used by stock bot scrap-jein)  
-**GitHub**: https://github.com/LeInS-dev/aendra-web (private)
+**Domain**: www.aendra.lat (hosted on Vercel)  
+**Vercel project**: leins-devs-projects/aendra-web  
+**GitHub**: https://github.com/LeInS-dev/aendra-web (private)  
+**Legacy VPS**: 167.71.127.223 — ya NO se usa (la web se sirvió ahí en puerto 8080 hasta 2026-04-14)
+
+## Estado actual (verificado 2026-10-20)
+
+- Web en vivo en Vercel → https://www.aendra.lat. Lo que está en `origin/master` es lo publicado.
+- `robots.txt`, `sitemap.xml`, canonical, og:url y schema ya usan `https://www.aendra.lat/`.
+- Supabase estuvo **pausado** por inactividad (plan free) y se reactivó en octubre 2026.
+- Las 60 imágenes de Temu (`img.kwcdn.com`) del catálogo siguen cargando.
+- Links, costos y variantes de Temu ahora viven en la tabla privada `catalogo_productos` de Supabase (creada 2026-10-20).
+- Trabajo en curso en la rama `kits-reales-oct2026` (no hacer push ni deploy a master sin preguntar). Los kits nuevos ya están en `index.html` de esa rama y en la tabla `kits` de Supabase, pero **la web en vivo aún muestra los kits viejos** hasta que se haga merge/deploy.
 
 ## Supabase
 
 - **Project ID**: `ffwuvaifwqjpkntfrppm` (region: sa-east-1, São Paulo)
 - **Client file**: `js/supabase-client.js` — exports global `sb`
+- La web **no lee** catálogo de Supabase: kits, productos y precios son HTML estático en `index.html`. Supabase solo se usa para auth, carrito→pedidos.
 - Tables:
-  - `kits` (5 rows) — currency: PEN
-  - `productos` (6 rows) — currency: PEN
-  - `servicios` (3 rows) — currency: PEN
+  - `kits` (5 rows) — currency: PEN. Sincronizada 2026-10-20 con los kits nuevos (items, price, image_url). Slugs sin prefijo (`mood-cozy`), mientras el carrito usa `kit-mood-cozy`. SQL: `supabase/migrations/20261020_sync_kits_oct2026.sql`
+  - `productos` (6 rows) — currency: PEN. **Son 6 CATEGORÍAS** con "precio desde", NO los productos individuales.
+  - `catalogo_productos` (31 rows) — **productos individuales con costo y link de Temu**. FK `categoria_id` → `productos`. Columnas generadas: `margen` (= precio_aendra − precio_temu) y `link_temu` (desde `temu_goods_id`). `precio_temu` = costo TOTAL (ya × `unidades_temu`). `estado`: disponible / sin_verificar / no_disponible. `en_web` = tiene tarjeta propia en index.html. **RLS sin políticas → privada** (la clave pública devuelve `[]`). SQL: `supabase/migrations/20261020_create_catalogo_productos.sql`
+  - `servicios` (3 rows) — currency: PEN. Mini Asesoría S/25, Moodboard S/40, Lista de Compras S/15.
   - `clientes` — auth_user_id (uuid FK → auth.users), name, email, phone
   - `pedidos` — auth_user_id, tipo, item_name, item_price, total, status, payment_status, payment_method, shipping_address (jsonb), whatsapp_sent
   - `pedido_items` — pedido_id FK, tipo, item_name, item_slug, item_price, quantity, image_url
   - `testimonios` (3 rows) — Lima, Arequipa, Cusco
-- RLS enabled: public read on active/approved rows, public insert on clientes/pedidos/pedido_items
+- RLS enabled on all tables:
+  - `kits`, `productos`, `servicios`, `testimonios` — public SELECT only (where active/approved = true)
+  - `clientes` — INSERT/SELECT/UPDATE only own record (`auth.uid() = auth_user_id`)
+  - `pedidos` — INSERT/SELECT only own records (`auth.uid() = auth_user_id`)
+  - `pedido_items` — INSERT/SELECT only for own pedidos (subquery check)
+  - No public INSERT without auth — fixed 2026-04-14 (removed permissive "Anyone can create" policies)
 - Anon key in `js/supabase-client.js` is intentionally public (Supabase by design) — protection is via RLS
 
 ## Tech stack
@@ -39,22 +57,24 @@ Spanish-language interior design & home mood brand for **Peru**. All content is 
 
 ## File structure
 
-```
+```text
 REINA/
-├── index.html              ← Main landing page (~2000+ lines)
+├── index.html              ← Main landing page (~1650 lines)
+├── vercel.json             ← Vercel config (static site, security headers) — ⚠ sin commitear
+├── robots.txt, sitemap.xml
 ├── css/
-│   └── styles.css          ← All styles (~1000+ lines)
+│   └── styles.css          ← All styles (~1450 lines)
 ├── js/
 │   ├── supabase-client.js  ← Supabase init, exports global `sb`
 │   ├── auth.js             ← Auth IIFE module (login/register/logout)
 │   ├── cart.js             ← Cart IIFE module (localStorage, XSS-safe DOM methods)
 │   ├── checkout.js         ← Checkout IIFE module (3-step, Culqi-ready, demo mode)
-│   └── main.js             ← GSAP animations, cursor, particles
-├── assets/                 ← Static assets
-├── AENDRA_Catalogo_Productos.html
-├── AENDRA_Estrategia_Crecimiento.html
-├── AENDRA_Guion_Reels.html
-├── AENDRA_Templates_Instagram.html
+│   ├── main.js             ← GSAP animations, cursor, particles, orderKit()/openWhatsApp()
+│   └── waitlist.js         ← NO se carga (feature eliminada) — sin commitear
+├── assets/images/          ← favicon.svg, og-image.svg, hero-interior.jpg (no hay fotos de kits)
+├── pages/                  ← Documentos internos (catálogo, estrategia, reels, plan marketing, marketing/01–07)
+├── supabase/migrations/    ← create_waitlist_table.sql — sin commitear
+├── *_STRATEGY.md, SEO_PLAN.md, AENDRA_Presentacion_Ventas.pptx ← marketing, sin commitear
 └── CLAUDE.md
 ```
 
@@ -62,45 +82,77 @@ REINA/
 
 | Section | ID | Notes |
 |---------|-----|-------|
-| Navbar | — | Fixed, transparent→solid on scroll, hamburger mobile, cart badge + auth buttons |
-| Hero | `#inicio` | 100vh, custom gold cursor, floating particles, parallax glows |
-| About | `#nosotros` | Alejandra's story — Arquitecta de Interiores, Unsplash image |
-| Gallery Mood | `#galeria` | 7 Unsplash images, masonry-style pop-in |
+| Navbar | — | Fixed, dark background, hamburger mobile, cart badge + auth buttons |
+| Hero | `#hero` | Split-screen con foto de interior (`assets/images/hero-interior.jpg`) |
+| About | `#about` | Alejandra's story |
+| Gallery Mood | `#mood` | Unsplash images, masonry-style pop-in |
 | Kits | `#kits` | 5 kits — **2×2 collage of real product photos** per kit, WhatsApp + Cart CTAs |
 | Productos | `#productos` | 6 category cards with **photo carousels** — click navigates to section or opens WA |
-| Fundas | `#fundas` | 8 funda de cojín products — real Temu images, 3-image carousel per card |
+| Fundas | `#fundas` | 7 funda de cojín products — real Temu images, 3-image carousel per card |
 | Alfombras | `#alfombras` | 5 alfombra products — real Temu images, 3-image carousel per card |
 | Velas | `#velas` | 6 vela products — real Temu images, 3-image carousel per card |
 | Adornos | `#adornos` | 2 adornos para sala — real Temu images, 3-image carousel per card |
-| Servicios | `#servicios` | 3 services: S/25, S/40, S/15 |
-| Cómo Funciona | `#como-funciona` | 3 steps + progress line scrub |
-| Testimonios | `#testimonios` | Lima, Arequipa, Cusco |
-| Contacto | `#contacto` | WhatsApp + IG + Email CTAs |
+| Servicios | `#services` | 3 services: S/25, S/40, S/15 |
+| Cómo Funciona | `#process` | 3 steps + progress line scrub |
+| Testimonios | `#testimonials` | Lima, Arequipa, Cusco |
+| Contacto | `#contact` | WhatsApp + IG + Email CTAs |
 | Footer | — | Copyright 2026 |
 
 ## Product pricing (Peruvian Soles)
 
-Temu-sourced products: AENDRA price = Temu sale price + S/15
+**Regla**: precio AENDRA = precio de venta en Temu + S/15 → costo Temu = precio web − S/15.
+**Fuente de verdad de costos/links/estado: tabla `catalogo_productos`** (revisión 2026-10-20). La tabla de abajo son los precios que muestra la web.
 
-### Kits (each has a 2×2 collage of 4 real product photos)
-- Kit Mood Cozy — S/35 (vela burbujas + funda chenilla beige + vela torsionada + funda lino)
-- Kit Gift Mood — S/45 (vela escultorica + funda felpa jacquard + vela esfericas + funda boho)
-- Kit Japandi Edit — S/75 (funda chenilla vintage + vela hexagonales + funda lino + vela ondas)
-- Kit Sala Aesthetic — S/90 (alfombra vintage + funda rayas boho + alfombra floral + funda diamantes)
-- Kit Cuarto Dream — S/150 (alfombra terciopelo + vela escultorica + funda felpa + adorno elefantes) — badge "Mas Popular"
+**Cómo verificar un producto en Temu** (sesión iniciada, Temu Perú): comparar el ID de imagen kwcdn del producto con `thumbUrl` de los resultados de `/search_result.html?search_key=…` (vienen en `window.rawData`). Para variantes/stock/envío, leer `rawData` de `/goods.html?goods_id=…` (`normalPriceStr`, `stockQuantity`, `isOnsale`, `deliveryTimeValue`). El precio de búsqueda puede diferir del de la ficha.
 
-### Fundas de Cojín (7 products, S/43–S/71)
-Real Temu images from img.kwcdn.com — 3-image carousel per card
+### Catálogo individual (20 productos, estático en index.html) — ⚠ 11 ya no se pueden comprar en Temu
 
-### Alfombras (5 products, S/63–S/107)
-Real Temu images from img.kwcdn.com — 3-image carousel per card
+| Sección | Producto (nombre en carrito) | slug | Precio web | Costo Temu |
+|---|---|---|---|---|
+| Fundas | Fundas Felpa Jacquard Geométrico x4 | `funda-felpa-jacquard` | S/59 | S/44 |
+| Fundas | Fundas Lino Natural Exterior x4 | `funda-lino-natural` | S/59 | S/44 |
+| Fundas | Fundas Chenilla Beige Clásico x2 | `funda-chenilla-beige` | S/43 | S/28 |
+| Fundas | Fundas Chenilla Texturizada Vintage x2 | `funda-chenilla-vintage` | S/53 | S/38 |
+| Fundas | Fundas Beige Marron Rayas Boho x4 | `funda-rayas-boho` | S/71 | S/56 |
+| Fundas | Fundas Patrón Geométrico Diamantes x4 | `funda-geometrico-diamantes` | S/48 | S/33 |
+| Fundas | Fundas Abstracto Linea Boho Felpa x4 | `funda-abstracto-boho` | S/57 | S/42 |
+| Alfombras | Alfombra Vintage Minimalista | `alfombra-vintage-minimalista` | S/82 | S/67 |
+| Alfombras | Alfombra Terciopelo Vintage Europea | `alfombra-terciopelo-vintage` | S/107 | S/92 |
+| Alfombras | Alfombra Beige Pelo Largo Nórdica | `alfombra-beige-pelo-largo` | S/95 | S/80 |
+| Alfombras | Alfombra Vintage Floral | `alfombra-vintage-floral` | S/63 | S/48 |
+| Alfombras | Alfombra Bohemia Marroquí Terciopelo | `alfombra-bohemia-terciopelo` | S/66 | S/51 |
+| Velas | Velas Escultorica Blancas Estriadas x2 | `velas-escultorica-blanca` | S/62 | S/47 |
+| Velas | Vela Esfera de Burbujas | `velas-esfera-burbujas` | S/33 | S/18 |
+| Velas | Vela Bola Torsionada | `vela-bola-torsionada` | S/34 | S/19 |
+| Velas | Velas Esféricas Aromáticas | `velas-esfericas-aromaticas` | S/33 | S/18 |
+| Velas | Velas Artísticas Diseño Ondas | `velas-artisticas-ondas` | S/41 | S/26 |
+| Velas | Velas Aromáticas Hexagonales x2 | `velas-aromaticas-hexagonales` | S/43 | S/28 |
+| Adornos | Figuras Elefantes Minimalistas | `figuras-elefantes-minimalistas` | S/101 | S/86 |
+| Adornos | Jarron de Cerámica Rústica | `jarron-ceramica-rustica` | S/77 | S/62 |
 
-### Velas (6 products, S/33–S/62)
-Real Temu images from img.kwcdn.com — 3-image carousel per card
+### Kits (aprobados 2026-10-20 — en rama `kits-reales-oct2026` + tabla `kits`; la web en vivo aún tiene los viejos de S/35–S/150)
+Solo productos verificados en Temu el 2026-10-20, ninguno se repite entre kits, entrega 6–19 días hábiles, ahorro del cliente ~10% vs suelto.
+Los productos suelto = costo Temu + S/15. Slugs entre paréntesis = filas de `catalogo_productos`.
 
-### Adornos para la Sala (2 products)
-- Figuras Elefantes Minimalistas — S/101
-- Jarrón de Cerámica Rústica — S/77
+| Kit | Productos | Suelto | Precio kit | Costo Temu | Ganancia |
+|---|---|---|---|---|---|
+| Mood Cozy | Velas Cubo de Burbujas x2 (`velas-cubo-burbujas`, S/25) + Fundas Chenilla Camello x2 (`funda-chenilla-camello`, S/45) | S/70 | **S/63** | S/40.05 | S/22.95 |
+| Gift Mood | Vela Esférica de Ondas (`vela-esferica-onda`, S/27) + Vela Bola Espiral (`vela-bola-espiral`, S/41) + Fundas Boho Felpa x4 (`funda-boho-felpa-beige`, S/49) | S/117 | **S/105** | S/72.45 | S/32.55 |
+| Japandi Edit | Fundas Lino Natural x4 (`funda-lino-natural`, S/45) + Velas Ondas (`velas-artisticas-ondas`, S/29) + Jarrón Cerámica Blanco (`jarron-ceramica-blanco`, S/34) | S/108 | **S/97** | S/62.91 | S/34.09 |
+| Sala Aesthetic | Alfombra Vintage 90×150 (`alfombra-vintage-90x150`, S/91) + Fundas Pana Rayas x4 (`funda-pana-rayas-boho`, S/52) + Velas Escultóricas x2 (`velas-escultorica-blanca`, S/63) | S/206 | **S/185** | S/160.83 | S/24.17 |
+| Cuarto Dream (Mas Popular) | Alfombra Felpa Beige 120×160 (`alfombra-felpa-beige-120x160`, S/79) + Fundas Jacquard x4 (`funda-jacquard-geometrico`, S/67) + Velas Columna x2 (`velas-columna-estriada`, S/48) + Moodboard Digital (S/40) | S/234 | **S/209** | S/149.51 | S/59.49 |
+
+Nota Cuarto Dream: el Moodboard no tiene costo Temu pero sí tiempo de Alejandra; la ganancia solo por productos físicos es S/19.49.
+Nota: Japandi (S/97) quedó más barato que Gift Mood (S/105); se mantuvo el orden de las tarjetas.
+
+### Dónde se repiten los precios/contenido de kits (actualizar TODO junto)
+- `#kits`: `data-kit`, `data-price`, `.kit-items`, `.kit-price`, `Cart.add({item_price, image_url})`, fotos de `.kit-collage`
+- Schema JSON-LD (`<head>`): 5 `Product` con `description`, `image`, `offers.price`
+  - `image` = las 4 URLs kwcdn del collage (antes apuntaba a `assets/images/kits/*.jpg`, que no existe); `transitTime` 6–19 días
+- FAQ schema: "¿Cuánto cuestan los kits…?" lista los 5 precios
+- Meta description, og:description y description de Organization: "desde S/35"
+- Testimonio en `#testimonials`: "Compre el kit de S/90"
+- Supabase tabla `kits`
 
 ### Servicios
 - Mini Asesoría Express — S/25
@@ -191,13 +243,8 @@ Each kit card uses `.kit-collage` instead of a single `.kit-image`:
 
 All the following are **already implemented** — do not revert:
 
-### nginx VPS (`/etc/nginx/sites-enabled/aendra`)
-```nginx
-add_header X-Content-Type-Options "nosniff" always;
-add_header X-Frame-Options "SAMEORIGIN" always;
-add_header Referrer-Policy "strict-origin-when-cross-origin" always;
-add_header Content-Security-Policy "default-src 'self'; script-src 'self' https://cdn.jsdelivr.net https://cdnjs.cloudflare.com 'unsafe-inline'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; img-src 'self' https: data:; font-src 'self' https://fonts.gstatic.com; connect-src 'self' https://ffwuvaifwqjpkntfrppm.supabase.co wss://ffwuvaifwqjpkntfrppm.supabase.co; frame-ancestors 'none';" always;
-```
+### Vercel headers (`vercel.json`)
+Security headers (X-Content-Type-Options, X-Frame-Options, Referrer-Policy) configured in `vercel.json` for all routes.
 
 ### index.html — CDN scripts with SRI (pinned versions)
 - Supabase `@2.47.2` with sha384 integrity hash
@@ -248,42 +295,12 @@ Pattern for new Temu-sourced categories:
 5. Also add a category card in `#productos` section (with real carousel images, `onclick` navigates to section)
 6. Deploy + push (see Deployment section)
 
-## Pending: Domain Setup & SEO Activation
+## Domain & SEO
 
-**CRITICAL**: SEO implementation is complete but USELESS until domain is configured. Google does NOT index sites on raw IPs.
-
-### Current state:
-- Site: `http://167.71.127.223:8080` (raw IP — NOT indexed by Google)
-- SEO files (robots.txt, sitemap.xml, schema markup) all point to `https://aendra.com/` (does NOT exist yet)
-
-### User action required:
-1. **Purchase domain** (recommend aendra.pe for Peru SEO, or aendra.com)
-2. **Point DNS A record** to `167.71.127.223`
-3. **Provide Claude with**:
-   - Domain name purchased
-   - SSH access to VPS (root@167.71.127.223)
-   - Email for Let's Encrypt SSL certificate
-
-### Once domain is active, Claude will:
-1. Configure nginx for new domain (HTTP → HTTPS redirect)
-2. Install Let's Encrypt SSL certificate (free)
-3. Update ALL SEO files with real domain:
-   - `robots.txt` → `https://DOMAIN.COM/sitemap.xml`
-   - `sitemap.xml` → all URLs to `https://DOMAIN.COM/...`
-   - `index.html` → canonical tag, og:url, schema markup
-4. Deploy updated files to VPS
-5. Verify SSL and HTTPS redirect
-
-### After nginx + SSL setup:
-1. Submit sitemap to Google Search Console: `https://DOMAIN.COM/sitemap.xml`
-2. Request indexing for homepage
-3. Monitor with `site:DOMAIN.COM` search
-
-### Files created (awaiting domain):
-- `robots.txt` — crawler rules
-- `sitemap.xml` — 6 pages listed with priorities
-- `assets/images/favicon.svg` — brand icon
-- `assets/images/og-image.svg` — social media preview (placeholder)
+- **Domain**: `www.aendra.lat` — active, hosted on Vercel with automatic SSL
+- **SEO files**: all canonical URLs, og:url, schema markup, robots.txt, sitemap.xml point to `https://www.aendra.lat/`
+- **Google Search Console**: submit sitemap at `https://www.aendra.lat/sitemap.xml` and request indexing
+- **SEO assets**: `robots.txt`, `sitemap.xml`, `assets/images/favicon.svg`, `assets/images/og-image.svg`
 
 ## Business model: reseller intermediaria
 
@@ -299,6 +316,27 @@ Los productos son de Temu (u otras tiendas). AENDRA actúa como intermediaria:
 
 **Precio AENDRA** = precio de venta Temu + S/15 de margen
 
+## Plan en curso (octubre 2026)
+
+1. ✅ Actualizar CLAUDE.md con el estado real
+2. ✅ Verificar en Temu los 14 productos de los kits → solo 4 seguían disponibles (y la alfombra solo en talla grande); 11 reemplazados por equivalentes
+3. ✅ `#kits` de index.html actualizado (textos, precios, data-price, carrito, collage, schema con transitTime 6–19, FAQ, "desde S/63", priceRange)
+4. ✅ Tabla `kits` de Supabase sincronizada
+5. ✅ Tabla `catalogo_productos` creada (31 filas)
+
+Reglas: mostrar cambios y esperar OK antes de tocar la web o Supabase. No deploy ni push a master sin preguntar.
+
+### Pendientes detectados (octubre 2026)
+- **Deploy**: merge de `kits-reales-oct2026` a master (la web en vivo sigue con kits viejos y `kits` de Supabase ya tiene los nuevos).
+- **Bug en vivo**: `Waitlist.init()` al final de index.html lanza `ReferenceError` (waitlist.js no se carga) y corta la ejecución → `Checkout.init()` nunca corre (no aparece el aviso "Modo Demo"). Arreglo: quitar esa línea.
+- **Catálogo**: 11 productos de `#fundas/#alfombras/#velas/#adornos` ya no se pueden comprar en Temu (`estado = 'no_disponible' and en_web`), 6 sin verificar, y Lino/Ondas/Escultóricas tienen precio web viejo (S/59/41/62 vs regla S/45/29/63). Los 11 reemplazos nuevos no tienen tarjeta propia.
+- **Testimonio** "Compre el kit de S/90" (Valeria Paredes): ya no existe kit de S/90. No se cambió porque falta confirmar si es una cita real.
+- Unificar slugs de `kits` (`mood-cozy`) con los del carrito (`kit-mood-cozy`) si se quieren cruzar pedidos con kits.
+
+### Preguntas abiertas
+- Bio de Alejandra: el schema FAQ dice "Arquitecta de Interiores egresada de la Universidad de Lima", pero arriba figura como estudiante. Confirmar cuál es la correcta.
+- `vercel.json` (headers de seguridad) no está commiteado: si Vercel despliega desde GitHub, esos headers no estarían en vivo. Verificar.
+
 ## Pending integrations
 
 - **Cobro real**: integrar Culqi (Peru) o mostrar Yape/Plin al confirmar pedido
@@ -308,28 +346,33 @@ Los productos son de Temu (u otras tiendas). AENDRA actúa como intermediaria:
 - **Supabase** dynamic product loading — DB existe pero productos son HTML estático
 - **Instagram** page (@aendra_interiormood) — Alejandra crea contenido manualmente
 
-## Deployment
+## Deployment (Vercel)
+
+Hosting migrated from VPS (nginx) to **Vercel** on 2026-04-14.
 
 ```bash
-# Deploy single file
-scp -o StrictHostKeyChecking=no index.html root@167.71.127.223:/var/www/aendra/
-scp -o StrictHostKeyChecking=no css/styles.css root@167.71.127.223:/var/www/aendra/css/
+# Preview deploy (creates isolated URL)
+vercel
 
-# Deploy all JS
-scp -o StrictHostKeyChecking=no js/*.js root@167.71.127.223:/var/www/aendra/js/
+# Production deploy (pushes to www.aendra.lat)
+vercel --prod
 
-# Push to GitHub
+# Push to GitHub (Vercel also auto-deploys from GitHub pushes)
 git add . && git commit -m "message" && git push origin master
 ```
+
+- Vercel project: `leins-devs-projects/aendra-web`
+- Config: `vercel.json` — static site, no build command, security headers
+- Aliases: `www.aendra.lat`, `aendra-web.vercel.app`
 
 ## CSS cache busting
 
 CSS and JS links use `?v=N` query strings. Current versions:
-- `css/styles.css?v=4`
-- `js/main.js?v=2`
+- `css/styles.css?v=9`
+- `js/main.js?v=3`
 
 Increment version number when deploying CSS/JS changes to bust browser cache.
 
 ## No build/test commands
 
-Open `index.html` directly in a browser or visit `http://167.71.127.223:8080`. No compilation or server required locally.
+Open `index.html` directly in a browser or visit `https://www.aendra.lat`. No compilation or server required locally.
