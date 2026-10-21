@@ -1,0 +1,113 @@
+{
+  "_nota": "PRIVADO: fotos de proveedor por producto (base https://img.kwcdn.com/product/). No se publica: solo lo usa scripts/descargar-imagenes.mjs para generar public/img/productos/<slug>-<n>.webp",
+  "funda-lino-natural": [
+    "fancy/159f91ba-5ea5-4493-8446-c34df0b42025.jpg",
+    "fancy/3c482fcf-bd28-4849-a3ce-3c8369cbddcc.jpg"
+  ],
+  "velas-artisticas-ondas": [
+    "fancy/e3b85ded-8fb8-4ef1-8a0f-9624bebe1195.jpg",
+    "fancy/adbbbc84-1131-4e28-8314-72ae7bcf1b1d.jpg"
+  ],
+  "velas-escultorica-blanca": [
+    "open/b23c6aea8cbb468ea7247bce92089f98-goods.jpeg",
+    "open/d9c7515ab31949d5a6c06be4ab068585-goods.jpeg"
+  ],
+  "velas-cubo-burbujas": [
+    "fancy/175fdcd4-db11-44ce-895f-5e194ab1dcf3.jpg",
+    "fancy/654b9fd3-4349-4e72-87dd-df7e78c1d40f.jpg",
+    "fancy/ddd2ecdd-2360-4d44-bf73-7140df90d987.jpg"
+  ],
+  "funda-chenilla-camello": [
+    "open/f1c9245f72cc4d1497a72eb77c67cfb0-goods.jpeg",
+    "open/0256fd447af442339d035d6d77e7310e-goods.jpeg"
+  ],
+  "vela-esferica-onda": [
+    "fancy/b72ca863-2000-46bb-9695-2ae39204ff24.jpg",
+    "fancy/1556b457-d02f-41c4-a705-5d4d911f7bbf.jpg",
+    "fancy/345ab53a-aa57-4232-981d-70871db0ad02.jpg"
+  ],
+  "vela-bola-espiral": [
+    "fancy/33343a98-3354-4826-a24c-b34aef42f88f.jpg"
+  ],
+  "funda-boho-felpa-beige": [
+    "fancy/46a1f866-4290-497f-b095-ca855c11da41.jpg"
+  ],
+  "jarron-ceramica-blanco": [
+    "Fancyalgo/VirtualModelMatting/fd1342d9aba63a25d5d72cfa0f46baa7.jpg"
+  ],
+  "alfombra-vintage-90x150": [
+    "201365d8925/89571e61-ffb3-473c-ad5b-ca71235bf47b_1000x1000.jpeg",
+    "201365d8925/4fabc403-c625-4504-8612-39938e7c6a25_1000x1000.jpeg"
+  ],
+  "funda-pana-rayas-boho": [
+    "fancy/4ca2a086-5838-4f88-b7f5-544370d40c3e.jpg"
+  ],
+  "alfombra-felpa-beige-120x160": [
+    "fancy/3c61af85-003d-446f-b204-a80a6296cc53.jpg"
+  ],
+  "funda-jacquard-geometrico": [
+    "fancy/b29f82b4-fb9e-403c-a2fd-a135941e23fe.jpg",
+    "fancy/bb932ac1-e91c-42d2-a1f8-6a204fb09b24.jpg",
+    "fancy/c1e8ed89-54fe-4c60-b65e-074e987cee56.jpg"
+  ],
+  "velas-columna-estriada": [
+    "fancy/8340d2a1-c0e4-4f07-87a6-badfd17c1564.jpg"
+  ],
+  "figuras-elefantes-minimalistas": [
+    "fancy/7592c7f2-beb2-45be-b526-552e9989e505.jpg",
+    "fancy/ffbc1b48-ac4a-4ca1-b5c6-f1fc436d5e06.jpg"
+  ],
+  "fundas-pana-salvia": [
+    "fancy/2c1bdc1a-7c0e-4633-9aa0-d70200daf87a.jpg"
+  ],
+  "fundas-pana-diagonal-salvia": [
+    "open/b637ee068ec344928e62fdf180166c96-goods.jpeg"
+  ],
+  "jarron-botanico-verde": [
+    "fancy/c5a30a5b-3ecf-4d30-ae01-ec229bf53653.jpg",
+    "fancy/7be3110b-a105-41d0-af70-eca6017dd127.jpg",
+    "fancy/45fef94d-4ac1-439b-9271-06c2d6bb0d22.jpg"
+  ],
+  "eucalipto-artificial-10": [
+    "open/744111b8dfea474e8e3bab3a296c437d-goods.jpeg",
+    "open/9f1a14b59aa1416981f654c1ae8fbf8d-goods.jpeg",
+    "open/57b85dc7b3d6445a8ceee55258278126-goods.jpeg"
+  ],
+  "manta-ondulada-salvia": [
+    "fancy/0349ff8b-c9a6-4f9f-98b3-b0386f0b4cab.jpg"
+  ],
+  "fundas-pana-terracota": [
+    "fancy/c7ea522b-1e25-4c1b-9742-933e01354bb8.jpg"
+  ],
+  "fundas-pana-diagonal-oxido": [
+    "open/872ae3a79d0a433eb0a53fd0439ea662-goods.jpeg",
+    "open/cdff2ff1d42945fbb56dda5f30844f23-goods.jpeg",
+    "open/0a1688d02d45466db28dbf1931ff0e4f-goods.jpeg"
+  ],
+  "vela-acanalada-sandalo": [
+    "fancy/feb88a1e-f80a-4771-838d-02d9e338661e.jpg",
+    "fancy/5e18d4e4-3a36-4e78-b230-23e03755696d.jpg"
+  ],
+  "alfombra-yute-redonda-60": [
+    "fancy/88a80719-fc9f-4f09-9e7a-94bb657de387.jpg"
+  ],
+  "manta-naranja-morandi": [
+    "Fancyalgo/VirtualModelMatting/8efc0d2580a011ae7cacb9c78a3f5491.jpg",
+    "Fancyalgo/VirtualModelMatting/4e55cdc3659381b12e68fc2bed30d185.jpg",
+    "Fancyalgo/VirtualModelMatting/543807e70fe201ebbc2595ebcfb0e98c.jpg"
+  ],
+  "fundas-pana-carbon": [
+    "fancy/89269fb4-c42e-41a6-b3c5-19ca4ed69c66.jpg"
+  ],
+  "jarron-negro-mate": [
+    "fancy/94bbb99a-342c-4ea9-a007-20852ff10cb8.jpg",
+    "fancy/8591624f-82a7-4d9a-9e22-76746ac93cf0.jpg"
+  ],
+  "bandeja-madera-negra": [
+    "fancy/1446c01d-8c7d-42e2-8cbf-f48d91cb9384.jpg"
+  ],
+  "candelabros-negros-3": [
+    "fancy/284140f9-3ab8-4ad7-9672-aa71ba274b44.jpg",
+    "fancy/bb80fdcb-953f-474b-af34-e41d5ebf3dee.jpg"
+  ]
+}

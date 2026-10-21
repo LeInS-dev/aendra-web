@@ -1,0 +1,684 @@
+[
+  {
+    "slug": "bandeja-madera-negra",
+    "nombre": "Bandeja de Madera Negra",
+    "categoria": "accesorios",
+    "precio": 30,
+    "descripcion": "Bandeja rectangular de madera negra con patas. Ordena velas, jabones o perfumes con estilo.",
+    "ambientes": [
+      "bano",
+      "sala",
+      "comedor"
+    ],
+    "estilos": [
+      "japandi",
+      "minimal"
+    ],
+    "paletas": [
+      "noche-japandi"
+    ],
+    "galeria": [
+      "/img/productos/bandeja-madera-negra-1.webp"
+    ],
+    "entrega": "6-17"
+  },
+  {
+    "slug": "candelabros-negros-3",
+    "nombre": "Candelabros Negros x3",
+    "categoria": "accesorios",
+    "precio": 27,
+    "descripcion": "Set de 3 candelabros de metal negro en distintas alturas para velas largas. Elegancia minimalista para tu mesa.",
+    "ambientes": [
+      "comedor",
+      "sala"
+    ],
+    "estilos": [
+      "minimal",
+      "nordico",
+      "japandi"
+    ],
+    "paletas": [
+      "noche-japandi"
+    ],
+    "galeria": [
+      "/img/productos/candelabros-negros-3-1.webp",
+      "/img/productos/candelabros-negros-3-2.webp"
+    ],
+    "entrega": "6-17"
+  },
+  {
+    "slug": "figuras-elefantes-minimalistas",
+    "nombre": "Figuras Elefantes Minimalistas",
+    "categoria": "accesorios",
+    "precio": 76,
+    "descripcion": "Familia de tres elefantes de cerámica en tonos tierra. Un detalle con historia para repisas y libreros.",
+    "ambientes": [
+      "sala",
+      "home-office"
+    ],
+    "estilos": [
+      "boho",
+      "mediterraneo"
+    ],
+    "paletas": [
+      "terracota-andina",
+      "arena-y-lino"
+    ],
+    "galeria": [
+      "/img/productos/figuras-elefantes-minimalistas-1.webp",
+      "/img/productos/figuras-elefantes-minimalistas-2.webp"
+    ],
+    "entrega": "6-17"
+  },
+  {
+    "slug": "jarron-botanico-verde",
+    "nombre": "Jarrón Botánico Verde",
+    "categoria": "accesorios",
+    "precio": 49,
+    "descripcion": "Jarrón de cerámica crema con hojas verdes pintadas, 11,5 cm. Encantador con flores o una rama de eucalipto.",
+    "ambientes": [
+      "comedor",
+      "sala"
+    ],
+    "estilos": [
+      "mediterraneo",
+      "nordico"
+    ],
+    "paletas": [
+      "verde-salvia"
+    ],
+    "galeria": [
+      "/img/productos/jarron-botanico-verde-1.webp",
+      "/img/productos/jarron-botanico-verde-2.webp",
+      "/img/productos/jarron-botanico-verde-3.webp"
+    ],
+    "entrega": "6-17"
+  },
+  {
+    "slug": "jarron-ceramica-blanco",
+    "nombre": "Jarrón de Cerámica Rústico Blanco",
+    "categoria": "accesorios",
+    "precio": 34,
+    "descripcion": "Jarrón de cerámica rústica blanco con pequeños puntos. Perfecto con ramas secas, pampas o eucalipto.",
+    "ambientes": [
+      "sala",
+      "comedor",
+      "home-office"
+    ],
+    "estilos": [
+      "nordico",
+      "minimal",
+      "mediterraneo"
+    ],
+    "paletas": [
+      "arena-y-lino",
+      "verde-salvia"
+    ],
+    "galeria": [
+      "/img/productos/jarron-ceramica-blanco-1.webp"
+    ],
+    "entrega": "6-17"
+  },
+  {
+    "slug": "jarron-negro-mate",
+    "nombre": "Jarrón Negro Mate",
+    "categoria": "accesorios",
+    "precio": 48,
+    "descripcion": "Jarrón pequeño de cerámica negro mate, de boca estrecha. Perfecto con una sola rama seca.",
+    "ambientes": [
+      "sala",
+      "comedor",
+      "home-office"
+    ],
+    "estilos": [
+      "japandi",
+      "minimal"
+    ],
+    "paletas": [
+      "noche-japandi"
+    ],
+    "galeria": [
+      "/img/productos/jarron-negro-mate-1.webp",
+      "/img/productos/jarron-negro-mate-2.webp"
+    ],
+    "entrega": "6-17"
+  },
+  {
+    "slug": "eucalipto-artificial-10",
+    "nombre": "Tallos de Eucalipto x10",
+    "categoria": "accesorios",
+    "precio": 20,
+    "descripcion": "10 tallos de eucalipto artificial en verde salvia. Llenan de vida un jarrón sin necesitar agua ni luz.",
+    "ambientes": [
+      "sala",
+      "comedor",
+      "bano",
+      "home-office"
+    ],
+    "estilos": [
+      "nordico",
+      "mediterraneo",
+      "minimal"
+    ],
+    "paletas": [
+      "verde-salvia",
+      "arena-y-lino"
+    ],
+    "galeria": [
+      "/img/productos/eucalipto-artificial-10-1.webp",
+      "/img/productos/eucalipto-artificial-10-2.webp",
+      "/img/productos/eucalipto-artificial-10-3.webp"
+    ],
+    "entrega": "6-17"
+  },
+  {
+    "slug": "alfombra-felpa-beige-120x160",
+    "nombre": "Alfombra Felpa Pelo Largo Beige 120x160",
+    "categoria": "alfombras",
+    "precio": 79,
+    "descripcion": "Alfombra de pelo largo color beige, 120×160 cm. Mullida para pisar descalza al levantarte.",
+    "ambientes": [
+      "dormitorio"
+    ],
+    "estilos": [
+      "nordico",
+      "boho"
+    ],
+    "paletas": [
+      "arena-y-lino"
+    ],
+    "galeria": [
+      "/img/productos/alfombra-felpa-beige-120x160-1.webp"
+    ],
+    "entrega": "6-17"
+  },
+  {
+    "slug": "alfombra-yute-redonda-60",
+    "nombre": "Alfombra Redonda de Yute 60 cm",
+    "categoria": "alfombras",
+    "precio": 66,
+    "descripcion": "Alfombra redonda tejida a mano en fibra natural, 60 cm de diámetro. Ideal junto a la cama, bajo una planta o en la terraza.",
+    "ambientes": [
+      "sala",
+      "terraza",
+      "dormitorio"
+    ],
+    "estilos": [
+      "boho",
+      "mediterraneo",
+      "japandi"
+    ],
+    "paletas": [
+      "terracota-andina",
+      "arena-y-lino"
+    ],
+    "galeria": [
+      "/img/productos/alfombra-yute-redonda-60-1.webp"
+    ],
+    "entrega": "6-17"
+  },
+  {
+    "slug": "alfombra-vintage-90x150",
+    "nombre": "Alfombra Vintage Terciopelo 90x150",
+    "categoria": "alfombras",
+    "precio": 91,
+    "descripcion": "Alfombra de terciopelo estilo vintage en beige y arena, 90×150 cm. Lavable y antideslizante.",
+    "ambientes": [
+      "sala",
+      "dormitorio"
+    ],
+    "estilos": [
+      "mediterraneo",
+      "nordico"
+    ],
+    "paletas": [
+      "arena-y-lino"
+    ],
+    "galeria": [
+      "/img/productos/alfombra-vintage-90x150-1.webp",
+      "/img/productos/alfombra-vintage-90x150-2.webp"
+    ],
+    "entrega": "6-19"
+  },
+  {
+    "slug": "funda-boho-felpa-beige",
+    "nombre": "Fundas Boho Felpa Beige x4",
+    "categoria": "fundas-cojines",
+    "precio": 49,
+    "descripcion": "4 fundas boho de felpa beige con relieve de rombos, 45×45 cm. Suavidad de nube para tu cama o sofá.",
+    "ambientes": [
+      "dormitorio",
+      "sala"
+    ],
+    "estilos": [
+      "boho",
+      "nordico"
+    ],
+    "paletas": [
+      "arena-y-lino"
+    ],
+    "galeria": [
+      "/img/productos/funda-boho-felpa-beige-1.webp"
+    ],
+    "entrega": "6-17"
+  },
+  {
+    "slug": "funda-chenilla-camello",
+    "nombre": "Fundas Chenilla Camello x2",
+    "categoria": "fundas-cojines",
+    "precio": 45,
+    "descripcion": "Par de fundas de chenilla color camello de 45×45 cm. Suaves al tacto y con textura cálida.",
+    "ambientes": [
+      "sala",
+      "dormitorio"
+    ],
+    "estilos": [
+      "nordico",
+      "boho"
+    ],
+    "paletas": [
+      "arena-y-lino",
+      "terracota-andina"
+    ],
+    "galeria": [
+      "/img/productos/funda-chenilla-camello-1.webp",
+      "/img/productos/funda-chenilla-camello-2.webp"
+    ],
+    "entrega": "6-17"
+  },
+  {
+    "slug": "funda-jacquard-geometrico",
+    "nombre": "Fundas Jacquard Geométrico x4",
+    "categoria": "fundas-cojines",
+    "precio": 67,
+    "descripcion": "4 fundas jacquard con patrón geométrico en marrón claro y crema, 45×45 cm.",
+    "ambientes": [
+      "sala",
+      "dormitorio"
+    ],
+    "estilos": [
+      "boho",
+      "japandi"
+    ],
+    "paletas": [
+      "noche-japandi",
+      "terracota-andina"
+    ],
+    "galeria": [
+      "/img/productos/funda-jacquard-geometrico-1.webp",
+      "/img/productos/funda-jacquard-geometrico-2.webp",
+      "/img/productos/funda-jacquard-geometrico-3.webp"
+    ],
+    "entrega": "6-19"
+  },
+  {
+    "slug": "funda-lino-natural",
+    "nombre": "Fundas Lino Natural Exterior x4",
+    "categoria": "fundas-cojines",
+    "precio": 45,
+    "descripcion": "Juego de 4 fundas de lino natural de 45×45 cm. Textura orgánica y color avena que calma cualquier sofá.",
+    "ambientes": [
+      "sala",
+      "terraza"
+    ],
+    "estilos": [
+      "japandi",
+      "minimal",
+      "nordico"
+    ],
+    "paletas": [
+      "arena-y-lino",
+      "verde-salvia"
+    ],
+    "galeria": [
+      "/img/productos/funda-lino-natural-1.webp",
+      "/img/productos/funda-lino-natural-2.webp"
+    ],
+    "entrega": "6-17"
+  },
+  {
+    "slug": "fundas-pana-terracota",
+    "nombre": "Fundas Pana Boho Terracota x2",
+    "categoria": "fundas-cojines",
+    "precio": 39,
+    "descripcion": "Par de fundas de pana tejida color terracota, 45×45 cm. El calor de la tierra en tu sala.",
+    "ambientes": [
+      "sala"
+    ],
+    "estilos": [
+      "boho",
+      "mediterraneo"
+    ],
+    "paletas": [
+      "terracota-andina"
+    ],
+    "galeria": [
+      "/img/productos/fundas-pana-terracota-1.webp"
+    ],
+    "entrega": "6-19"
+  },
+  {
+    "slug": "fundas-pana-diagonal-oxido",
+    "nombre": "Fundas Pana Diagonal Óxido x2",
+    "categoria": "fundas-cojines",
+    "precio": 42,
+    "descripcion": "Dos fundas de pana diagonal en color óxido, 45×45 cm. Combínalas con crema y madera.",
+    "ambientes": [
+      "sala",
+      "dormitorio"
+    ],
+    "estilos": [
+      "boho"
+    ],
+    "paletas": [
+      "terracota-andina"
+    ],
+    "galeria": [
+      "/img/productos/fundas-pana-diagonal-oxido-1.webp",
+      "/img/productos/fundas-pana-diagonal-oxido-2.webp",
+      "/img/productos/fundas-pana-diagonal-oxido-3.webp"
+    ],
+    "entrega": "6-17"
+  },
+  {
+    "slug": "fundas-pana-diagonal-salvia",
+    "nombre": "Fundas Pana Diagonal Salvia x2",
+    "categoria": "fundas-cojines",
+    "precio": 42,
+    "descripcion": "Dos fundas de pana con textura diagonal en verde salvia claro, 45×45 cm.",
+    "ambientes": [
+      "sala"
+    ],
+    "estilos": [
+      "nordico",
+      "boho"
+    ],
+    "paletas": [
+      "verde-salvia"
+    ],
+    "galeria": [
+      "/img/productos/fundas-pana-diagonal-salvia-1.webp"
+    ],
+    "entrega": "6-17"
+  },
+  {
+    "slug": "funda-pana-rayas-boho",
+    "nombre": "Fundas Pana Rayas Boho x4",
+    "categoria": "fundas-cojines",
+    "precio": 52,
+    "descripcion": "4 fundas de pana a rayas en marrón neutro y crema, 45×45 cm. Calidez boho para el sofá.",
+    "ambientes": [
+      "sala"
+    ],
+    "estilos": [
+      "boho",
+      "mediterraneo"
+    ],
+    "paletas": [
+      "terracota-andina",
+      "arena-y-lino"
+    ],
+    "galeria": [
+      "/img/productos/funda-pana-rayas-boho-1.webp"
+    ],
+    "entrega": "6-19"
+  },
+  {
+    "slug": "fundas-pana-carbon",
+    "nombre": "Fundas Rayas Texturizadas Carbón x2",
+    "categoria": "fundas-cojines",
+    "precio": 33,
+    "descripcion": "Par de fundas con rayas en relieve color carbón, 45×45 cm. Profundidad y calma para un rincón japandi.",
+    "ambientes": [
+      "sala",
+      "home-office"
+    ],
+    "estilos": [
+      "japandi",
+      "minimal"
+    ],
+    "paletas": [
+      "noche-japandi"
+    ],
+    "galeria": [
+      "/img/productos/fundas-pana-carbon-1.webp"
+    ],
+    "entrega": "6-19"
+  },
+  {
+    "slug": "fundas-pana-salvia",
+    "nombre": "Fundas Rayas Texturizadas Salvia x2",
+    "categoria": "fundas-cojines",
+    "precio": 33,
+    "descripcion": "Par de fundas con rayas en relieve color verde salvia, 45×45 cm. Frescura serena para tu sofá.",
+    "ambientes": [
+      "sala",
+      "dormitorio"
+    ],
+    "estilos": [
+      "nordico",
+      "mediterraneo"
+    ],
+    "paletas": [
+      "verde-salvia"
+    ],
+    "galeria": [
+      "/img/productos/fundas-pana-salvia-1.webp"
+    ],
+    "entrega": "6-19"
+  },
+  {
+    "slug": "manta-ondulada-salvia",
+    "nombre": "Manta Ondulada Salvia",
+    "categoria": "mantas",
+    "precio": 78,
+    "descripcion": "Manta tejida con ondas y flecos en verde salvia, 127×152 cm. Para envolverte en el sofá las tardes frías.",
+    "ambientes": [
+      "sala",
+      "dormitorio"
+    ],
+    "estilos": [
+      "nordico",
+      "boho"
+    ],
+    "paletas": [
+      "verde-salvia"
+    ],
+    "galeria": [
+      "/img/productos/manta-ondulada-salvia-1.webp"
+    ],
+    "entrega": "6-17"
+  },
+  {
+    "slug": "manta-naranja-morandi",
+    "nombre": "Manta Tejida Terracota",
+    "categoria": "mantas",
+    "precio": 69,
+    "descripcion": "Manta tejida con flecos en terracota quemado, 130×170 cm. Un golpe de color cálido sobre el sofá o la cama.",
+    "ambientes": [
+      "sala",
+      "dormitorio"
+    ],
+    "estilos": [
+      "boho"
+    ],
+    "paletas": [
+      "terracota-andina"
+    ],
+    "galeria": [
+      "/img/productos/manta-naranja-morandi-1.webp",
+      "/img/productos/manta-naranja-morandi-2.webp",
+      "/img/productos/manta-naranja-morandi-3.webp"
+    ],
+    "entrega": "6-17"
+  },
+  {
+    "slug": "vela-acanalada-sandalo",
+    "nombre": "Vela Acanalada Sándalo",
+    "categoria": "velas",
+    "precio": 30,
+    "descripcion": "Vela escultórica acanalada color sándalo (78 g). Forma facetada que juega con la luz.",
+    "ambientes": [
+      "sala",
+      "dormitorio"
+    ],
+    "estilos": [
+      "japandi",
+      "boho"
+    ],
+    "paletas": [
+      "terracota-andina",
+      "noche-japandi"
+    ],
+    "galeria": [
+      "/img/productos/vela-acanalada-sandalo-1.webp",
+      "/img/productos/vela-acanalada-sandalo-2.webp"
+    ],
+    "entrega": "6-17"
+  },
+  {
+    "slug": "vela-bola-espiral",
+    "nombre": "Vela Bola Espiral Grande",
+    "categoria": "velas",
+    "precio": 41,
+    "descripcion": "Vela en espiral de 247 g en blanco vainilla. Pieza protagonista para centros de mesa.",
+    "ambientes": [
+      "sala",
+      "comedor"
+    ],
+    "estilos": [
+      "minimal",
+      "nordico"
+    ],
+    "paletas": [
+      "arena-y-lino"
+    ],
+    "galeria": [
+      "/img/productos/vela-bola-espiral-1.webp"
+    ],
+    "entrega": "6-17"
+  },
+  {
+    "slug": "vela-esferica-onda",
+    "nombre": "Vela Esférica de Ondas",
+    "categoria": "velas",
+    "precio": 27,
+    "descripcion": "Vela esférica con forma de onda en tono sándalo. Una pequeña escultura de cera para repisas y bandejas.",
+    "ambientes": [
+      "sala",
+      "dormitorio"
+    ],
+    "estilos": [
+      "japandi",
+      "boho"
+    ],
+    "paletas": [
+      "terracota-andina",
+      "arena-y-lino"
+    ],
+    "galeria": [
+      "/img/productos/vela-esferica-onda-1.webp",
+      "/img/productos/vela-esferica-onda-2.webp",
+      "/img/productos/vela-esferica-onda-3.webp"
+    ],
+    "entrega": "6-17"
+  },
+  {
+    "slug": "velas-artisticas-ondas",
+    "nombre": "Velas Artísticas Diseño Ondas",
+    "categoria": "velas",
+    "precio": 29,
+    "descripcion": "Vela escultórica con textura de ondas (125 g) y aroma suave. Linda encendida y también apagada.",
+    "ambientes": [
+      "sala",
+      "dormitorio"
+    ],
+    "estilos": [
+      "japandi",
+      "minimal"
+    ],
+    "paletas": [
+      "noche-japandi",
+      "arena-y-lino"
+    ],
+    "galeria": [
+      "/img/productos/velas-artisticas-ondas-1.webp",
+      "/img/productos/velas-artisticas-ondas-2.webp"
+    ],
+    "entrega": "6-17"
+  },
+  {
+    "slug": "velas-columna-estriada",
+    "nombre": "Velas Columna Estriada x2",
+    "categoria": "velas",
+    "precio": 48,
+    "descripcion": "Dos velas columna estriadas en blanco vainilla. Altura y textura para tu repisa o baño.",
+    "ambientes": [
+      "sala",
+      "comedor",
+      "bano"
+    ],
+    "estilos": [
+      "minimal",
+      "japandi"
+    ],
+    "paletas": [
+      "verde-salvia",
+      "noche-japandi",
+      "arena-y-lino"
+    ],
+    "galeria": [
+      "/img/productos/velas-columna-estriada-1.webp"
+    ],
+    "entrega": "6-17"
+  },
+  {
+    "slug": "velas-cubo-burbujas",
+    "nombre": "Velas Cubo de Burbujas x2",
+    "categoria": "velas",
+    "precio": 25,
+    "descripcion": "Dos velas cubo de burbujas en blanco. El detalle cute que vuelve acogedora cualquier mesa de noche.",
+    "ambientes": [
+      "dormitorio",
+      "bano"
+    ],
+    "estilos": [
+      "minimal",
+      "nordico"
+    ],
+    "paletas": [
+      "arena-y-lino"
+    ],
+    "galeria": [
+      "/img/productos/velas-cubo-burbujas-1.webp",
+      "/img/productos/velas-cubo-burbujas-2.webp",
+      "/img/productos/velas-cubo-burbujas-3.webp"
+    ],
+    "entrega": "6-17"
+  },
+  {
+    "slug": "velas-escultorica-blanca",
+    "nombre": "Velas Escultorica Blancas Estriadas x2",
+    "categoria": "velas",
+    "precio": 63,
+    "descripcion": "Dúo de velas blancas acanaladas: una en U y otra columna. Minimalismo nórdico para tu mesa de centro.",
+    "ambientes": [
+      "sala",
+      "comedor"
+    ],
+    "estilos": [
+      "nordico",
+      "minimal",
+      "japandi"
+    ],
+    "paletas": [
+      "arena-y-lino",
+      "noche-japandi"
+    ],
+    "galeria": [
+      "/img/productos/velas-escultorica-blanca-1.webp",
+      "/img/productos/velas-escultorica-blanca-2.webp"
+    ],
+    "entrega": "6-17"
+  }
+]
