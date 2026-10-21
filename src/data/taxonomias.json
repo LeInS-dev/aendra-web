@@ -1,0 +1,25 @@
+{
+  "ambientes": [
+    { "slug": "sala", "nombre": "Sala" },
+    { "slug": "dormitorio", "nombre": "Dormitorio" },
+    { "slug": "comedor", "nombre": "Comedor" },
+    { "slug": "home-office", "nombre": "Home office" },
+    { "slug": "bano", "nombre": "Baño" },
+    { "slug": "terraza", "nombre": "Terraza" }
+  ],
+  "categorias": [
+    { "slug": "fundas-cojines", "nombre": "Fundas de cojín" },
+    { "slug": "mantas", "nombre": "Mantas" },
+    { "slug": "alfombras", "nombre": "Alfombras" },
+    { "slug": "velas", "nombre": "Velas" },
+    { "slug": "accesorios", "nombre": "Jarrones y accesorios" }
+  ],
+  "estilos": [
+    { "slug": "japandi", "nombre": "Japandi", "frase": "Calma japonesa, calidez nórdica: madera, texturas naturales y nada que sobre.", "imagen": "/img/ambientes/estilo-japandi.webp" },
+    { "slug": "nordico", "nombre": "Nórdico", "frase": "Luz, tonos suaves y piezas cómodas para vivir la casa sin apuro.", "imagen": "/img/ambientes/estilo-nordico.webp" },
+    { "slug": "boho", "nombre": "Boho", "frase": "Texturas, plantas y piezas con historia. Un hogar que se siente vivido.", "imagen": "/img/ambientes/estilo-boho.webp" },
+    { "slug": "minimal", "nombre": "Minimal", "frase": "Pocas cosas, bien elegidas. Superficies despejadas y mucha paz.", "imagen": "/img/ambientes/estilo-minimal.webp" },
+    { "slug": "mediterraneo", "nombre": "Mediterráneo", "frase": "Arcos, blancos cálidos y fibras naturales. Vacaciones todo el año.", "imagen": "/img/ambientes/estilo-mediterraneo.webp" }
+  ],
+  "paletas": ["arena-y-lino", "verde-salvia", "terracota-andina", "noche-japandi"]
+}

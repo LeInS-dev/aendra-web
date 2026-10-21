@@ -1,0 +1,47 @@
+{
+  "preguntas": [
+    {
+      "id": "foto",
+      "texto": "¿Qué espacio se siente más como tu casa ideal?",
+      "opciones": [
+        { "id": "japandi", "texto": "Madera y calma", "imagen": "/img/ambientes/estilo-japandi.webp", "puntos": { "estilo": { "japandi": 3 } } },
+        { "id": "nordico", "texto": "Luz y comodidad", "imagen": "/img/ambientes/estilo-nordico.webp", "puntos": { "estilo": { "nordico": 3 } } },
+        { "id": "boho", "texto": "Plantas y texturas", "imagen": "/img/ambientes/estilo-boho.webp", "puntos": { "estilo": { "boho": 3 } } },
+        { "id": "minimal", "texto": "Blanco y despejado", "imagen": "/img/ambientes/estilo-minimal.webp", "puntos": { "estilo": { "minimal": 3 } } },
+        { "id": "mediterraneo", "texto": "Arcos y brisa", "imagen": "/img/ambientes/estilo-mediterraneo.webp", "puntos": { "estilo": { "mediterraneo": 3 } } }
+      ]
+    },
+    {
+      "id": "colores",
+      "texto": "¿Qué colores te calman?",
+      "opciones": [
+        { "id": "arena", "texto": "Arena y lino", "imagen": "/img/ambientes/arena-y-lino-1.webp", "puntos": { "paleta": { "arena-y-lino": 3 } } },
+        { "id": "salvia", "texto": "Verde salvia", "imagen": "/img/ambientes/verde-salvia-1.webp", "puntos": { "paleta": { "verde-salvia": 3 } } },
+        { "id": "terracota", "texto": "Terracota", "imagen": "/img/ambientes/terracota-andina-1.webp", "puntos": { "paleta": { "terracota-andina": 3 } } },
+        { "id": "noche", "texto": "Madera oscura y carbón", "imagen": "/img/ambientes/noche-japandi-1.webp", "puntos": { "paleta": { "noche-japandi": 3 } } }
+      ]
+    },
+    {
+      "id": "domingo",
+      "texto": "¿Cómo es un domingo perfecto en casa?",
+      "opciones": [
+        { "id": "vela", "texto": "Leer con una vela encendida", "imagen": "/img/ambientes/detalle-velas.webp", "puntos": { "estilo": { "japandi": 1 }, "paleta": { "noche-japandi": 1 } } },
+        { "id": "desayuno", "texto": "Desayuno largo con luz natural", "imagen": "/img/ambientes/marca-sillon-crema.webp", "puntos": { "estilo": { "nordico": 1 }, "paleta": { "arena-y-lino": 1 } } },
+        { "id": "amigas", "texto": "Plantas, música y amigas", "imagen": "/img/ambientes/terracota-andina-2.webp", "puntos": { "estilo": { "boho": 1 }, "paleta": { "terracota-andina": 1 } } },
+        { "id": "orden", "texto": "Ordenar y dejar todo despejado", "imagen": "/img/ambientes/estilo-minimal.webp", "puntos": { "estilo": { "minimal": 1 }, "paleta": { "arena-y-lino": 1 } } },
+        { "id": "brisa", "texto": "Ventanas abiertas y brisa", "imagen": "/img/ambientes/verde-salvia-2.webp", "puntos": { "estilo": { "mediterraneo": 1 }, "paleta": { "verde-salvia": 1 } } }
+      ]
+    },
+    {
+      "id": "espacio",
+      "texto": "¿Qué espacio quieres transformar primero?",
+      "opciones": [
+        { "id": "sala", "texto": "Mi sala", "ambiente": "sala" },
+        { "id": "dormitorio", "texto": "Mi dormitorio", "ambiente": "dormitorio" },
+        { "id": "comedor", "texto": "El comedor", "ambiente": "comedor" },
+        { "id": "home-office", "texto": "Mi rincón de trabajo", "ambiente": "home-office" },
+        { "id": "bano", "texto": "El baño", "ambiente": "bano" }
+      ]
+    }
+  ]
+}

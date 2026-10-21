@@ -1,0 +1,62 @@
+[
+  {
+    "slug": "arena-y-lino",
+    "nombre": "Arena y Lino",
+    "frase": "La calma de una casa de playa en pleno invierno limeño.",
+    "descripcion": "Cremas, avenas y madera clara que hacen que todo se vea más luminoso y ordenado. Es la base perfecta: combina con cualquier otra paleta y nunca pasa de moda.",
+    "colores": [
+      { "nombre": "Hueso", "hex": "#F5EFE6" },
+      { "nombre": "Lino", "hex": "#E6D9C6" },
+      { "nombre": "Arena", "hex": "#CDB896" },
+      { "nombre": "Roble", "hex": "#A07A55" },
+      { "nombre": "Cacao", "hex": "#5A3A24" }
+    ],
+    "imagenes": ["/img/ambientes/arena-y-lino-1.webp", "/img/ambientes/arena-y-lino-2.webp"],
+    "idea": "dormitorio-arena-y-lino"
+  },
+  {
+    "slug": "verde-salvia",
+    "nombre": "Verde Salvia",
+    "frase": "Un verde suave que se siente como abrir la ventana.",
+    "descripcion": "El salvia trae naturaleza sin gritar. Funciona con blancos, lino y madera clara, y llena de frescura un dormitorio o una sala pequeña.",
+    "colores": [
+      { "nombre": "Niebla", "hex": "#EEF0E8" },
+      { "nombre": "Salvia clara", "hex": "#C9D1BC" },
+      { "nombre": "Salvia", "hex": "#9CAA8A" },
+      { "nombre": "Eucalipto", "hex": "#6F7F62" },
+      { "nombre": "Musgo", "hex": "#424C38" }
+    ],
+    "imagenes": ["/img/ambientes/verde-salvia-2.webp", "/img/ambientes/verde-salvia-1.webp"],
+    "idea": "dormitorio-verde-salvia"
+  },
+  {
+    "slug": "terracota-andina",
+    "nombre": "Terracota Andina",
+    "frase": "El calor de la arcilla y los atardeceres del sur.",
+    "descripcion": "Terracota, óxido y fibras naturales: colores de tierra que abrazan. Nuestra paleta más peruana, ideal para salas donde se conversa hasta tarde.",
+    "colores": [
+      { "nombre": "Adobe", "hex": "#F1E1D2" },
+      { "nombre": "Arcilla", "hex": "#E0B48F" },
+      { "nombre": "Terracota", "hex": "#C0643F" },
+      { "nombre": "Óxido", "hex": "#9A4628" },
+      { "nombre": "Cacao", "hex": "#4A2A1C" }
+    ],
+    "imagenes": ["/img/ambientes/terracota-andina-1.webp", "/img/ambientes/terracota-andina-2.webp"],
+    "idea": "sala-terracota-andina"
+  },
+  {
+    "slug": "noche-japandi",
+    "nombre": "Noche Japandi",
+    "frase": "Sombras cálidas, madera oscura y luz de vela.",
+    "descripcion": "Carbón, nogal y piedra para un rincón sereno y profundo. Menos objetos, más intención: cada pieza tiene su espacio.",
+    "colores": [
+      { "nombre": "Washi", "hex": "#EDE7DD" },
+      { "nombre": "Piedra", "hex": "#A9A196" },
+      { "nombre": "Nogal", "hex": "#6B4E37" },
+      { "nombre": "Carbón", "hex": "#3A3633" },
+      { "nombre": "Tinta", "hex": "#1F1C1A" }
+    ],
+    "imagenes": ["/img/ambientes/noche-japandi-2.webp", "/img/ambientes/noche-japandi-1.webp"],
+    "idea": "rincon-noche-japandi"
+  }
+]

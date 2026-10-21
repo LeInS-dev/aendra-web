@@ -1,0 +1,62 @@
+[
+  {
+    "slug": "dormitorio-verde-salvia",
+    "titulo": "Un dormitorio en verde salvia que respira",
+    "bajada": "Tres capas de verde suave, mucho blanco y una rama de eucalipto. Así se ve un cuarto que invita a dormir bien.",
+    "imagen": "/img/ambientes/verde-salvia-2.webp",
+    "paleta": "verde-salvia",
+    "estilo": "nordico",
+    "ambiente": "dormitorio",
+    "productos": ["fundas-pana-salvia", "manta-ondulada-salvia", "jarron-botanico-verde", "eucalipto-artificial-10", "velas-columna-estriada", "funda-lino-natural"],
+    "texto": [
+      "Empieza por la cama: sábanas blancas o crudas y, encima, dos o tres cojines en salvia. Mezclar texturas (rayas en relieve, pana, lino) hace que el verde se vea rico y no plano.",
+      "Una manta tejida a los pies de la cama suma calidez y te salva las noches frías. Elige un tono un poco más oscuro que los cojines para dar profundidad.",
+      "En la mesa de noche, un jarrón pequeño con eucalipto y una vela blanca. Nada más: el verde ya hace todo el trabajo."
+    ]
+  },
+  {
+    "slug": "sala-terracota-andina",
+    "titulo": "Terracota Andina: la sala cálida de las tardes largas",
+    "bajada": "Colores de arcilla, fibras naturales y piezas con historia para una sala donde dan ganas de quedarse conversando.",
+    "imagen": "/img/ambientes/terracota-andina-1.webp",
+    "paleta": "terracota-andina",
+    "estilo": "boho",
+    "ambiente": "sala",
+    "productos": ["fundas-pana-terracota", "fundas-pana-diagonal-oxido", "manta-naranja-morandi", "alfombra-yute-redonda-60", "vela-acanalada-sandalo", "figuras-elefantes-minimalistas"],
+    "texto": [
+      "Si tu sofá es claro, la terracota entra por los cojines: combina dos texturas (pana tejida y pana diagonal) en terracota y óxido para que se vea pensado, no de catálogo.",
+      "Una manta naranja quemado sobre el brazo del sofá conecta todo. La alfombra de yute bajo una planta o junto al sillón aporta la fibra natural que esta paleta necesita.",
+      "Termina con piezas pequeñas en tonos tierra: una vela sándalo y figuras de cerámica en la repisa. La clave es repetir el color en tres puntos de la sala."
+    ]
+  },
+  {
+    "slug": "dormitorio-arena-y-lino",
+    "titulo": "Arena y Lino: calma en tonos de playa",
+    "bajada": "Cremas, caramelos y texturas suaves. La paleta que nunca falla para empezar a decorar.",
+    "imagen": "/img/ambientes/arena-y-lino-2.webp",
+    "paleta": "arena-y-lino",
+    "estilo": "minimal",
+    "ambiente": "dormitorio",
+    "productos": ["funda-chenilla-camello", "funda-boho-felpa-beige", "alfombra-felpa-beige-120x160", "velas-cubo-burbujas", "jarron-ceramica-blanco", "alfombra-vintage-90x150"],
+    "texto": [
+      "La regla de esta paleta es una sola: tonos de la misma familia en distintas texturas. Chenilla camello, felpa beige y lino crudo conviven sin pelearse.",
+      "Una alfombra de pelo largo al lado de la cama cambia la sensación del cuarto desde el primer paso de la mañana.",
+      "Para el toque cute: velas de burbujas en la mesa de noche y un jarrón blanco con una rama seca. Todo claro, todo suave."
+    ]
+  },
+  {
+    "slug": "rincon-noche-japandi",
+    "titulo": "Noche Japandi: un rincón para bajar el ritmo",
+    "bajada": "Madera oscura, carbón y luz de vela para el rincón donde lees, trabajas o simplemente descansas.",
+    "imagen": "/img/ambientes/noche-japandi-2.webp",
+    "paleta": "noche-japandi",
+    "estilo": "japandi",
+    "ambiente": "sala",
+    "productos": ["fundas-pana-carbon", "jarron-negro-mate", "bandeja-madera-negra", "candelabros-negros-3", "velas-artisticas-ondas", "funda-jacquard-geometrico"],
+    "texto": [
+      "El japandi oscuro funciona por contraste: un sillón claro con cojines carbón y un patrón geométrico suave en tonos tierra.",
+      "Sobre la mesa, una bandeja negra ordena todo: velas, un libro, un jarrón negro mate con una sola rama. Menos objetos, más intención.",
+      "De noche, los candelabros negros con velas largas hacen el resto. Apaga la luz del techo y quédate solo con las velas."
+    ]
+  }
+]

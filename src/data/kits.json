@@ -1,0 +1,37 @@
+[
+  {
+    "slug": "kit-mood-cozy", "nombre": "Mood Cozy", "badge": "01 · Básico", "precio": 63, "destacado": false,
+    "frase": "El primer paso para que tu cuarto se sienta tuyo.",
+    "items": ["2 Velas cubo de burbujas", "2 Fundas de cojín chenilla camello"],
+    "productos": ["velas-cubo-burbujas", "funda-chenilla-camello"],
+    "imagenes": ["/img/productos/velas-cubo-burbujas-1.webp", "/img/productos/funda-chenilla-camello-1.webp", "/img/productos/velas-cubo-burbujas-2.webp", "/img/productos/funda-chenilla-camello-2.webp"]
+  },
+  {
+    "slug": "kit-gift-mood", "nombre": "Gift Mood", "badge": "02 · Regalo", "precio": 105, "destacado": false,
+    "frase": "Para regalar en una mudanza o un cumpleaños, y quedar como la amiga con mejor gusto.",
+    "items": ["Vela esférica de ondas", "Vela bola espiral", "4 Fundas de cojín boho de felpa"],
+    "productos": ["vela-esferica-onda", "vela-bola-espiral", "funda-boho-felpa-beige"],
+    "imagenes": ["/img/productos/vela-esferica-onda-1.webp", "/img/productos/vela-bola-espiral-1.webp", "/img/productos/funda-boho-felpa-beige-1.webp", "/img/productos/vela-esferica-onda-3.webp"]
+  },
+  {
+    "slug": "kit-japandi-edit", "nombre": "Japandi Edit", "badge": "03 · Estilo", "precio": 97, "destacado": false,
+    "frase": "Minimalismo cálido con texturas naturales.",
+    "items": ["4 Fundas de cojín de lino natural", "Vela artística de ondas", "Jarrón de cerámica rústico"],
+    "productos": ["funda-lino-natural", "velas-artisticas-ondas", "jarron-ceramica-blanco"],
+    "imagenes": ["/img/productos/funda-lino-natural-1.webp", "/img/productos/velas-artisticas-ondas-1.webp", "/img/productos/jarron-ceramica-blanco-1.webp", "/img/productos/funda-lino-natural-2.webp"]
+  },
+  {
+    "slug": "kit-sala-aesthetic", "nombre": "Sala Aesthetic", "badge": "04 · Sala", "precio": 185, "destacado": false,
+    "frase": "Transforma tu sala en un espacio de revista.",
+    "items": ["Alfombra vintage 90×150 cm", "4 Fundas de cojín de pana a rayas", "2 Velas escultóricas blancas"],
+    "productos": ["alfombra-vintage-90x150", "funda-pana-rayas-boho", "velas-escultorica-blanca"],
+    "imagenes": ["/img/productos/alfombra-vintage-90x150-1.webp", "/img/productos/funda-pana-rayas-boho-1.webp", "/img/productos/velas-escultorica-blanca-1.webp", "/img/productos/velas-escultorica-blanca-2.webp"]
+  },
+  {
+    "slug": "kit-cuarto-dream", "nombre": "Cuarto Dream", "badge": "Más popular", "precio": 209, "destacado": true,
+    "frase": "La transformación completa de tu dormitorio, con un moodboard hecho por Alejandra.",
+    "items": ["Alfombra de pelo largo beige 120×160 cm", "4 Fundas de cojín jacquard geométrico", "2 Velas columna estriada", "Moodboard digital personalizado"],
+    "productos": ["alfombra-felpa-beige-120x160", "funda-jacquard-geometrico", "velas-columna-estriada"],
+    "imagenes": ["/img/productos/alfombra-felpa-beige-120x160-1.webp", "/img/productos/funda-jacquard-geometrico-1.webp", "/img/productos/velas-columna-estriada-1.webp", "/img/productos/funda-jacquard-geometrico-2.webp"]
+  }
+]
