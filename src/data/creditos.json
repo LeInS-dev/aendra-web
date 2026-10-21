@@ -18,5 +18,8 @@
     { "archivo": "estilo-minimal", "pexels": "12277124", "autor": "dada _design", "titulo": "white-pillow-on-bed-beside-potted-plant" },
     { "archivo": "estilo-mediterraneo", "pexels": "18484445", "autor": "Chiara Salvi", "titulo": "doorway-with-arch-and-sea" },
     { "archivo": "detalle-lectura", "pexels": "10677842", "autor": "Ron Lach", "titulo": "woman-sitting-in-armchair-reading-book" }
+  ],
+  "fondos": [
+    { "archivo": "fondos/enredadera", "pexels": "35688473", "autor": "Mauricio Krupka Buendia", "titulo": "artistic-shadows-of-vines-on-rustic-wall" }
   ]
 }
